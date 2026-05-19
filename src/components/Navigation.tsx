@@ -48,19 +48,19 @@ const navStyles = `
 
   /* Logo */
   .ks-logo {
-    font-family: 'Hanuman', sans-serif;
-    font-weight: 600;
-    font-size: 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
     text-decoration: none;
-    background: linear-gradient(90deg, #0ABADF, #EDEC3A);
+    background: linear-gradient(90deg, #0017e3, #ff0008);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: flex;
-    align-items: center;
-    gap: 8px;
+    align-items: baseline;
+    gap: 0px;
     flex-shrink: 0;
-    letter-spacing: -0.3px;
+    letter-spacing: -0.5px;
   }
 
   /* Desktop links */
@@ -385,19 +385,19 @@ const navStyles = `
   }
 
   @media (max-width: 768px) {
-    .ks-nav-inner { 
-      padding: 0 20px; 
+    .ks-nav-inner {
+      padding: 0 20px;
       height: 64px;
       gap: 16px;
     }
     .ks-links { display: none !important; }
     .ks-cta.desktop { display: none !important; }
     .ks-hamburger { display: flex; }
-    .ks-logo { font-size: 18px; }
-    .ks-language-switcher .ks-select { 
-      min-width: 80px; 
-      padding: 6px 24px 6px 10px; 
-      font-size: 12px; 
+    .ks-logo { font-size: 32px; }
+    .ks-language-switcher .ks-select {
+      min-width: 80px;
+      padding: 6px 24px 6px 10px;
+      font-size: 12px;
     }
     .ks-mobile-menu {
       top: 64px;
@@ -405,16 +405,16 @@ const navStyles = `
   }
 
   @media (max-width: 480px) {
-    .ks-nav-inner { 
-      padding: 0 16px; 
+    .ks-nav-inner {
+      padding: 0 16px;
       height: 52px;
       gap: 12px;
     }
-    .ks-logo { font-size: 16px; }
-    .ks-language-switcher .ks-select { 
-      min-width: 70px; 
-      padding: 5px 20px 5px 8px; 
-      font-size: 11px; 
+    .ks-logo { font-size: 28px; }
+    .ks-language-switcher .ks-select {
+      min-width: 70px;
+      padding: 5px 20px 5px 8px;
+      font-size: 11px;
     }
     .ks-mobile-menu {
       top: 52px;
@@ -429,6 +429,7 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [logoClicked, setLogoClicked] = useState(false);
   const { t, language } = useLanguage();
   const pathname = usePathname();
 
@@ -492,10 +493,27 @@ export default function Navigation() {
         <div className="ks-nav-inner">
 
           {/* Logo */}
-          <Link href="/" className="ks-logo">
-            KhmerSoftware
+          <Link 
+            href="/" 
+            className="ks-logo" 
+            style={{ alignItems: 'flex-start' }}
+            onClick={() => setLogoClicked(!logoClicked)}
+          >
+            KS
+            <img 
+              src="/angkoricon.png" 
+              alt="Angkor Wat" 
+              style={{ 
+                height: '15px', 
+                width: 'auto', 
+                marginLeft: '4px',
+                alignSelf: 'flex-start',
+                transition: 'filter 0.3s ease',
+                filter: logoClicked ? 'hue-rotate(180deg)' : 'none'
+              }} 
+              className="angkor-icon"
+            />
           </Link>
-
           {/* Desktop links */}
           <ul className="ks-links">
             {navLinks.map(link => (

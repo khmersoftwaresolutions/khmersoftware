@@ -30,6 +30,33 @@ export default function Services() {
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(14px, 3vw, 18px)', lineHeight: 1.8, maxWidth: 800, margin: '0 auto' }}>
           {t('services.subtitle')}
         </p>
+        <div style={{ marginTop: 32, textAlign: 'center' }}>
+          <a 
+            href="https://shop.khmersoftware.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="btn-primary"
+            style={{ 
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '14px 32px',
+              fontSize: 'clamp(14px, 3vw, 16px)',
+              fontWeight: 600,
+              background: 'linear-gradient(135deg, #0017e3, #ff0008)',
+              borderRadius: 50,
+              textDecoration: 'none',
+              color: '#fff',
+              boxShadow: '0 4px 20px rgba(0, 23, 227, 0.4)',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            Visit Our Service Shop
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
       </section>
 
       {/* Software Sales */}
