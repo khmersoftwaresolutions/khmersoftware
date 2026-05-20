@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -52,15 +52,18 @@ const navStyles = `
     font-weight: 800;
     font-size: 48px;
     text-decoration: none;
-    background: linear-gradient(90deg, #0017e3, #ff0008);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     display: flex;
     align-items: baseline;
     gap: 0px;
     flex-shrink: 0;
     letter-spacing: -0.5px;
+  }
+
+  .ks-logo-text {
+    background: linear-gradient(90deg, #0017e3, #ff0008);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   /* Desktop links */
@@ -372,6 +375,31 @@ const navStyles = `
     box-shadow: 0 0 8px rgba(10, 186, 223, 0.6);
   }
 
+  /* ── Logo animation keyframes ── */
+  @keyframes ks-icon-pop {
+    0%   { transform: scale(1) rotate(0deg); }
+    30%  { transform: scale(1.6) rotate(-10deg); }
+    60%  { transform: scale(1.3) rotate(6deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+  @keyframes ks-ripple {
+    0%   { transform: translate(-50%, -50%) scale(0.3); opacity: 0.9; }
+    100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
+  }
+  @keyframes ks-spark {
+    0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: var(--ks-tx) scale(0.2); }
+  }
+  .angkor-icon {
+    transition: filter 0.4s ease;
+    transform-origin: center center;
+    position: relative;
+    z-index: 2;
+  }
+  .angkor-icon.pop {
+    animation: ks-icon-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
   @media (max-width: 1024px) {
     .ks-nav-inner { padding: 0 30px; gap: 24px; }
     .ks-links { gap: 24px; }
@@ -425,11 +453,25 @@ const navStyles = `
   }
 `;
 
+// Spark directions: angle in degrees + travel distance in px
+const SPARK_CONFIG = [
+  { angle: -60,  dist: 18, color: '#ff4d4d' },
+  { angle: -20,  dist: 20, color: '#0017e3' },
+  { angle:  20,  dist: 18, color: '#ff4d4d' },
+  { angle:  60,  dist: 20, color: '#0017e3' },
+  { angle: 180,  dist: 16, color: '#ff4d4d' },
+  { angle: 220,  dist: 18, color: '#0017e3' },
+  { angle: -100, dist: 15, color: '#ff4d4d' },
+  { angle: 100,  dist: 17, color: '#0017e3' },
+];
+
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [logoClicked, setLogoClicked] = useState(false);
+  const [logoAnimating, setLogoAnimating] = useState(false);
+  const logoResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { t, language } = useLanguage();
   const pathname = usePathname();
 
@@ -454,9 +496,7 @@ export default function Navigation() {
     } else {
       document.body.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [isMobileMenuOpen]);
 
   // Close mobile menu when clicking outside
@@ -469,12 +509,30 @@ export default function Navigation() {
         }
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isMobileMenuOpen]);
+
+  const handleLogoClick = useCallback(() => {
+    const next = !logoClicked;
+    setLogoClicked(next);
+
+    // Trigger the pop + sparks on every click
+    setLogoAnimating(false);
+    // Use rAF to force a re-render cycle so the animation class re-applies
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setLogoAnimating(true);
+        setTimeout(() => setLogoAnimating(false), 600);
+      });
+    });
+
+    // Auto-reset the glow after 3 seconds
+    if (logoResetRef.current) clearTimeout(logoResetRef.current);
+    if (next) {
+      logoResetRef.current = setTimeout(() => setLogoClicked(false), 3000);
+    }
+  }, [logoClicked]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
@@ -492,28 +550,81 @@ export default function Navigation() {
       <nav className={`ks-nav ${scrolled ? 'scrolled' : 'top'}`}>
         <div className="ks-nav-inner">
 
-          {/* Logo */}
-          <Link 
-            href="/" 
-            className="ks-logo" 
+          {/* ── Logo ── */}
+          <Link
+            href="/"
+            className="ks-logo"
             style={{ alignItems: 'flex-start' }}
-            onClick={() => setLogoClicked(!logoClicked)}
+            onClick={handleLogoClick}
           >
-            KS
-            <img 
-              src="/angkoricon.png" 
-              alt="Angkor Wat" 
-              style={{ 
-                height: '15px', 
-                width: 'auto', 
-                marginLeft: '4px',
-                alignSelf: 'flex-start',
-                transition: 'filter 0.3s ease',
-                filter: logoClicked ? 'hue-rotate(180deg)' : 'none'
-              }} 
-              className="angkor-icon"
-            />
+            <span className="ks-logo-text">KS</span>
+
+            {/* Icon wrapper — holds ripples, sparks, and the image */}
+            <div style={{
+              position: 'relative',
+              display: 'inline-flex',
+              alignItems: 'flex-start',
+              marginLeft: '4px',
+            }}>
+              {/* Ripple rings (visible while logoClicked is true) */}
+              {logoClicked && [0, 1, 2].map(i => (
+                <span
+                  key={i}
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    width: 14,
+                    height: 14,
+                    borderRadius: '50%',
+                    border: `1.5px solid ${i % 2 === 0 ? '#ff4d4d' : '#0017e3'}`,
+                    pointerEvents: 'none',
+                    animation: `ks-ripple 0.75s ease-out forwards ${i * 0.11}s`,
+                  }}
+                />
+              ))}
+
+              {/* Spark particles (burst on every click, fade out quickly) */}
+              {logoAnimating && SPARK_CONFIG.map(({ angle, dist, color }, i) => {
+                const rad = (angle * Math.PI) / 180;
+                const tx = `translate(calc(-50% + ${Math.cos(rad) * dist}px), calc(-50% + ${Math.sin(rad) * dist}px))`;
+                return (
+                  <span
+                    key={i}
+                    style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      width: 3,
+                      height: 3,
+                      borderRadius: '50%',
+                      background: color,
+                      pointerEvents: 'none',
+                      zIndex: 3,
+                      ['--ks-tx' as string]: tx,
+                      animation: `ks-spark 0.55s ease-out forwards ${i * 0.03}s`,
+                    }}
+                  />
+                );
+              })}
+
+              {/* The actual icon image */}
+              <img
+                src="/angkoricon.png"
+                alt="Angkor Wat"
+                className={`angkor-icon${logoAnimating ? ' pop' : ''}`}
+                style={{
+                  height: '15px',
+                  width: 'auto',
+                  alignSelf: 'flex-start',
+                  filter: logoClicked
+                    ? 'grayscale(0%) brightness(1)'
+                    : 'grayscale(100%) brightness(1.1) opacity(0.9)',
+                }}
+              />
+            </div>
           </Link>
+
           {/* Desktop links */}
           <ul className="ks-links">
             {navLinks.map(link => (
@@ -568,7 +679,7 @@ export default function Navigation() {
             bottom: 0,
             background: 'rgba(0, 0, 0, 0.5)',
             zIndex: 999,
-            backdropFilter: 'blur(4px)'
+            backdropFilter: 'blur(4px)',
           }}
           onClick={() => setIsMobileMenuOpen(false)}
         />

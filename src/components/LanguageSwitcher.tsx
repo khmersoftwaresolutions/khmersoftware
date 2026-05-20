@@ -48,11 +48,21 @@ export default function LanguageSwitcher() {
   return (
     <>
       <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@400;500;600;700&display=swap');
+
         .ks-language-switcher {
           position: relative;
           width: 120px;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           min-height: 44px;
+        }
+
+        .lang-km .ks-language-label {
+          font-family: 'Hanuman', sans-serif;
+        }
+
+        .lang-km .ks-dropdown-label {
+          font-family: 'Hanuman', sans-serif;
         }
 
         .ks-language-button {
@@ -199,7 +209,7 @@ export default function LanguageSwitcher() {
         }
       `}</style>
 
-      <div className="ks-language-switcher" ref={dropdownRef} style={{ position: 'relative', width: '120px', minHeight: '44px' }}>
+      <div className={`ks-language-switcher ${language === 'km' ? 'lang-km' : ''}`} ref={dropdownRef} style={{ position: 'relative', width: '120px', minHeight: '44px' }}>
         <button
           type="button"
           className="ks-language-button"
