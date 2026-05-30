@@ -97,8 +97,9 @@ const navStyles = `
     font-weight: 500;
   }
 
+  /* Logo always uses English font */
   .lang-km .ks-logo {
-    font-family: 'Hanuman', sans-serif;
+    font-family: 'DM Sans', sans-serif;
   }
 
   .lang-km .ks-cta {

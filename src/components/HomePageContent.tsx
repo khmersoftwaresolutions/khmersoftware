@@ -132,22 +132,29 @@ export default function HomePageContent() {
       text: t('home.testimonials.testimonial1.text'),
       name: t('home.testimonials.testimonial1.name'),
       role: t('home.testimonials.testimonial1.role'),
-      initials: "SR",
+      photo: t('home.testimonials.testimonial1.photo'),
       color: COLORS.cyan,
     },
     {
       text: t('home.testimonials.testimonial2.text'),
       name: t('home.testimonials.testimonial2.name'),
       role: t('home.testimonials.testimonial2.role'),
-      initials: "CK",
+      photo: t('home.testimonials.testimonial2.photo'),
       color: COLORS.green,
     },
     {
       text: t('home.testimonials.testimonial3.text'),
       name: t('home.testimonials.testimonial3.name'),
       role: t('home.testimonials.testimonial3.role'),
-      initials: "DP",
+      photo: t('home.testimonials.testimonial3.photo'),
       color: COLORS.yellow,
+    },
+    {
+      text: t('home.testimonials.testimonial4.text'),
+      name: t('home.testimonials.testimonial4.name'),
+      role: t('home.testimonials.testimonial4.role'),
+      photo: t('home.testimonials.testimonial4.photo'),
+      color: COLORS.blue,
     },
   ];
 
@@ -440,18 +447,34 @@ export default function HomePageContent() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(280px, 100%), 1fr))", gap: 24 }}>
             {testimonials.map((testimonial, i) => (
               <FadeInSection key={i} delay={i * 100}>
-                <div className="glass-card testimonial-card" style={{ padding: "clamp(20px, 4vw, 28px)", position: "relative", overflow: "hidden" }}>
+                <div className="glass-card testimonial-card" style={{ padding: 0, position: "relative", overflow: "hidden" }}>
                   <div className="glow-top" style={{ background: `linear-gradient(90deg, transparent, ${testimonial.color}50, transparent)` }} />
-                  <div className="stars">★★★★★</div>
-                  <p className="quote">"{testimonial.text}"</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <div className="avatar" style={{ background: `${testimonial.color}20`, color: testimonial.color, border: `1px solid ${testimonial.color}40` }}>
-                      {testimonial.initials}
+                  {/* Photo with overlay */}
+                  <div style={{ position: "relative", width: "100%", height: "280px" }}>
+                    <img
+                      src={testimonial.photo}
+                      alt={testimonial.name}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                    <div style={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      background: "linear-gradient(to top, rgba(5,5,69,0.95) 0%, rgba(5,5,69,0.7) 50%, transparent 100%)",
+                      padding: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 4
+                    }}>
+                      <div style={{ fontWeight: 700, fontSize: 18, color: "#fff" }}>{testimonial.name}</div>
+                      <div style={{ fontSize: 13, color: "rgba(255,255,255,0.7)" }}>{testimonial.role}</div>
                     </div>
-                    <div>
-                      <div style={{ fontWeight: 600, fontSize: 14 }}>{testimonial.name}</div>
-                      <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>{testimonial.role}</div>
-                    </div>
+                  </div>
+                  {/* Description below */}
+                  <div style={{ padding: "20px" }}>
+                    <div className="stars" style={{ marginBottom: 12 }}>★★★★★</div>
+                    <p className="quote" style={{ fontSize: 14, lineHeight: 1.6 }}>"{testimonial.text}"</p>
                   </div>
                 </div>
               </FadeInSection>

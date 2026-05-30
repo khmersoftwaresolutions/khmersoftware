@@ -87,24 +87,33 @@
       }
     },
     "testimonials": {
-      "sectionLabel": "Social Proof",
-      "title": "Trusted by",
-      "titleHighlight": "Leading",
-      "title2": "Businesses",
+      "sectionLabel": "Our Team",
+      "title": "Meet Our",
+      "titleHighlight": "Expert",
+      "title2": "Team Members",
       "testimonial1": {
-        "text": "KhmerSoftware transformed how we manage our inventory. The custom ERP they built handles 10,000+ daily transactions flawlessly. Best tech investment we've made.",
-        "name": "Sovann Rith",
-        "role": "CEO, Phnom Penh Logistics"
+        "text": "The management system developed by KhmerSoftware has high stability and can handle tens of thousands of operations per day without issues. It's the best technology investment for our organization.",
+        "name": "Heang Chihav",
+        "role": "IT Manager, KhmerSoftware",
+        "photo": "https://i.imgur.com/PUPWAl1.jpeg"
       },
       "testimonial2": {
-        "text": "Their cloud migration saved us 40% on IT costs. The team speaks Khmer, understands our culture, and delivered ahead of schedule. Truly exceptional.",
-        "name": "Channary Keo",
-        "role": "CTO, Mekong Finance Group"
+        "text": "Migrating to cloud systems with the KhmerSoftware team helped us save 40% on IT costs. The team has high professional expertise and completed projects ahead of schedule.",
+        "name": "Sak Sreynich",
+        "role": "Prompt Engineer, KhmerSoftware",
+        "photo": "https://i.imgur.com/iqBV580.jpeg"
       },
       "testimonial3": {
-        "text": "24/7 support that actually responds in 24/7! The rental model let us trial enterprise software without the risk. We're now fully subscribed.",
-        "name": "Dara Pich",
-        "role": "Director, Angkor Hotels"
+        "text": "Their technical support service is truly fast and highly responsible 24/7. All complex technical issues are resolved immediately with high efficiency.",
+        "name": "Roeurm Sopheak",
+        "role": "Operations Manager, KhmerSoftware",
+        "photo": "https://i.imgur.com/c2wlGqK.jpeg"
+      },
+      "testimonial4": {
+        "text": "The software UI/UX design is attractive, easy to use, and clearly reflects our business identity. I'm extremely satisfied with this work.",
+        "name": "Leam Rien",
+        "role": "UI/UX Designer, KhmerSoftware",
+        "photo": "https://i.imgur.com/J75cVHp.jpeg"
       }
     },
     "cta": {
