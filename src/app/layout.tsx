@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "../styles/globals.css";
 import "../styles/utilities.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -54,6 +55,13 @@ export default function RootLayout({
             <Footer />
           </LanguageBody>
         </LanguageProvider>
+        {/* Start of HubSpot Embed Code */}
+        <Script
+          id="hs-script-loader"
+          strategy="afterInteractive"
+          src="//js-na2.hs-scripts.com/246983131.js"
+        />
+        {/* End of HubSpot Embed Code */}
       </body>
     </html>
   );
