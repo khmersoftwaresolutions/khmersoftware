@@ -15,31 +15,29 @@ const navStyles = `
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .ks-nav.hidden-nav {
+    transform: translateY(-100%);
   }
 
   .ks-nav.scrolled {
-    background: rgba(5, 5, 69, 0.75);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
-      0 4px 30px rgba(0, 0, 0, 0.35),
-      0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
   }
 
   .ks-nav.top {
-    background: rgba(5, 5, 69, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   }
 
   .ks-nav-inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
-    height: 64px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -81,14 +79,16 @@ const navStyles = `
   .ks-link {
     position: relative;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(20, 20, 50, 0.65);
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 9px 18px;
     border-radius: 50px;
     transition: all 0.25s ease;
     white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
   }
 
   /* Khmer font styles for navigation */
@@ -115,8 +115,8 @@ const navStyles = `
   }
 
   .ks-link:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.07);
+    color: #0017e3;
+    background: rgba(0, 23, 227, 0.06);
   }
 
   .ks-link.active {
@@ -137,6 +137,153 @@ const navStyles = `
     box-shadow: 0 0 6px #0ABADF;
   }
 
+  /* Mega Menu */
+  .ks-mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 999;
+  }
+
+  .ks-mega-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ks-mega-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  
+  .ks-mega-col h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(20,20,50, 0.5);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .ks-mega-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ks-mega-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.2s;
+    margin-left: -12px;
+  }
+
+  .ks-mega-link:hover {
+    background: rgba(10, 186, 223, 0.05);
+  }
+
+  .ks-mega-simple-link {
+    display: block;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    margin-left: -12px;
+    color: #141432;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .ks-mega-simple-link:hover {
+    background: rgba(10, 186, 223, 0.05);
+    color: #0ABADF;
+  }
+
+  .ks-mega-link-text h5 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #141432;
+    margin: 0 0 4px;
+    transition: color 0.2s;
+  }
+  
+  .ks-mega-link:hover .ks-mega-link-text h5 {
+    color: #0ABADF;
+  }
+
+  .ks-mega-link-text p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: rgba(20, 20, 50, 0.6);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ks-mega-featured-card {
+    background: linear-gradient(135deg, #050545 0%, #0E62A2 100%);
+    border-radius: 16px;
+    padding: 32px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .ks-mega-featured-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 12px 0;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .ks-mega-featured-card p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 24px 0;
+    line-height: 1.6;
+  }
+
+  .ks-mega-about p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: rgba(20, 20, 50, 0.65);
+    margin: 0 0 24px 0;
+    line-height: 1.7;
+  }
+
+  .nav-item-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
   /* Right side */
   .ks-nav-right {
     display: flex;
@@ -153,7 +300,7 @@ const navStyles = `
     color: #fff;
     background: linear-gradient(135deg, #0ABADF, #0E62A2);
     border: none;
-    padding: 9px 22px;
+    padding: 11px 26px;
     border-radius: 50px;
     cursor: pointer;
     text-decoration: none;
@@ -190,20 +337,20 @@ const navStyles = `
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    padding: 6px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     transition: all 0.2s;
   }
   .ks-hamburger:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.08);
   }
   .ks-hamburger span {
     display: block;
     width: 20px;
     height: 1.5px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(20, 20, 50, 0.7);
     border-radius: 2px;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     transform-origin: center;
@@ -221,7 +368,7 @@ const navStyles = `
   /* Mobile drawer */
   .ks-mobile-menu {
     position: fixed;
-    top: 64px;
+    top: 80px;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -235,11 +382,9 @@ const navStyles = `
     opacity: 1;
   }
   .ks-mobile-inner {
-    background: rgba(5, 5, 69, 0.92);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     padding: 20px 24px 24px;
     display: flex;
     flex-direction: column;
@@ -249,7 +394,7 @@ const navStyles = `
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(20, 20, 50, 0.65);
     text-decoration: none;
     padding: 12px 16px;
     border-radius: 12px;
@@ -264,8 +409,8 @@ const navStyles = `
     font-weight: 500;
   }
   .ks-mobile-link:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.07);
+    color: #0017e3;
+    background: rgba(0, 23, 227, 0.05);
   }
   .ks-mobile-link.active {
     color: #0ABADF;
@@ -274,7 +419,7 @@ const navStyles = `
   }
   .ks-mobile-divider {
     height: 1px;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.08);
     margin: 8px 0;
   }
   .ks-mobile-cta {
@@ -309,19 +454,17 @@ const navStyles = `
   }
   .ks-select {
     appearance: none;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 12px;
     padding: 8px 36px 8px 16px;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(20, 20, 50, 0.75);
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
     min-width: 120px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
   }
 
   .lang-km .ks-select {
@@ -329,16 +472,16 @@ const navStyles = `
     font-weight: 500;
   }
   .ks-select:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: rgba(0, 0, 0, 0.07);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: #141432;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
   .ks-select:focus {
     outline: none;
-    border-color: var(--cyan);
-    box-shadow: 0 0 0 3px rgba(10, 186, 223, 0.25), 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #0ABADF;
+    box-shadow: 0 0 0 3px rgba(10, 186, 223, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08);
   }
   .ks-select:active {
     transform: translateY(0);
@@ -349,31 +492,17 @@ const navStyles = `
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(20, 20, 50, 0.45);
     transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .ks-language-switcher:hover .ks-select-arrow {
-    color: var(--cyan);
+    color: #0ABADF;
     transform: translateY(-50%) scale(1.1);
   }
   .ks-select option {
-    background: var(--navy);
-    color: rgba(255, 255, 255, 0.9);
+    background: #ffffff;
+    color: #141432;
     padding: 8px 12px;
-  }
-  .ks-select option:hover {
-    background: rgba(10, 186, 223, 0.1);
-    color: #fff;
-  }
-
-  /* Progress bar */
-  .ks-progress {
-    position: absolute;
-    bottom: 0; left: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #0ABADF, #51B41C, #EDEC3A);
-    transition: width 0.1s linear;
-    box-shadow: 0 0 8px rgba(10, 186, 223, 0.6);
   }
 
   /* ── Logo animation keyframes ── */
@@ -402,9 +531,9 @@ const navStyles = `
   }
 
   @media (max-width: 1024px) {
-    .ks-nav-inner { padding: 0 30px; gap: 24px; }
+    .ks-nav-inner { padding: 0 30px; gap: 24px; height: 72px; }
     .ks-links { gap: 24px; }
-    .ks-cta { padding: 8px 18px; font-size: 13px; }
+    .ks-cta { padding: 9px 20px; font-size: 13px; }
     .ks-logo { font-size: 20px; }
     .ks-language-switcher .ks-select { 
       min-width: 90px; 
@@ -416,7 +545,7 @@ const navStyles = `
   @media (max-width: 768px) {
     .ks-nav-inner {
       padding: 0 20px;
-      height: 64px;
+      height: 72px;
       gap: 16px;
     }
     .ks-links { display: none !important; }
@@ -429,14 +558,14 @@ const navStyles = `
       font-size: 12px;
     }
     .ks-mobile-menu {
-      top: 64px;
+      top: 72px;
     }
   }
 
   @media (max-width: 480px) {
     .ks-nav-inner {
       padding: 0 16px;
-      height: 52px;
+      height: 64px;
       gap: 12px;
     }
     .ks-logo { font-size: 28px; }
@@ -446,7 +575,7 @@ const navStyles = `
       font-size: 11px;
     }
     .ks-mobile-menu {
-      top: 52px;
+      top: 64px;
     }
     .ks-mobile-inner {
       padding: 16px 20px 20px;
@@ -469,19 +598,41 @@ const SPARK_CONFIG = [
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [navHidden, setNavHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const [logoClicked, setLogoClicked] = useState(false);
   const [logoAnimating, setLogoAnimating] = useState(false);
   const logoResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  
+  // Mega menu state
+  const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+  const megaMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const { t, language } = useLanguage();
   const pathname = usePathname();
 
+  const handleMouseEnter = (menuId: string | null) => {
+    if (megaMenuTimeoutRef.current) clearTimeout(megaMenuTimeoutRef.current);
+    setActiveMegaMenu(menuId);
+  };
+
+  const handleMouseLeave = () => {
+    if (megaMenuTimeoutRef.current) clearTimeout(megaMenuTimeoutRef.current);
+    megaMenuTimeoutRef.current = setTimeout(() => {
+      setActiveMegaMenu(null);
+    }, 150); // slight delay to allow moving to submenu
+  };
+
   useEffect(() => {
     const onScroll = () => {
-      const scrollY = window.scrollY;
-      setScrolled(scrollY > 20);
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(docHeight > 0 ? (scrollY / docHeight) * 100 : 0);
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      if (y > lastScrollY.current && y > 80) {
+        setNavHidden(true);  // scrolling down — hide
+      } else {
+        setNavHidden(false); // scrolling up — show
+      }
+      lastScrollY.current = y;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -538,17 +689,112 @@ export default function Navigation() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
 
   const navLinks = [
-    { href: '/', label: t('navigation.home') },
-    { href: `/${language}/services`, label: t('navigation.services') },
-    { href: `/${language}/about`, label: t('navigation.about') },
-    { href: `/${language}/contact`, label: t('navigation.contact') },
+    { href: '/', label: t('navigation.home'), menu: null },
+    { href: `/${language}/services`, label: t('navigation.services'), menu: 'services' },
+    { href: `/${language}/technologies`, label: t('navigation.technologies'), menu: 'technologies' },
+    { href: `/${language}/industries`, label: t('navigation.industries'), menu: null },
+    { href: `/${language}/portfolio`, label: t('navigation.portfolio'), menu: null },
+    { href: `/${language}/about`, label: t('navigation.about'), menu: 'company' },
   ];
+
+  // Mega Menu Data
+  const MEGA_MENUS: Record<string, any> = {
+    services: {
+      type: "columns-with-card",
+      columns: [
+        {
+          title: "Development",
+          links: [
+            { href: `/${language}/services/custom`, label: "Custom Software", desc: "Tailored enterprise solutions" },
+            { href: `/${language}/services/mobile`, label: "Mobile Apps", desc: "iOS & Android development" },
+            { href: `/${language}/services/web`, label: "Web Applications", desc: "Scalable web platforms" }
+          ]
+        },
+        {
+          title: "Cloud & Security",
+          links: [
+            { href: `/${language}/services/cloud`, label: "Cloud Migration", desc: "AWS, Azure & Google Cloud" },
+            { href: `/${language}/services/devops`, label: "DevOps Services", desc: "CI/CD & automation" },
+            { href: `/${language}/services/security`, label: "Cybersecurity", desc: "Audits & penetration testing" }
+          ]
+        },
+        {
+          title: "Consulting",
+          links: [
+            { href: `/${language}/services/strategy`, label: "IT Strategy", desc: "Digital transformation roadmap" },
+            { href: `/${language}/services/design`, label: "UI/UX Design", desc: "User-centric interface design" }
+          ]
+        }
+      ],
+      featuredCard: {
+        title: "Digital Transformation",
+        desc: "Book a free consultation with our experts to discuss your project requirements and architecture.",
+        buttonText: "Book Consultation",
+        href: `/${language}/contact`
+      }
+    },
+    technologies: {
+      type: "simple-grid",
+      columns: [
+        {
+          title: "Frontend",
+          links: [
+            { href: "#", label: "React & Next.js" },
+            { href: "#", label: "Vue & Nuxt" },
+            { href: "#", label: "Tailwind CSS" }
+          ]
+        },
+        {
+          title: "Backend",
+          links: [
+            { href: "#", label: "Node.js" },
+            { href: "#", label: "Python & Django" },
+            { href: "#", label: "Go" }
+          ]
+        },
+        {
+          title: "Database & Cloud",
+          links: [
+            { href: "#", label: "PostgreSQL" },
+            { href: "#", label: "MongoDB" },
+            { href: "#", label: "AWS & Docker" }
+          ]
+        }
+      ]
+    },
+    company: {
+      type: "about-mixed",
+      about: {
+        title: "KhmerSoftware",
+        desc: "We are Cambodia's leading software development agency, specializing in custom enterprise solutions and digital transformation.",
+        href: `/${language}/about`
+      },
+      columns: [
+        {
+          title: "Company",
+          links: [
+            { href: `/${language}/about`, label: "Our Story" },
+            { href: `/${language}/team`, label: "Leadership Team" },
+            { href: `/${language}/careers`, label: "Careers" }
+          ]
+        },
+        {
+          title: "Resources",
+          links: [
+            { href: `/${language}/blog`, label: "Blog" },
+            { href: `/${language}/case-studies`, label: "Case Studies" },
+            { href: `/${language}/contact`, label: "Contact Us" }
+          ]
+        }
+      ]
+    }
+  };
 
   return (
     <>
       <style>{navStyles}</style>
 
-      <nav className={`ks-nav ${scrolled ? 'scrolled' : 'top'}`}>
+      <nav className={`ks-nav ${scrolled ? 'scrolled' : 'top'}${navHidden ? ' hidden-nav' : ''}`}>
         <div className="ks-nav-inner">
 
           {/* ── Logo ── */}
@@ -629,12 +875,23 @@ export default function Navigation() {
           {/* Desktop links */}
           <ul className="ks-links">
             {navLinks.map(link => (
-              <li key={link.href}>
+              <li 
+                key={link.href} 
+                className="nav-item-wrapper"
+                onMouseEnter={() => handleMouseEnter(link.menu)}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Link
                   href={link.href}
                   className={`ks-link ${isActive(link.href) ? 'active' : ''}`}
+                  onClick={() => setActiveMegaMenu(null)}
                 >
                   {link.label}
+                  {link.menu && (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: 6, opacity: 0.5 }}>
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  )}
                 </Link>
               </li>
             ))}
@@ -665,8 +922,73 @@ export default function Navigation() {
           </div>
         </div>
 
-        {/* Scroll progress bar */}
-        <div className="ks-progress" style={{ width: `${scrollProgress}%` }} />
+        {/* Mega Menu Container */}
+        <div 
+          className={`ks-mega-menu ${activeMegaMenu && MEGA_MENUS[activeMegaMenu] ? 'open' : ''}`}
+          onMouseEnter={() => handleMouseEnter(activeMegaMenu)}
+          onMouseLeave={handleMouseLeave}
+        >
+          {activeMegaMenu && MEGA_MENUS[activeMegaMenu] && (
+            <div className="ks-mega-inner" style={{
+              gridTemplateColumns: MEGA_MENUS[activeMegaMenu].type === 'simple-grid' ? 'repeat(3, 1fr)' : 
+                                  MEGA_MENUS[activeMegaMenu].type === 'about-mixed' ? '2fr 1fr 1fr' : 'repeat(4, 1fr)'
+            }}>
+              
+              {/* If About-Mixed layout */}
+              {MEGA_MENUS[activeMegaMenu].type === 'about-mixed' && (
+                <div className="ks-mega-about" style={{ paddingRight: 40, borderRight: '1px solid rgba(0,0,0,0.05)' }}>
+                  <h4 style={{ fontFamily: "'Syne', sans-serif", fontSize: 20, fontWeight: 700, color: '#141432', marginBottom: 12 }}>
+                    {MEGA_MENUS[activeMegaMenu].about.title}
+                  </h4>
+                  <p>{MEGA_MENUS[activeMegaMenu].about.desc}</p>
+                  <Link href={MEGA_MENUS[activeMegaMenu].about.href} style={{ color: '#0ABADF', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }} onClick={() => setActiveMegaMenu(null)}>
+                    Read more
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </Link>
+                </div>
+              )}
+
+              {/* Standard columns rendering */}
+              {MEGA_MENUS[activeMegaMenu].columns.map((col: any, idx: number) => (
+                <div key={idx} className="ks-mega-col">
+                  <h4>{col.title}</h4>
+                  <ul>
+                    {col.links.map((link: any, linkIdx: number) => (
+                      <li key={linkIdx}>
+                        {link.desc ? (
+                          <Link href={link.href} className="ks-mega-link" onClick={() => setActiveMegaMenu(null)}>
+                            <div className="ks-mega-link-text">
+                              <h5>{link.label}</h5>
+                              <p>{link.desc}</p>
+                            </div>
+                          </Link>
+                        ) : (
+                          <Link href={link.href} className="ks-mega-simple-link" onClick={() => setActiveMegaMenu(null)}>
+                            {link.label}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+
+              {/* If Columns-with-Card layout */}
+              {MEGA_MENUS[activeMegaMenu].type === 'columns-with-card' && (
+                <div className="ks-mega-col">
+                  <div className="ks-mega-featured-card">
+                    <h4>{MEGA_MENUS[activeMegaMenu].featuredCard.title}</h4>
+                    <p>{MEGA_MENUS[activeMegaMenu].featuredCard.desc}</p>
+                    <Link href={MEGA_MENUS[activeMegaMenu].featuredCard.href} className="ks-cta" style={{ alignSelf: 'flex-start', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: 'white', padding: '8px 20px', boxShadow: 'none' }} onClick={() => setActiveMegaMenu(null)}>
+                      {MEGA_MENUS[activeMegaMenu].featuredCard.buttonText}
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </nav>
 
       {/* Mobile menu backdrop */}

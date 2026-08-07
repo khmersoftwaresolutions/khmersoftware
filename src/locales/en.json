@@ -2,6 +2,9 @@
   "navigation": {
     "home": "Home",
     "services": "Services",
+    "technologies": "Technologies",
+    "industries": "Industries",
+    "portfolio": "Portfolio",
     "about": "About",
     "contact": "Contact"
   },
@@ -57,6 +60,12 @@
         "title": "Training & Support",
         "desc": "Bilingual Khmer–English training programs and round-the-clock technical support to keep your team moving."
       }
+    },
+    "technologyStack": {
+      "sectionLabel": "Our Tech Stack",
+      "title": "Built with Modern",
+      "titleHighlight": "Technologies",
+      "description": "We use the latest and most reliable technologies to build scalable and secure software solutions for your business."
     },
     "features": {
       "cloudNative": {

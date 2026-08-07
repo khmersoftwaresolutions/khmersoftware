@@ -73,18 +73,18 @@ export default function LanguageSwitcher() {
           width: 100%;
           min-height: 44px;
           padding: 10px 14px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1.5px solid rgba(10, 186, 223, 0.3);
+          background: rgba(0, 0, 0, 0.04);
+          border: 1.5px solid rgba(0, 0, 0, 0.15);
           border-radius: 10px;
           cursor: pointer;
           transition: all 0.25s ease;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
         }
 
         .ks-language-button:hover {
           border-color: #0ABADF;
-          box-shadow: 0 2px 8px rgba(10, 186, 223, 0.3);
-          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 2px 8px rgba(10, 186, 223, 0.25);
+          background: rgba(10, 186, 223, 0.05);
         }
 
         .ks-language-button:focus {
@@ -109,7 +109,7 @@ export default function LanguageSwitcher() {
         .ks-language-label {
           font-size: 14px;
           font-weight: 500;
-          color: rgba(255, 255, 255, 0.9);
+          color: rgba(20, 20, 50, 0.8);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -118,7 +118,7 @@ export default function LanguageSwitcher() {
         .ks-language-arrow {
           display: flex;
           align-items: center;
-          color: rgba(255, 255, 255, 0.5);
+          color: rgba(20, 20, 50, 0.45);
           transition: transform 0.25s ease, color 0.25s ease;
         }
 
@@ -132,17 +132,16 @@ export default function LanguageSwitcher() {
           top: calc(100% + 8px);
           left: 0;
           right: 0;
-          background: rgba(5, 5, 69, 0.95);
-          border: 1.5px solid rgba(10, 186, 223, 0.3);
+          background: #ffffff;
+          border: 1.5px solid rgba(0, 0, 0, 0.1);
           border-radius: 10px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
           overflow: hidden;
           opacity: 0;
           visibility: hidden;
           transform: translateY(-8px);
           transition: all 0.2s ease;
           z-index: 100;
-          backdrop-filter: blur(10px);
         }
 
         .ks-dropdown-menu.open {
@@ -165,15 +164,15 @@ export default function LanguageSwitcher() {
         }
 
         .ks-dropdown-item:first-child {
-          border-bottom: 1px solid #f3f4f6;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .ks-dropdown-item:hover {
-          background: rgba(10, 186, 223, 0.15);
+          background: rgba(10, 186, 223, 0.08);
         }
 
         .ks-dropdown-item.active {
-          background: rgba(10, 186, 223, 0.2);
+          background: rgba(10, 186, 223, 0.1);
         }
 
         .ks-dropdown-item.active .ks-dropdown-label {
@@ -189,7 +188,7 @@ export default function LanguageSwitcher() {
         .ks-dropdown-label {
           font-size: 14px;
           font-weight: 500;
-          color: rgba(255, 255, 255, 0.8);
+          color: rgba(20, 20, 50, 0.8);
         }
 
         .ks-check-icon {
@@ -224,13 +223,13 @@ export default function LanguageSwitcher() {
             width: '100%',
             minHeight: '44px',
             padding: '10px 14px',
-            background: 'rgba(255, 255, 255, 0.05)',
-            border: '1.5px solid rgba(10, 186, 223, 0.3)',
+            background: 'rgba(0, 0, 0, 0.04)',
+            border: '1.5px solid rgba(0, 0, 0, 0.15)',
             borderRadius: '10px',
             cursor: 'pointer',
             transition: 'all 0.25s ease',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.2)',
-            color: 'rgba(255, 255, 255, 0.9)'
+            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.06)',
+            color: 'rgba(20, 20, 50, 0.8)'
           }}
         >
           <div className="ks-language-button-content">
@@ -255,10 +254,10 @@ export default function LanguageSwitcher() {
           top: 'calc(100% + 8px)',
           left: '0',
           right: '0',
-          background: 'rgba(5, 5, 69, 0.95)',
-          border: '1.5px solid rgba(10, 186, 223, 0.3)',
+          background: '#ffffff',
+          border: '1.5px solid rgba(0, 0, 0, 0.1)',
           borderRadius: '10px',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
+          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
           overflow: 'hidden',
           opacity: isOpen ? '1' : '0',
           visibility: isOpen ? 'visible' : 'hidden',

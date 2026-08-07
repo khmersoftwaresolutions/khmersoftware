@@ -16,9 +16,10 @@ const footerStyles = `
   .ks-footer {
     position: relative;
     z-index: 2;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: none;
     padding: 60px 40px 40px;
-    background: var(--navy);
+    background: linear-gradient(135deg, #050545 0%, #0E2A6E 60%, #0E62A2 100%);
+    width: 100%;
   }
 
   .ks-footer-container {
@@ -51,7 +52,7 @@ const footerStyles = `
   }
 
   .ks-footer-desc {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.55);
     font-size: 14px;
     line-height: 1.8;
     max-width: 260px;
@@ -67,20 +68,21 @@ const footerStyles = `
     width: 34px;
     height: 34px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.6);
     transition: all 0.2s;
   }
 
   .ks-social-icon:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--cyan);
+    background: rgba(10, 186, 223, 0.25);
+    color: #0ABADF;
+    border-color: rgba(10, 186, 223, 0.4);
   }
 
   .ks-footer-col h4 {
@@ -88,7 +90,7 @@ const footerStyles = `
     font-weight: 700;
     font-size: 14px;
     margin-bottom: 16px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .ks-footer-links {
@@ -101,18 +103,18 @@ const footerStyles = `
   }
 
   .ks-footer-links a {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.5);
     font-size: 13px;
     text-decoration: none;
     transition: color 0.2s;
   }
 
   .ks-footer-links a:hover {
-    color: var(--cyan);
+    color: #0ABADF;
   }
 
   .ks-footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 24px;
     display: flex;
     justify-content: space-between;
@@ -122,7 +124,7 @@ const footerStyles = `
   }
 
   .ks-footer-copyright {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.35);
     font-size: 13px;
   }
 
@@ -132,13 +134,13 @@ const footerStyles = `
   }
 
   .ks-footer-legal a {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.35);
     font-size: 13px;
     text-decoration: none;
   }
 
   .ks-footer-legal a:hover {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.7);
   }
 
   @media (max-width: 1024px) {
