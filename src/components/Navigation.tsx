@@ -120,8 +120,8 @@ const navStyles = `
   }
 
   .ks-link.active {
-    color: #0ABADF;
-    background: rgba(10, 186, 223, 0.1);
+    color: #FF0008;
+    background: rgba(255, 0, 8, 0.1);
   }
 
   .ks-link.active::after {
@@ -133,8 +133,8 @@ const navStyles = `
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #0ABADF;
-    box-shadow: 0 0 6px #0ABADF;
+    background: #FF0008;
+    box-shadow: 0 0 6px #FF0008;
   }
 
   /* Mega Menu */
@@ -199,7 +199,7 @@ const navStyles = `
   }
 
   .ks-mega-link:hover {
-    background: rgba(10, 186, 223, 0.05);
+    background: rgba(255, 0, 8, 0.05);
   }
 
   .ks-mega-simple-link {
@@ -216,8 +216,8 @@ const navStyles = `
   }
 
   .ks-mega-simple-link:hover {
-    background: rgba(10, 186, 223, 0.05);
-    color: #0ABADF;
+    background: rgba(255, 0, 8, 0.05);
+    color: #FF0008;
   }
 
   .ks-mega-link-text h5 {
@@ -230,7 +230,7 @@ const navStyles = `
   }
   
   .ks-mega-link:hover .ks-mega-link-text h5 {
-    color: #0ABADF;
+    color: #FF0008;
   }
 
   .ks-mega-link-text p {
@@ -242,7 +242,7 @@ const navStyles = `
   }
 
   .ks-mega-featured-card {
-    background: linear-gradient(135deg, #050545 0%, #0E62A2 100%);
+    background: linear-gradient(135deg, #050545 0%, #0017E3 100%);
     border-radius: 16px;
     padding: 32px;
     color: white;
@@ -298,7 +298,7 @@ const navStyles = `
     font-size: 14px;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(135deg, #0ABADF, #0E62A2);
+    background: linear-gradient(135deg, #0017E3, #FF0008);
     border: none;
     padding: 11px 26px;
     border-radius: 50px;
@@ -308,7 +308,7 @@ const navStyles = `
     align-items: center;
     gap: 6px;
     box-shadow:
-      0 4px 16px rgba(10, 186, 223, 0.35),
+      0 4px 16px rgba(0, 23, 227, 0.35),
       0 1px 0 rgba(255, 255, 255, 0.2) inset;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
     white-space: nowrap;
@@ -321,7 +321,7 @@ const navStyles = `
 
   .ks-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(10, 186, 223, 0.5);
+    box-shadow: 0 8px 28px rgba(0, 23, 227, 0.5);
   }
 
   .ks-cta svg {
@@ -413,9 +413,9 @@ const navStyles = `
     background: rgba(0, 23, 227, 0.05);
   }
   .ks-mobile-link.active {
-    color: #0ABADF;
-    background: rgba(10, 186, 223, 0.08);
-    border: 1px solid rgba(10, 186, 223, 0.2);
+    color: #FF0008;
+    background: rgba(255, 0, 8, 0.08);
+    border: 1px solid rgba(255, 0, 8, 0.2);
   }
   .ks-mobile-divider {
     height: 1px;
@@ -428,12 +428,12 @@ const navStyles = `
     font-weight: 600;
     color: #fff;
     text-decoration: none;
-    background: linear-gradient(135deg, #0ABADF, #0E62A2);
+    background: linear-gradient(135deg, #0017E3, #FF0008);
     padding: 13px 20px;
     border-radius: 12px;
     text-align: center;
     margin-top: 8px;
-    box-shadow: 0 4px 20px rgba(10, 186, 223, 0.35);
+    box-shadow: 0 4px 20px rgba(0, 23, 227, 0.35);
     display: block;
     transition: all 0.3s;
   }
@@ -443,7 +443,7 @@ const navStyles = `
     font-weight: 600;
   }
   .ks-mobile-cta:hover {
-    box-shadow: 0 8px 30px rgba(10, 186, 223, 0.5);
+    box-shadow: 0 8px 30px rgba(0, 23, 227, 0.5);
     transform: translateY(-1px);
   }
 
@@ -480,8 +480,8 @@ const navStyles = `
   }
   .ks-select:focus {
     outline: none;
-    border-color: #0ABADF;
-    box-shadow: 0 0 0 3px rgba(10, 186, 223, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: #FF0008;
+    box-shadow: 0 0 0 3px rgba(255, 0, 8, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08);
   }
   .ks-select:active {
     transform: translateY(0);
@@ -496,7 +496,7 @@ const navStyles = `
     transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .ks-language-switcher:hover .ks-select-arrow {
-    color: #0ABADF;
+    color: #FF0008;
     transform: translateY(-50%) scale(1.1);
   }
   .ks-select option {
@@ -739,25 +739,25 @@ export default function Navigation() {
         {
           title: "Frontend",
           links: [
-            { href: "#", label: "React & Next.js" },
-            { href: "#", label: "Vue & Nuxt" },
-            { href: "#", label: "Tailwind CSS" }
+            { href: `/${language}/technologies`, label: "React & Next.js" },
+            { href: `/${language}/technologies`, label: "Vue & Nuxt" },
+            { href: `/${language}/technologies`, label: "Tailwind CSS" }
           ]
         },
         {
           title: "Backend",
           links: [
-            { href: "#", label: "Node.js" },
-            { href: "#", label: "Python & Django" },
-            { href: "#", label: "Go" }
+            { href: `/${language}/technologies`, label: "Node.js" },
+            { href: `/${language}/technologies`, label: "Python & Django" },
+            { href: `/${language}/technologies`, label: "Go" }
           ]
         },
         {
           title: "Database & Cloud",
           links: [
-            { href: "#", label: "PostgreSQL" },
-            { href: "#", label: "MongoDB" },
-            { href: "#", label: "AWS & Docker" }
+            { href: `/${language}/technologies`, label: "PostgreSQL" },
+            { href: `/${language}/technologies`, label: "MongoDB" },
+            { href: `/${language}/technologies`, label: "AWS & Docker" }
           ]
         }
       ]
@@ -941,7 +941,7 @@ export default function Navigation() {
                     {MEGA_MENUS[activeMegaMenu].about.title}
                   </h4>
                   <p>{MEGA_MENUS[activeMegaMenu].about.desc}</p>
-                  <Link href={MEGA_MENUS[activeMegaMenu].about.href} style={{ color: '#0ABADF', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }} onClick={() => setActiveMegaMenu(null)}>
+                  <Link href={MEGA_MENUS[activeMegaMenu].about.href} style={{ color: '#FF0008', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 4 }} onClick={() => setActiveMegaMenu(null)}>
                     Read more
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </Link>

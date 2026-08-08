@@ -3,11 +3,11 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const COLORS = {
-  navy: "#050545",
-  blue: "#0E62A2",
-  cyan: "#0ABADF",
-  green: "#51B41C",
-  yellow: "#EDEC3A",
+  navy: '#050545',
+  blue: '#0017E3',
+  cyan: '#FF0008',
+  green: '#0E62A2',
+  yellow: '#D30000',
 };
 
 const footerStyles = `
@@ -62,6 +62,7 @@ const footerStyles = `
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    margin-bottom: 28px;
   }
 
   .ks-social-icon {
@@ -97,7 +98,7 @@ const footerStyles = `
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     padding: 0;
     margin: 0;
   }
@@ -111,6 +112,12 @@ const footerStyles = `
 
   .ks-footer-links a:hover {
     color: #0ABADF;
+  }
+
+  .ks-footer-links li {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   .ks-footer-bottom {
@@ -154,14 +161,14 @@ const footerStyles = `
 
   @media (max-width: 768px) {
     .ks-footer-grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
     }
     .ks-footer {
       padding: 40px 20px 30px;
     }
     .ks-footer-logo {
-      font-size: 18px;
+      font-size: 22px;
     }
     .ks-footer-desc {
       font-size: 13px;
@@ -174,6 +181,11 @@ const footerStyles = `
       font-size: 13px;
       margin-bottom: 12px;
     }
+    .ks-footer-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 12px;
+    }
     .ks-footer-links a {
       font-size: 12px;
     }
@@ -184,6 +196,7 @@ const footerStyles = `
     }
     .ks-footer-legal {
       gap: 16px;
+      justify-content: center;
     }
   }
 
@@ -192,33 +205,36 @@ const footerStyles = `
       padding: 30px 16px 25px;
     }
     .ks-footer-grid {
+      grid-template-columns: 1fr;
       gap: 20px;
     }
     .ks-footer-logo {
-      font-size: 16px;
+      font-size: 20px;
     }
     .ks-footer-desc {
-      font-size: 12px;
+      font-size: 13px;
     }
     .ks-social-icons {
       gap: 8px;
     }
     .ks-footer-col h4 {
-      font-size: 12px;
+      font-size: 13px;
       margin-bottom: 10px;
     }
     .ks-footer-links {
       gap: 8px;
     }
     .ks-footer-links a {
-      font-size: 11px;
+      font-size: 12px;
     }
     .ks-footer-copyright {
       font-size: 11px;
     }
     .ks-footer-legal {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 12px;
+      justify-content: center;
     }
   }
 `;
@@ -233,18 +249,13 @@ export default function Footer() {
         <div className="ks-footer-container">
           <div className="ks-footer-grid">
             {/* Brand column */}
-            <div>
+            <div className="ks-footer-brand">
               <div className="ks-footer-logo">
                 <span className="ks-footer-logo-text">KS</span>
-                <img 
-                  src="/angkoricon.png" 
-                  alt="Angkor Wat" 
-                  style={{ 
-                    height: '12px', 
-                    width: 'auto', 
-                    marginLeft: '3px',
-                    alignSelf: 'flex-start'
-                  }} 
+                <img
+                  src="/angkoricon.png"
+                  alt="Angkor Wat"
+                  style={{ height: '12px', width: 'auto', marginLeft: '3px', alignSelf: 'flex-start' }}
                 />
               </div>
               <p className="ks-footer-desc">
@@ -264,7 +275,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Services column */}
+            {/* Services */}
             <div className="ks-footer-col">
               <h4>{t('footer.services.title')}</h4>
               <ul className="ks-footer-links">
@@ -276,7 +287,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Company column */}
+            {/* Company */}
             <div className="ks-footer-col">
               <h4>{t('footer.company.title')}</h4>
               <ul className="ks-footer-links">
@@ -288,7 +299,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Contact column */}
+            {/* Contact */}
             <div className="ks-footer-col">
               <h4>{t('footer.contact.title')}</h4>
               <ul className="ks-footer-links">

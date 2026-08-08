@@ -9,9 +9,16 @@ export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    setIsLoading(false);
+  }, [pathname, language]);
+
   const handleLanguageChange = (newLang: 'en' | 'km') => {
+    if (newLang === language) return;
+    setIsLoading(true);
     setLanguage(newLang);
     setIsOpen(false);
 
@@ -75,7 +82,7 @@ export default function LanguageSwitcher() {
           padding: 10px 14px;
           background: rgba(0, 0, 0, 0.04);
           border: 1.5px solid rgba(0, 0, 0, 0.15);
-          border-radius: 10px;
+          border-radius: 9999px;
           cursor: pointer;
           transition: all 0.25s ease;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
@@ -206,6 +213,14 @@ export default function LanguageSwitcher() {
             font-size: 13px;
           }
         }
+        
+        @keyframes ks-spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .ks-spinner {
+          animation: ks-spin 0.8s linear infinite;
+        }
       `}</style>
 
       <div className={`ks-language-switcher ${language === 'km' ? 'lang-km' : ''}`} ref={dropdownRef} style={{ position: 'relative', width: '120px', minHeight: '44px' }}>
@@ -215,6 +230,7 @@ export default function LanguageSwitcher() {
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-haspopup="listbox"
+          disabled={isLoading}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -225,7 +241,7 @@ export default function LanguageSwitcher() {
             padding: '10px 14px',
             background: 'rgba(0, 0, 0, 0.04)',
             border: '1.5px solid rgba(0, 0, 0, 0.15)',
-            borderRadius: '10px',
+            borderRadius: '9999px',
             cursor: 'pointer',
             transition: 'all 0.25s ease',
             boxShadow: '0 1px 3px rgba(0, 0, 0, 0.06)',
@@ -237,15 +253,21 @@ export default function LanguageSwitcher() {
             <span className="ks-language-label">{currentLang.label}</span>
           </div>
           <div className={`ks-language-arrow ${isOpen ? 'open' : ''}`}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M4 6l4 4 4-4"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            {isLoading ? (
+              <svg className="ks-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ABADF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M4 6l4 4 4-4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
           </div>
         </button>
 
