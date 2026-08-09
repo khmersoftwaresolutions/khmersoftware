@@ -178,23 +178,17 @@ const TECHNOLOGY_STACK = [
 ];
 
 const INDUSTRIES = [
-  { label: "E-Commerce", icon: "🛒", color: COLORS.cyan },
-  { label: "Banking & Finance", icon: "🏦", color: COLORS.blue },
-  { label: "Healthcare", icon: "🏥", color: COLORS.green },
-  { label: "Education", icon: "🎓", color: COLORS.yellow },
-  { label: "Government", icon: "🏛️", color: COLORS.navy },
-  { label: "Retail & POS", icon: "🏪", color: COLORS.cyan },
-  { label: "Logistics", icon: "🚚", color: COLORS.green },
-  { label: "Tourism & Hotels", icon: "✈️", color: COLORS.blue },
-  { label: "Real Estate", icon: "🏗️", color: COLORS.yellow },
-  { label: "Agriculture", icon: "🌾", color: COLORS.green },
-  { label: "Telecommunications", icon: "📡", color: COLORS.cyan },
-  { label: "Media & Publishing", icon: "📺", color: COLORS.navy },
+  { label: "Banking & Finance", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" /></svg>, color: COLORS.blue },
+  { label: "E-Commerce", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" /></svg>, color: COLORS.cyan },
+  { label: "Healthcare", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>, color: COLORS.green },
+  { label: "Logistics", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.25v5.25m0 0h5.25m-2.25-6.375h-3v3h3v-3z" /></svg>, color: COLORS.yellow },
+  { label: "Education", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>, color: COLORS.blue },
+  { label: "Government", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" /></svg>, color: COLORS.cyan },
 ];
 
 const WHY_US_ITEMS = [
   {
-    icon: "🏆",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 0 1 3 3h-15a3 3 0 0 1 3-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 0 1-.982-3.172M9.497 14.25a7.454 7.454 0 0 0 .981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 0 0 7.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M7.73 9.728a6.726 6.726 0 0 0 2.748 1.35m8.272-6.842V4.5c0 2.108-.966 3.99-2.48 5.228m2.48-5.492a46.32 46.32 0 0 1 2.916.52 6.003 6.003 0 0 1-5.395 4.972m0 0a6.726 6.726 0 0 1-2.749 1.35m0 0a6.772 6.772 0 0 1-3.044 0" /></svg>,
     title: "5+ Years Cambodia Expertise",
     desc: "Deep understanding of local market dynamics, regulatory requirements, and business culture across Cambodia and Southeast Asia.",
     stat: "5+",
@@ -202,7 +196,7 @@ const WHY_US_ITEMS = [
     color: COLORS.cyan,
   },
   {
-    icon: "⚡",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>,
     title: "Rapid Delivery, Zero Compromise",
     desc: "Our agile methodology combines speed with quality — delivering working software in 2-week sprints with live demos every cycle.",
     stat: "2wk",
@@ -210,7 +204,7 @@ const WHY_US_ITEMS = [
     color: COLORS.yellow,
   },
   {
-    icon: "🛡️",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>,
     title: "Enterprise-Grade Security",
     desc: "Every system we build follows OWASP standards, end-to-end encryption, and is audited against SOC 2 Type II compliance frameworks.",
     stat: "SOC2",
@@ -218,7 +212,7 @@ const WHY_US_ITEMS = [
     color: COLORS.green,
   },
   {
-    icon: "🌐",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>,
     title: "Bilingual Tech Team",
     desc: "Our engineers are fluent in Khmer and English, enabling seamless communication with local government bodies and international partners.",
     stat: "2",
@@ -226,7 +220,7 @@ const WHY_US_ITEMS = [
     color: COLORS.blue,
   },
   {
-    icon: "🔄",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>,
     title: "Lifetime Support & SLA",
     desc: "12-month post-launch warranty as standard, with tiered SLA options ensuring 99.9% uptime and sub-4-hour critical response time.",
     stat: "99.9%",
@@ -234,7 +228,7 @@ const WHY_US_ITEMS = [
     color: COLORS.cyan,
   },
   {
-    icon: "💡",
+    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ width: '1em', height: '1em' }}><path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.82 1.508-2.316a7.5 7.5 0 1 0-7.516 0c.85.496 1.508 1.333 1.508 2.316V18" /></svg>,
     title: "Innovation-First Culture",
     desc: "We continuously invest in R&D — from AI-powered analytics to blockchain integration — keeping your platform ahead of the competition.",
     stat: "R&D",
@@ -721,13 +715,14 @@ export default function HomePageContent() {
               backgroundPosition: 'center',
               opacity: i === slide ? 1 : 0,
               transition: 'opacity 0.9s ease',
-              zIndex: i === slide ? 1 : 0,
+              zIndex: i === slide ? 11 : 0,
+              pointerEvents: 'none',
               /* Remove Mouse parallax */
               transform: i === slide ? `scale(1.04)` : undefined,
             }}
           >
             {/* Dark overlay with blur */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(5,5,69,0.7) 0%, rgba(0,23,227,0.2) 100%)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(5,5,69,0.7) 0%, rgba(0,23,227,0.2) 100%)' }} />
 
             {/* Content */}
             <div style={{
@@ -749,8 +744,8 @@ export default function HomePageContent() {
                 opacity: i === slide ? 1 : 0, transform: i === slide ? 'translateY(0)' : 'translateY(24px)',
                 transition: 'all 0.7s ease 0.35s',
               }}>
-                <span className="grad-cyan">{s.title1}</span><br />
-                {s.title2} <span className="grad-yellow">{s.title3}</span>
+                {s.title1}<br />
+                {s.title2} {s.title3}
               </h1>
 
               {/* Subtitle */}
@@ -764,7 +759,11 @@ export default function HomePageContent() {
               </p>
 
               {/* CTA Buttons */}
-              <div className="hero-cta" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', opacity: i === slide ? 1 : 0, transform: i === slide ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.7s ease 0.65s' }}>
+              <div 
+                className="hero-cta" 
+                style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', opacity: i === slide ? 1 : 0, transform: i === slide ? 'translateY(0)' : 'translateY(24px)', transition: 'all 0.7s ease 0.65s', pointerEvents: 'auto' }}
+                onMouseEnter={() => setHoverZone(null)}
+              >
                 <a href={`/${language}/services`} className="btn-primary">
                   {t('home.hero.exploreServices')}
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -774,13 +773,7 @@ export default function HomePageContent() {
                 </a>
               </div>
 
-              {/* Scroll hint */}
-              {i === slide && (
-                <div style={{ position: 'absolute', bottom: 48, left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.5, animation: 'float 2s ease-in-out infinite' }}>
-                  <span style={{ fontSize: 10, letterSpacing: '0.15em', color: '#fff', textTransform: 'uppercase' }}>Scroll</span>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M4 9l4 4 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                </div>
-              )}
+
             </div>
           </div>
         ))}
@@ -830,7 +823,10 @@ export default function HomePageContent() {
         )}
 
         {/* Dot indicators */}
-        <div style={{ position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8, zIndex: 10 }}>
+        <div 
+          style={{ position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8, zIndex: 20, pointerEvents: 'auto', padding: '10px' }}
+          onMouseEnter={() => setHoverZone(null)}
+        >
           {SLIDES.map((_, i) => (
             <button
               key={i}
@@ -940,15 +936,27 @@ export default function HomePageContent() {
                   onMouseEnter={() => { setActiveIndustry(i); setIsHoveringIndustry(true); }}
                   onMouseLeave={() => setIsHoveringIndustry(false)}
                   style={{
-                    background: activeIndustry === i ? `${ind.color}10` : "white",
-                    borderColor: activeIndustry === i ? ind.color : undefined,
-                    color: activeIndustry === i ? ind.color : undefined,
-                    transform: activeIndustry === i ? "translateY(-3px)" : undefined,
-                    boxShadow: activeIndustry === i ? `0 8px 24px ${ind.color}25` : undefined,
+                    background: activeIndustry === i ? "white" : "white",
+                    borderColor: activeIndustry === i ? ind.color : "rgba(5,5,69,0.1)",
+                    color: activeIndustry === i ? ind.color : "rgba(5,5,69,0.7)",
+                    transform: activeIndustry === i ? "translateY(-3px)" : "none",
+                    boxShadow: activeIndustry === i ? `0 8px 24px ${ind.color}25` : "0 2px 8px rgba(5,5,69,0.04)",
+                    position: 'relative',
+                    overflow: 'hidden',
+                    padding: "12px 24px",
                   }}
                 >
-                  <span>{ind.icon}</span>
-                  <span>{ind.label}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, position: 'relative', zIndex: 2 }}>
+                    <span style={{ fontSize: 18, display: 'flex' }}>{ind.icon}</span>
+                    <span>{ind.label}</span>
+                  </div>
+                  {activeIndustry === i && !isHoveringIndustry && (
+                    <div style={{
+                      position: 'absolute', bottom: 0, left: 0, top: 0, width: '100%',
+                      background: `${ind.color}15`, zIndex: 1,
+                      animation: 'progressLine 4s linear'
+                    }} />
+                  )}
                 </button>
               ))}
             </div>
@@ -957,17 +965,19 @@ export default function HomePageContent() {
           {/* Active industry detail */}
           <ScrollReveal delay={150}>
             <div style={{
-              padding: "32px 40px", borderRadius: 20,
-              background: `${INDUSTRIES[activeIndustry].color}08`,
-              border: `1.5px solid ${INDUSTRIES[activeIndustry].color}30`,
-              textAlign: "center", transition: "all 0.4s ease", minHeight: 100,
-              display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 8,
+              padding: "40px", borderRadius: 24,
+              background: "#ffffff",
+              border: `1px solid ${INDUSTRIES[activeIndustry].color}30`,
+              boxShadow: `0 20px 40px ${INDUSTRIES[activeIndustry].color}10`,
+              textAlign: "center", transition: "all 0.4s ease", minHeight: 120,
+              display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16,
+              marginTop: 24
             }}>
-              <div style={{ fontSize: 40 }}>{INDUSTRIES[activeIndustry].icon}</div>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: INDUSTRIES[activeIndustry].color }}>
+              <div style={{ fontSize: 48, color: INDUSTRIES[activeIndustry].color, display: 'flex' }}>{INDUSTRIES[activeIndustry].icon}</div>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 24, color: INDUSTRIES[activeIndustry].color }}>
                 {INDUSTRIES[activeIndustry].label}
               </div>
-              <p style={{ color: "rgba(26,26,46,0.6)", fontSize: 14, lineHeight: 1.6, maxWidth: 480, margin: 0 }}>
+              <p style={{ color: "rgba(26,26,46,0.6)", fontSize: 16, lineHeight: 1.6, maxWidth: 600, margin: 0 }}>
                 Delivering tailored digital solutions to the {INDUSTRIES[activeIndustry].label.toLowerCase()} sector — from ERP systems and compliance tooling to customer-facing mobile apps and data dashboards.
               </p>
             </div>
@@ -1191,12 +1201,14 @@ export default function HomePageContent() {
         </div>
 
         <ScrollReveal delay={100}>
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 24, marginTop: 40, padding: "0 16px" }}>
-            {TECHNOLOGY_STACK.map((tech, i) => (
-              <div key={i} className="tech-card" title={tech.name} style={{ margin: 0 }}>
-                <img src={tech.logo} alt={tech.name} />
-              </div>
-            ))}
+          <div className="tech-marquee-wrapper" style={{ marginTop: 40 }}>
+            <div className="tech-marquee-content">
+              {[...TECHNOLOGY_STACK, ...TECHNOLOGY_STACK].map((tech, i) => (
+                <div key={i} className="tech-card" title={tech.name}>
+                  <img src={tech.logo} alt={tech.name} />
+                </div>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
       </section>

@@ -62,6 +62,25 @@ export default function RootLayout({
           src="https://js-na2.hs-scripts.com/246983131.js"
         />
         {/* End of HubSpot Embed Code */}
+
+        {/* Google Sitelinks Structured Data */}
+        <Script
+          id="google-sitelinks"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "KhmerSoftware",
+              "url": "https://www.khmersoftware.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://www.khmersoftware.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </body>
     </html>
   );
