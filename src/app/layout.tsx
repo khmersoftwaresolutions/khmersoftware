@@ -59,7 +59,7 @@ export default function RootLayout({
         <Script
           id="hs-script-loader"
           strategy="afterInteractive"
-          src="//js-na2.hs-scripts.com/246983131.js"
+          src="https://js-na2.hs-scripts.com/246983131.js"
         />
         {/* End of HubSpot Embed Code */}
       </body>
