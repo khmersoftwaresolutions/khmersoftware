@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PageBanner from '@/components/PageBanner';
 
-const COLORS = { navy: '#050545', blue: '#0017E3', cyan: '#FF0008', green: '#0E62A2', yellow: '#D30000' };
+const COLORS = { navy: '#050545', blue: '#0E62A2', cyan: '#0ABADF', green: '#51B41C', yellow: '#EDEC3A' };
 
 function ScrollReveal({ children, delay = 0, direction = 'up' }: { children: React.ReactNode; delay?: number; direction?: 'up' | 'left' | 'right' | 'fade' }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,15 +23,25 @@ function ScrollReveal({ children, delay = 0, direction = 'up' }: { children: Rea
   );
 }
 
+/* ── SVG Icons ── */
+const LayersIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>;
+const SmartphoneIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></svg>;
+const GlobeIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12" strokeOpacity="0.4"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>;
+const CloudIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>;
+const GitBranchIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>;
+const ShieldIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>;
+const MapIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>;
+const PenToolIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="1.5" fill="currentColor" stroke="none"/></svg>;
+
 const SERVICES = [
-  { id: 'custom', title: 'Custom Software', icon: '🏗️', color: COLORS.cyan, desc: 'Bespoke enterprise systems, internal tools, and complex platforms tailored exactly to your business processes.' },
-  { id: 'mobile', title: 'Mobile Apps', icon: '📱', color: COLORS.green, desc: 'Native-quality cross-platform mobile apps for iOS and Android with offline-first architecture.' },
-  { id: 'web', title: 'Web Applications', icon: '🌐', color: COLORS.blue, desc: 'High-performance, scalable web applications optimized for speed, SEO, and user experience.' },
-  { id: 'cloud', title: 'Cloud Migration', icon: '☁️', color: COLORS.navy, desc: 'Move to AWS or Google Cloud with zero downtime. Cost optimization and highly available infrastructure.' },
-  { id: 'devops', title: 'DevOps Services', icon: '🔄', color: COLORS.yellow, desc: 'CI/CD pipelines, containerization, and infrastructure as code to help your team ship faster.' },
-  { id: 'security', title: 'Cybersecurity', icon: '🔐', color: COLORS.blue, desc: 'Penetration testing, vulnerability assessments, and compliance implementation (PCI-DSS, SOC2).' },
-  { id: 'strategy', title: 'IT Strategy', icon: '🗺️', color: COLORS.cyan, desc: 'Technology roadmaps, architecture reviews, and digital transformation consulting for leadership teams.' },
-  { id: 'design', title: 'UI/UX Design', icon: '🎨', color: COLORS.green, desc: 'Research-backed user interfaces, interactive prototyping, and design system creation.' },
+  { id: 'custom', title: 'Custom Software', Icon: LayersIcon, color: COLORS.cyan, desc: 'Bespoke enterprise systems, internal tools, and complex platforms tailored exactly to your business processes.' },
+  { id: 'mobile', title: 'Mobile Apps', Icon: SmartphoneIcon, color: COLORS.green, desc: 'Native-quality cross-platform mobile apps for iOS and Android with offline-first architecture.' },
+  { id: 'web', title: 'Web Applications', Icon: GlobeIcon, color: COLORS.blue, desc: 'High-performance, scalable web applications optimized for speed, SEO, and user experience.' },
+  { id: 'cloud', title: 'Cloud Migration', Icon: CloudIcon, color: COLORS.navy, desc: 'Move to AWS or Google Cloud with zero downtime. Cost optimization and highly available infrastructure.' },
+  { id: 'devops', title: 'DevOps Services', Icon: GitBranchIcon, color: COLORS.yellow, desc: 'CI/CD pipelines, containerization, and infrastructure as code to help your team ship faster.' },
+  { id: 'security', title: 'Cybersecurity', Icon: ShieldIcon, color: COLORS.blue, desc: 'Penetration testing, vulnerability assessments, and compliance implementation (PCI-DSS, SOC2).' },
+  { id: 'strategy', title: 'IT Strategy', Icon: MapIcon, color: COLORS.cyan, desc: 'Technology roadmaps, architecture reviews, and digital transformation consulting for leadership teams.' },
+  { id: 'design', title: 'UI/UX Design', Icon: PenToolIcon, color: COLORS.green, desc: 'Research-backed user interfaces, interactive prototyping, and design system creation.' },
 ];
 
 export default function ServicesPage() {
@@ -87,8 +97,8 @@ export default function ServicesPage() {
             {SERVICES.map((svc, i) => (
               <ScrollReveal key={i} delay={i * 50} direction="up">
                 <a href={`/${language}/services/${svc.id}`} className="service-card">
-                  <div style={{ width: 56, height: 56, borderRadius: 16, background: `${svc.color}15`, border: `1px solid ${svc.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, marginBottom: 20 }}>
-                    {svc.icon}
+                  <div style={{ width: 56, height: 56, borderRadius: 16, background: `${svc.color}15`, border: `1px solid ${svc.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: svc.color, marginBottom: 20 }}>
+                    <svc.Icon />
                   </div>
                   <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 12 }}>{svc.title}</h3>
                   <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 24, flex: 1 }}>{svc.desc}</p>

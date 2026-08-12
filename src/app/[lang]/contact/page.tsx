@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PageBanner from '@/components/PageBanner';
 
-const COLORS = { navy: '#050545', blue: '#0017E3', cyan: '#FF0008', green: '#0E62A2', yellow: '#D30000' };
+const COLORS = { navy: '#050545', blue: '#0E62A2', cyan: '#0ABADF', green: '#51B41C', yellow: '#EDEC3A' };
 
 function ScrollReveal({ children, delay = 0, direction = 'up' }: { children: React.ReactNode; delay?: number; direction?: 'up' | 'left' | 'right' | 'fade' }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -25,11 +25,17 @@ function ScrollReveal({ children, delay = 0, direction = 'up' }: { children: Rea
 
 
 
+/* ── SVG Icons ── */
+const UsersIcon = () => <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>;
+const WrenchIcon = () => <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>;
+const RocketIcon = () => <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>;
+const NewspaperIcon = () => <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>;
+
 const DEPARTMENTS = [
-  { name: 'New Business', icon: '🤝', desc: 'Discuss a new project, request a proposal, or schedule a technical consultation.', email: 'sales@khmersoftware.com', color: COLORS.cyan },
-  { name: 'Technical Support', icon: '🛠️', desc: 'Existing clients requesting maintenance, bug fixes, or server emergencies.', email: 'support@khmersoftware.com', color: COLORS.green },
-  { name: 'Careers', icon: '🚀', desc: 'Join our team. Send your CV, portfolio, or inquire about open positions.', email: 'careers@khmersoftware.com', color: COLORS.yellow },
-  { name: 'Press & Media', icon: '📰', desc: 'Interview requests, brand assets, and public relations inquiries.', email: 'press@khmersoftware.com', color: COLORS.blue },
+  { name: 'New Business', Icon: UsersIcon, desc: 'Discuss a new project, request a proposal, or schedule a technical consultation.', email: 'sales@khmersoftware.com', color: COLORS.cyan },
+  { name: 'Technical Support', Icon: WrenchIcon, desc: 'Existing clients requesting maintenance, bug fixes, or server emergencies.', email: 'support@khmersoftware.com', color: COLORS.green },
+  { name: 'Careers', Icon: RocketIcon, desc: 'Join our team. Send your CV, portfolio, or inquire about open positions.', email: 'careers@khmersoftware.com', color: COLORS.yellow },
+  { name: 'Press & Media', Icon: NewspaperIcon, desc: 'Interview requests, brand assets, and public relations inquiries.', email: 'press@khmersoftware.com', color: COLORS.blue },
 ];
 
 const FAQS = [
@@ -99,7 +105,9 @@ export default function ContactPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(250px,100%),1fr))', gap: 20, marginTop: -40, position: 'relative', zIndex: 10 }}>
               {DEPARTMENTS.map((dept, i) => (
                 <div key={i} className="dept-card">
-                  <div style={{ fontSize: 32, marginBottom: 12 }}>{dept.icon}</div>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: `${dept.color}12`, border: `1px solid ${dept.color}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: dept.color, marginBottom: 16 }}>
+                    <dept.Icon />
+                  </div>
                   <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#0d0d2b', marginBottom: 8 }}>{dept.name}</h3>
                   <p style={{ fontSize: 13, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 16 }}>{dept.desc}</p>
                   <a href={`mailto:${dept.email}`} style={{ fontSize: 13, fontWeight: 700, color: dept.color, textDecoration: 'none' }}>{dept.email} →</a>

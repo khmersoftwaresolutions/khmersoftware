@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PageBanner from '@/components/PageBanner';
 
-const COLORS = { navy: '#050545', blue: '#0017E3', cyan: '#FF0008', green: '#0E62A2', yellow: '#D30000' };
+const COLORS = { navy: '#050545', blue: '#0E62A2', cyan: '#0ABADF', green: '#51B41C', yellow: '#EDEC3A' };
 
 function ScrollReveal({ children, delay = 0, direction = 'up' }: { children: React.ReactNode; delay?: number; direction?: 'up' | 'left' | 'right' | 'fade' }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,13 +23,29 @@ function ScrollReveal({ children, delay = 0, direction = 'up' }: { children: Rea
   );
 }
 
+/* ── SVG Icons ── */
+const LandmarkIcon = () => <svg width="34" height="34" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>;
+const BuildingIcon = () => <svg width="34" height="34" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>;
+const ShoppingCartIcon = () => <svg width="34" height="34" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>;
+const TruckIcon = () => <svg width="34" height="34" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>;
+const HeartPulseIcon = () => <svg width="34" height="34" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>;
+const CreditCardIcon = () => <svg width="34" height="34" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>;
+
+function IconBox({ color, Icon, size = 80 }: { color: string; Icon: React.FC; size?: number }) {
+  return (
+    <div style={{ width: size, height: size, borderRadius: size > 80 ? 24 : 18, background: `linear-gradient(135deg, ${color}22, ${color}0d)`, border: `1.5px solid ${color}33`, display: 'flex', alignItems: 'center', justifyContent: 'center', color }}>
+      <Icon />
+    </div>
+  );
+}
+
 const FILTERS = ['All', 'Finance', 'Healthcare', 'Government', 'E-Commerce', 'Logistics'];
 
 const CASES = [
   {
     client: 'MajorBank Cambodia',
     industry: 'Finance',
-    emoji: '🏦',
+    Icon: LandmarkIcon,
     color: COLORS.cyan,
     title: 'Digital Banking Platform for 500K Customers',
     challenge: 'MajorBank needed to replace a 15-year-old core banking UI with a modern mobile-first digital banking experience — without any downtime during the transition.',
@@ -46,7 +62,7 @@ const CASES = [
   {
     client: 'Ministry of Health Cambodia',
     industry: 'Government',
-    emoji: '🏛️',
+    Icon: BuildingIcon,
     color: COLORS.blue,
     title: 'National Health Information System',
     challenge: 'Cambodia\'s 1,200+ health facilities were using paper records and 12 incompatible software systems. Patient data could not be shared across facilities, leading to duplicated tests and delayed diagnoses.',
@@ -63,7 +79,7 @@ const CASES = [
   {
     client: 'RetailCo (Confidential)',
     industry: 'E-Commerce',
-    emoji: '🛒',
+    Icon: ShoppingCartIcon,
     color: COLORS.green,
     title: 'E-Commerce Platform Scaling from 0 to 2M Users',
     challenge: 'A fast-growing Cambodian retailer launched an e-commerce platform that worked at 10,000 users but collapsed under load during promotions. Their peak traffic was 200x normal volume.',
@@ -80,7 +96,7 @@ const CASES = [
   {
     client: 'PhnomPenh Logistics Group',
     industry: 'Logistics',
-    emoji: '🚚',
+    Icon: TruckIcon,
     color: COLORS.yellow,
     title: 'Real-Time Fleet Management & Last-Mile Delivery',
     challenge: 'Managing 450 delivery vehicles with paper manifests, WhatsApp for dispatch, and no customer visibility was creating 23% failed delivery rates and severe operational inefficiency.',
@@ -97,7 +113,7 @@ const CASES = [
   {
     client: 'KhmerHealth Private Hospital',
     industry: 'Healthcare',
-    emoji: '🏥',
+    Icon: HeartPulseIcon,
     color: COLORS.cyan,
     title: 'Hospital Information System & Patient Portal',
     challenge: 'A private hospital chain was running billing, appointments, pharmacy, and lab results on 4 separate systems that couldn\'t share data — leading to billing errors and patient safety risks.',
@@ -114,7 +130,7 @@ const CASES = [
   {
     client: 'AngkorFinance',
     industry: 'Finance',
-    emoji: '💳',
+    Icon: CreditCardIcon,
     color: COLORS.blue,
     title: 'Microfinance Loan Origination Platform',
     challenge: 'Processing rural loan applications took 3–5 days with paper forms, manual credit scoring, and branch-only approval processes — leaving potential borrowers underserved.',
@@ -184,9 +200,9 @@ export default function CaseStudiesPage() {
                 <div className="cs-card">
                   {/* Header */}
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(300px,100%),1fr))' }}>
-                    {/* Left: emoji banner */}
-                    <div style={{ minHeight: 200, background: `linear-gradient(135deg,${cs.color}18,${cs.color}06)`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: 32, borderRight: `1px solid ${cs.color}15` }}>
-                      <div style={{ fontSize: 64 }}>{cs.emoji}</div>
+                    {/* Left: icon banner */}
+                    <div style={{ minHeight: 200, background: `linear-gradient(135deg,${cs.color}12,${cs.color}05)`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12, padding: 32, borderRight: `1px solid ${cs.color}15` }}>
+                      <IconBox color={cs.color} Icon={cs.Icon} size={88} />
                       <div style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.12em', color: cs.color, textAlign: 'center' }}>{cs.industry}</div>
                       <div style={{ fontSize: 12, color: 'rgba(26,26,46,0.45)', textAlign: 'center' }}>⏱ {cs.duration}</div>
                     </div>
