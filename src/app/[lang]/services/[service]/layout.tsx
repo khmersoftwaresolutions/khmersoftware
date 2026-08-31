@@ -145,6 +145,20 @@ export async function generateMetadata({
       type: 'website',
       locale: isKm ? 'km_KH' : 'en_US',
       alternateLocale: isKm ? 'en_US' : 'km_KH',
+      images: [
+        {
+          url: `${baseUrl}/ogimg.jpeg`,
+          width: 1200,
+          height: 630,
+          alt: meta.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${meta.title} | KhmerSoftware`,
+      description: meta.desc,
+      images: [`${baseUrl}/ogimg.jpeg`],
     },
   };
 }

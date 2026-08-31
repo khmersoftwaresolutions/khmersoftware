@@ -34,6 +34,20 @@ export async function generateMetadata({
       url: `${baseUrl}/${lang}/blog`,
       type: 'website',
       locale: isKm ? 'km_KH' : 'en_US',
+      images: [
+        {
+          url: `${baseUrl}/ogimg.jpeg`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
+      images: [`${baseUrl}/ogimg.jpeg`],
     },
   };
 }
