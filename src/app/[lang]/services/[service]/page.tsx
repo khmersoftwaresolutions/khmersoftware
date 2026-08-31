@@ -278,8 +278,7 @@ export default function ServiceDetailPage() {
   }, [params.lang, setLanguage]);
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .svc-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
     .svc-feature-card { background: rgba(255,255,255,0.9); border: 1px solid rgba(5,5,69,0.07); border-radius: 18px; padding: clamp(20px,3vw,28px); box-shadow: 0 4px 16px rgba(5,5,69,0.05); transition: all 0.3s ease; }
     .svc-feature-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(5,5,69,0.1); }
@@ -313,7 +312,7 @@ export default function ServiceDetailPage() {
                 <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: data.accentColor, padding: '6px 14px', background: `${data.accentColor}10`, border: `1px solid ${data.accentColor}20`, borderRadius: 100, marginBottom: 16 }}>
                   {language === 'km' ? 'ទិដ្ឋភាពទូទៅ' : 'Overview'}
                 </div>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,3.5vw,36px)', color: '#0d0d2b', marginBottom: 20, lineHeight: 1.2 }}>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,3.5vw,36px)', color: '#0d0d2b', marginBottom: 20, lineHeight: 1.2 }}>
                   {language === 'km' ? 'អ្វីដែលយើងផ្តល់ជូន' : 'What We Deliver'}
                 </h2>
                 <p style={{ color: 'rgba(26,26,46,0.6)', fontSize: 16, lineHeight: 1.8 }}>{getText(data.overview, language)}</p>
@@ -327,7 +326,7 @@ export default function ServiceDetailPage() {
           {/* Features */}
           <ScrollReveal>
             <div style={{ textAlign: 'center', marginBottom: 48 }}>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,3.5vw,36px)', color: '#0d0d2b', marginBottom: 12 }}>
+              <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,3.5vw,36px)', color: '#0d0d2b', marginBottom: 12 }}>
                 {language === 'km' ? 'អ្វីដែលបាន' : "What's"}{' '}
                 <span style={{ background: `linear-gradient(135deg,${data.accentColor},${data.accentColor2})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   {language === 'km' ? 'រួមបញ្ចូល' : 'Included'}
@@ -346,7 +345,7 @@ export default function ServiceDetailPage() {
                   <div style={{ width: 56, height: 56, borderRadius: 16, background: `linear-gradient(135deg, ${data.accentColor}15, ${data.accentColor2}10)`, border: `1px solid ${data.accentColor}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: data.accentColor, marginBottom: 20 }}>
                     <f.Icon />
                   </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 17, color: '#0d0d2b', marginBottom: 8 }}>{getText(f.title, language)}</h3>
+                  <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 17, color: '#0d0d2b', marginBottom: 8 }}>{getText(f.title, language)}</h3>
                   <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, margin: 0 }}>{getText(f.desc, language)}</p>
                 </div>
               </ScrollReveal>
@@ -357,7 +356,7 @@ export default function ServiceDetailPage() {
           <ScrollReveal>
             <div style={{ background: 'linear-gradient(180deg,#f0f6ff,#f8f9fc)', borderRadius: 24, padding: 'clamp(32px,5vw,56px)', marginBottom: 80 }}>
               <div style={{ textAlign: 'center', marginBottom: 48 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,3.5vw,36px)', color: '#0d0d2b', marginBottom: 12 }}>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,3.5vw,36px)', color: '#0d0d2b', marginBottom: 12 }}>
                   {language === 'km' ? 'របៀបដែលយើងធ្វើការ' : 'How We Work'}
                 </h2>
                 <p style={{ color: 'rgba(26,26,46,0.5)', fontSize: 15 }}>
@@ -367,8 +366,8 @@ export default function ServiceDetailPage() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(200px,100%),1fr))', gap: 16 }}>
                 {data.process.map((p, i) => (
                   <div key={i} className="svc-process-card" style={{ borderTop: `3px solid ${data.accentColor}` }}>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 24, color: data.accentColor, marginBottom: 8, opacity: 0.3 }}>{p.num}</div>
-                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 15, color: '#0d0d2b', marginBottom: 8 }}>{getText(p.title, language)}</h3>
+                    <div style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 24, color: data.accentColor, marginBottom: 8, opacity: 0.3 }}>{p.num}</div>
+                    <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 15, color: '#0d0d2b', marginBottom: 8 }}>{getText(p.title, language)}</h3>
                     <p style={{ fontSize: 13, color: 'rgba(26,26,46,0.55)', lineHeight: 1.6, margin: 0 }}>{getText(p.desc, language)}</p>
                   </div>
                 ))}
@@ -379,7 +378,7 @@ export default function ServiceDetailPage() {
           {/* Tech Stack */}
           <ScrollReveal>
             <div style={{ textAlign: 'center', marginBottom: 24 }}>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,3vw,32px)', color: '#0d0d2b', marginBottom: 12 }}>
+              <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,3vw,32px)', color: '#0d0d2b', marginBottom: 12 }}>
                 {language === 'km' ? 'បច្ចេកវិទ្យាដែលយើងប្រើប្រាស់' : 'Technologies We Use'}
               </h2>
             </div>
@@ -393,7 +392,7 @@ export default function ServiceDetailPage() {
             <div style={{ padding: 'clamp(40px,6vw,64px)', borderRadius: 24, background: `linear-gradient(135deg,#050545,${data.accentColor2})`, textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: data.accentColor, filter: 'blur(120px)', opacity: 0.1, top: '-100px', right: '-50px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>
                   {language === 'km' ? 'ត្រៀមខ្លួនដើម្បីចាប់ផ្តើមហើយឬនៅ?' : 'Ready to get started?'}
                 </h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28, lineHeight: 1.6 }}>

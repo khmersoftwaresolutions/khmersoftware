@@ -53,8 +53,7 @@ export default function ServicesPage() {
   }, [params.lang, setLanguage]);
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .svc-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
     
     .service-card { background: rgba(255,255,255,0.92); border: 1px solid rgba(5,5,69,0.07); border-radius: 20px; padding: clamp(24px,4vw,32px); box-shadow: 0 4px 16px rgba(5,5,69,0.04); transition: all 0.3s cubic-bezier(0.16,1,0.3,1); display: flex; flex-direction: column; text-decoration: none; color: inherit; }
@@ -84,7 +83,7 @@ export default function ServicesPage() {
           <ScrollReveal>
             <div style={{ textAlign: 'center', padding: '72px 0 40px' }}>
               <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.blue, padding: '6px 14px', background: 'rgba(14,98,162,0.08)', border: '1px solid rgba(14,98,162,0.2)', borderRadius: 100, marginBottom: 16 }}>{language === 'km' ? '[KM] Custom Engineering' : 'Custom Engineering'}</div>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
                 {language === 'km' ? '[KM] Engineering' : 'Engineering'} <span style={{ background: 'linear-gradient(135deg,#0E62A2,#0ABADF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{language === 'km' ? '[KM] Excellence' : 'Excellence'}</span>
               </h2>
               <p style={{ color: 'rgba(26,26,46,0.55)', fontSize: 16, maxWidth: 640, margin: '0 auto', lineHeight: 1.7 }}>
@@ -100,7 +99,7 @@ export default function ServicesPage() {
                   <div style={{ width: 56, height: 56, borderRadius: 16, background: `${svc.color}15`, border: `1px solid ${svc.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: svc.color, marginBottom: 20 }}>
                     <svc.Icon />
                   </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 12 }}>{svc.title[language as keyof typeof svc.title] || svc.title.en}</h3>
+                  <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 12 }}>{svc.title[language as keyof typeof svc.title] || svc.title.en}</h3>
                   <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 24, flex: 1 }}>{svc.desc[language as keyof typeof svc.desc] || svc.desc.en}</p>
                   <div style={{ fontSize: 13, fontWeight: 700, color: svc.color, display: 'flex', alignItems: 'center', gap: 6 }}>
                     {language === 'km' ? '[KM] Explore Service' : 'Explore Service'} <span>→</span>
@@ -118,7 +117,7 @@ export default function ServicesPage() {
                 {/* Left side content */}
                 <div style={{ padding: 'clamp(32px,5vw,56px)' }}>
                   <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.green, padding: '6px 14px', background: 'rgba(81,180,28,0.1)', borderRadius: 100, marginBottom: 16 }}>{language === 'km' ? '[KM] Ready-to-use Products' : 'Ready-to-use Products'}</div>
-                  <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,4vw,34px)', color: '#0d0d2b', marginBottom: 16 }}>
+                  <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,4vw,34px)', color: '#0d0d2b', marginBottom: 16 }}>
                     {language === 'km' ? '[KM] Software' : 'Software'} <span style={{ color: COLORS.green }}>{language === 'km' ? '[KM] Sales & Rental' : 'Sales & Rental'}</span>
                   </h2>
                   <p style={{ fontSize: 15, color: 'rgba(26,26,46,0.6)', lineHeight: 1.7, marginBottom: 32 }}>
@@ -172,7 +171,7 @@ export default function ServicesPage() {
             <div style={{ marginTop: 80, padding: 'clamp(40px,6vw,64px)', borderRadius: 24, background: 'linear-gradient(135deg,#050545,#0E62A2)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: COLORS.cyan, filter: 'blur(120px)', opacity: 0.1, top: '-100px', right: '-50px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>Not sure which service you need?</h2>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>Not sure which service you need?</h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28, lineHeight: 1.6 }}>Book a free technical consultation with our engineering team to discuss your goals.</p>
                 <a href={`/${language}/contact`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 32px', borderRadius: 100, fontWeight: 600, fontSize: 14, background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', color: '#fff', textDecoration: 'none', boxShadow: '0 4px 20px rgba(10,186,223,0.4)' }}>
                   Book Free Consultation →

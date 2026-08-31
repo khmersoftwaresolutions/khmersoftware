@@ -187,8 +187,7 @@ export default function CaseStudiesPage() {
   const filtered = filter === 'All' ? CASES : CASES.filter(c => getText(c.industry, 'en') === filter);
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .cs-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
     .cs-card { background: rgba(255,255,255,0.92); border: 1px solid rgba(5,5,69,0.07); border-radius: 22px; overflow: hidden; box-shadow: 0 4px 16px rgba(5,5,69,0.05); transition: all 0.3s ease; }
     .cs-card:hover { box-shadow: 0 16px 48px rgba(5,5,69,0.1); }
@@ -237,12 +236,12 @@ export default function CaseStudiesPage() {
                     {/* Right: title + challenge */}
                     <div style={{ padding: 'clamp(24px,4vw,36px)' }}>
                       <div style={{ fontSize: 12, color: 'rgba(26,26,46,0.45)', marginBottom: 8 }}>{getText(cs.client, language)}</div>
-                      <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(18px,3vw,24px)', color: '#0d0d2b', marginBottom: 20, lineHeight: 1.3 }}>{getText(cs.title, language)}</h2>
+                      <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(18px,3vw,24px)', color: '#0d0d2b', marginBottom: 20, lineHeight: 1.3 }}>{getText(cs.title, language)}</h2>
                       {/* Results */}
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100px,100%),1fr))', gap: 10 }}>
                         {cs.results.map((r, ri) => (
                           <div key={ri} className="metric-box">
-                            <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(16px,2.5vw,22px)', color: cs.color, marginBottom: 4 }}>{getText(r.metric, language)}</div>
+                            <div style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(16px,2.5vw,22px)', color: cs.color, marginBottom: 4 }}>{getText(r.metric, language)}</div>
                             <div style={{ fontSize: 11, color: 'rgba(26,26,46,0.5)', lineHeight: 1.4 }}>{getText(r.desc, language)}</div>
                           </div>
                         ))}
@@ -252,7 +251,7 @@ export default function CaseStudiesPage() {
 
                   {/* Expandable detail */}
                   <div style={{ padding: '0 clamp(24px,4vw,36px)' }}>
-                    <button onClick={() => setOpen(open === i ? null : i)} style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'none', border: 'none', cursor: 'pointer', padding: '16px 0', color: cs.color, fontWeight: 700, fontSize: 14, fontFamily: "'DM Sans', sans-serif" }}>
+                    <button onClick={() => setOpen(open === i ? null : i)} style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'none', border: 'none', cursor: 'pointer', padding: '16px 0', color: cs.color, fontWeight: 700, fontSize: 14, fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>
                       {open === i ? (language === 'km' ? '▴ លាក់ព័ត៌មានលម្អិត' : '▴ Hide Details') : (language === 'km' ? '▾ អានករណីសិក្សាពេញលេញ' : '▾ Read Full Case Study')}
                     </button>
                   </div>
@@ -260,13 +259,13 @@ export default function CaseStudiesPage() {
                   <div style={{ overflow: 'hidden', maxHeight: open === i ? 600 : 0, transition: 'max-height 0.5s cubic-bezier(0.16,1,0.3,1)' }}>
                     <div style={{ padding: '0 clamp(24px,4vw,36px) 32px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(280px,100%),1fr))', gap: 32, borderTop: '1px solid rgba(5,5,69,0.06)' }}>
                       <div style={{ paddingTop: 24 }}>
-                        <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: '#0d0d2b', marginBottom: 8, textTransform: 'uppercase' as const, letterSpacing: '0.1em' }}>
+                        <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: '#0d0d2b', marginBottom: 8, textTransform: 'uppercase' as const, letterSpacing: '0.1em' }}>
                           {language === 'km' ? 'បញ្ហាប្រឈម' : 'The Challenge'}
                         </h3>
                         <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.65)', lineHeight: 1.7 }}>{getText(cs.challenge, language)}</p>
                       </div>
                       <div style={{ paddingTop: 24 }}>
-                        <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: '#0d0d2b', marginBottom: 8, textTransform: 'uppercase' as const, letterSpacing: '0.1em' }}>
+                        <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 14, color: '#0d0d2b', marginBottom: 8, textTransform: 'uppercase' as const, letterSpacing: '0.1em' }}>
                           {language === 'km' ? 'ដំណោះស្រាយរបស់យើង' : 'Our Solution'}
                         </h3>
                         <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.65)', lineHeight: 1.7, marginBottom: 16 }}>{getText(cs.solution, language)}</p>
@@ -284,7 +283,7 @@ export default function CaseStudiesPage() {
             <div style={{ marginTop: 80, padding: 'clamp(40px,6vw,64px)', borderRadius: 24, background: 'linear-gradient(135deg,#050545,#0E62A2)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: COLORS.cyan, filter: 'blur(120px)', opacity: 0.1, top: '-100px', right: '-50px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>
                   {language === 'km' ? 'សូមឱ្យយើងសរសេររឿងរ៉ាវជោគជ័យរបស់អ្នក' : "Let's write your success story"}
                 </h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28 }}>

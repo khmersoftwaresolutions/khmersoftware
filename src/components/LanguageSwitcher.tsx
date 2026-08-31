@@ -55,8 +55,6 @@ export default function LanguageSwitcher() {
   return (
     <>
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@400;500;600;700&display=swap');
-
         .ks-language-switcher {
           position: relative;
           width: 120px;
@@ -227,6 +225,7 @@ export default function LanguageSwitcher() {
         <button
           type="button"
           className="ks-language-button"
+          aria-label="Select language"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-haspopup="listbox"
@@ -293,6 +292,7 @@ export default function LanguageSwitcher() {
               key={lang.code}
               type="button"
               className={`ks-dropdown-item ${language === lang.code ? 'active' : ''}`}
+              aria-label={`Switch language to ${lang.label}`}
               onClick={() => handleLanguageChange(lang.code)}
               role="option"
               aria-selected={language === lang.code}

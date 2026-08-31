@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PageBanner from '@/components/PageBanner';
@@ -94,8 +95,7 @@ export default function BlogPage() {
   const filtered = filter === 'All' ? POSTS : POSTS.filter(p => getText(p.cat, 'en') === filter);
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .blog-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
     .blog-card { background: rgba(255,255,255,0.92); border: 1px solid rgba(5,5,69,0.07); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 16px rgba(5,5,69,0.05); transition: all 0.3s ease; cursor: pointer; display: flex; flex-direction: column; }
     .blog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(5,5,69,0.1); }
@@ -136,13 +136,13 @@ export default function BlogPage() {
                 <div style={{ padding: 'clamp(24px,4vw,40px)' }}>
                   <div style={{ display: 'flex', gap: 12, marginBottom: 16, alignItems: 'center' }}>
                     <span style={{ fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 100, background: `${COLORS.cyan}12`, color: COLORS.cyan }}>{getText(POSTS[0].cat, language)}</span>
-                    <span style={{ fontSize: 12, color: 'rgba(26,26,46,0.4)' }}>{getText(POSTS[0].readTime, language)} · {getText(POSTS[0].date, language)}</span>
+                    <span style={{ fontSize: 12, color: 'rgba(26,26,46,0.7)' }}>{getText(POSTS[0].readTime, language)} · {getText(POSTS[0].date, language)}</span>
                   </div>
-                  <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(20px,3vw,28px)', color: '#0d0d2b', marginBottom: 16, lineHeight: 1.3 }}>{getText(POSTS[0].title, language)}</h2>
-                  <p style={{ fontSize: 15, color: 'rgba(26,26,46,0.6)', lineHeight: 1.7, marginBottom: 24 }}>{getText(POSTS[0].excerpt, language)}</p>
-                  <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600, fontSize: 14, color: COLORS.cyan, textDecoration: 'none' }}>
+                  <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(20px,3vw,28px)', color: '#0d0d2b', marginBottom: 16, lineHeight: 1.3 }}>{getText(POSTS[0].title, language)}</h2>
+                  <p style={{ fontSize: 15, color: 'rgba(26,26,46,0.75)', lineHeight: 1.7, marginBottom: 24 }}>{getText(POSTS[0].excerpt, language)}</p>
+                  <Link href={`/${language}/contact`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 600, fontSize: 14, color: COLORS.cyan, textDecoration: 'none' }}>
                     {language === 'km' ? "អានអត្ថបទ →" : "Read Article →"}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </ScrollReveal>
@@ -159,11 +159,11 @@ export default function BlogPage() {
                   <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <div style={{ display: 'flex', gap: 10, marginBottom: 12, alignItems: 'center', flexWrap: 'wrap' as const }}>
                       <span style={{ fontSize: 11, fontWeight: 700, padding: '3px 9px', borderRadius: 100, background: `${post.color}10`, color: post.color }}>{getText(post.cat, language)}</span>
-                      <span style={{ fontSize: 11, color: 'rgba(26,26,46,0.4)' }}>{getText(post.readTime, language)} · {getText(post.date, language)}</span>
+                      <span style={{ fontSize: 11, color: 'rgba(26,26,46,0.7)' }}>{getText(post.readTime, language)} · {getText(post.date, language)}</span>
                     </div>
-                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 17, color: '#0d0d2b', marginBottom: 10, lineHeight: 1.3, flex: 1 }}>{getText(post.title, language)}</h3>
-                    <p style={{ fontSize: 13, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 16 }}>{getText(post.excerpt, language).substring(0, 120)}...</p>
-                    <a href="#" style={{ fontSize: 13, fontWeight: 700, color: post.color, textDecoration: 'none' }}>{language === 'km' ? "អានបន្ថែម →" : "Read More →"}</a>
+                    <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 17, color: '#0d0d2b', marginBottom: 10, lineHeight: 1.3, flex: 1 }}>{getText(post.title, language)}</h3>
+                    <p style={{ fontSize: 13, color: 'rgba(26,26,46,0.75)', lineHeight: 1.6, marginBottom: 16 }}>{getText(post.excerpt, language).substring(0, 120)}...</p>
+                    <Link href={`/${language}/contact`} style={{ fontSize: 13, fontWeight: 700, color: post.color, textDecoration: 'none' }}>{language === 'km' ? "អានបន្ថែម →" : "Read More →"}</Link>
                   </div>
                 </div>
               </ScrollReveal>
@@ -175,11 +175,11 @@ export default function BlogPage() {
             <div style={{ marginTop: 80, padding: 'clamp(40px,6vw,64px)', borderRadius: 24, background: 'linear-gradient(135deg,#050545,#0E62A2)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: COLORS.cyan, filter: 'blur(120px)', opacity: 0.1, top: '-100px', right: '-50px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>{language === 'km' ? "ចុះឈ្មោះជាវព្រឹត្តិបត្រព័ត៌មានរបស់យើង" : "Subscribe to our newsletter"}</h2>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>{language === 'km' ? "ចុះឈ្មោះជាវព្រឹត្តិបត្រព័ត៌មានរបស់យើង" : "Subscribe to our newsletter"}</h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28 }}>{language === 'km' ? "អត្ថបទមួយក្នុងមួយសប្តាហ៍ — ការស្វែងយល់ស៊ីជម្រៅអំពីវិស្វកម្ម ការរចនា និងការកសាងសូហ្វវែរនៅកម្ពុជា។" : "One article per week — deep dives on engineering, design, and building software in Cambodia."}</p>
                 <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <input type="email" placeholder={language === 'km' ? "អុីមែលរបស់អ្នក (your@email.com)" : "your@email.com"} style={{ padding: '13px 20px', borderRadius: 100, border: 'none', fontSize: 14, width: 260, outline: 'none', fontFamily: "'DM Sans', sans-serif" }} />
-                  <button style={{ padding: '13px 28px', borderRadius: 100, background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', color: 'white', fontWeight: 700, fontSize: 14, border: 'none', cursor: 'pointer', fontFamily: "'DM Sans', sans-serif" }}>{language === 'km' ? "ជាវ" : "Subscribe"}</button>
+                  <input type="email" aria-label="Email address for newsletter" placeholder={language === 'km' ? "អុីមែលរបស់អ្នក (your@email.com)" : "your@email.com"} style={{ padding: '13px 20px', borderRadius: 100, border: 'none', fontSize: 14, width: 260, outline: 'none', fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }} />
+                  <button type="button" aria-label="Subscribe to newsletter" style={{ padding: '13px 28px', borderRadius: 100, background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', color: 'white', fontWeight: 700, fontSize: 14, border: 'none', cursor: 'pointer', fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>{language === 'km' ? "ជាវ" : "Subscribe"}</button>
                 </div>
               </div>
             </div>

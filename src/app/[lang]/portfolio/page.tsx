@@ -95,8 +95,7 @@ export default function PortfolioPage() {
   const filtered = filter === 'All' ? PROJECTS : PROJECTS.filter(p => getText(p.type, 'en') === filter || getText(p.industry, 'en') === filter);
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .port-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
     .port-card { background: rgba(255,255,255,0.92); border: 1px solid rgba(5,5,69,0.07); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 16px rgba(5,5,69,0.06); transition: all 0.3s ease; display: flex; flex-direction: column; }
     .port-card:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(5,5,69,0.12); }
@@ -130,7 +129,7 @@ export default function PortfolioPage() {
                 { val: '12', label: { en: 'Industries Served', km: 'ឧស្សាហកម្មដែលបានបម្រើ' }, color: COLORS.blue },
               ].map((s, i) => (
                 <div key={i} style={{ textAlign: 'center', padding: 'clamp(20px,4vw,36px) 20px', borderRight: i < 3 ? '1px solid rgba(5,5,69,0.05)' : 'none' }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(28px,4vw,44px)', color: s.color, lineHeight: 1, marginBottom: 6 }}>{s.val}</div>
+                  <div style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(28px,4vw,44px)', color: s.color, lineHeight: 1, marginBottom: 6 }}>{s.val}</div>
                   <div style={{ fontSize: 12, color: 'rgba(26,26,46,0.5)', textTransform: 'uppercase' as const, letterSpacing: '0.08em', fontWeight: 600 }}>{getText(s.label, language)}</div>
                 </div>
               ))}
@@ -159,13 +158,13 @@ export default function PortfolioPage() {
                   </div>
                   {/* Content */}
                   <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 8 }}>{getText(p.title, language)}</h3>
+                    <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 8 }}>{getText(p.title, language)}</h3>
                     <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 16, flex: 1 }}>{getText(p.desc, language)}</p>
                     {/* Tech */}
                     <div style={{ marginBottom: 14 }}>{p.tech.map((t, ti) => <span key={ti} className="tech-badge">{t}</span>)}</div>
                     {/* Results */}
                     <div style={{ paddingTop: 14, borderTop: '1px solid rgba(5,5,69,0.06)' }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.1em', color: 'rgba(26,26,46,0.4)', marginBottom: 8 }}>{language === 'km' ? "លទ្ធផលសំខាន់ៗ" : "Key Results"}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.1em', color: 'rgba(26,26,46,0.72)', marginBottom: 8 }}>{language === 'km' ? "លទ្ធផលសំខាន់ៗ" : "Key Results"}</div>
                       {p.results.map((r, ri) => <span key={ri} className="result-badge">✓ {getText(r, language)}</span>)}
                     </div>
                   </div>
@@ -179,7 +178,7 @@ export default function PortfolioPage() {
             <div style={{ marginTop: 80, padding: 'clamp(40px,6vw,64px)', borderRadius: 24, background: 'linear-gradient(135deg,#050545,#0E62A2)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: COLORS.cyan, filter: 'blur(120px)', opacity: 0.1, top: '-100px', right: '-50px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>Ready to be our next success story?</h2>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>Ready to be our next success story?</h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28, lineHeight: 1.6 }}>Let's discuss your project and see how we can deliver measurable results for your business.</p>
                 <a href={`/${language}/contact`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 32px', borderRadius: 100, fontWeight: 600, fontSize: 14, background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', color: '#fff', textDecoration: 'none', boxShadow: '0 4px 20px rgba(10,186,223,0.4)' }}>
                   Start Your Project →

@@ -281,8 +281,7 @@ export default function TeamPage() {
       : TEAM_MEMBERS.filter((m) => m.department.toLowerCase() === filter.toLowerCase());
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .team-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
 
     .filter-btn {
@@ -405,7 +404,7 @@ export default function TeamPage() {
                 >
                   <div
                     style={{
-                      fontFamily: "'Syne', sans-serif",
+                      fontFamily: "var(--font-syne), 'Syne', sans-serif",
                       fontWeight: 800,
                       fontSize: 'clamp(28px, 4vw, 44px)',
                       color: s.color,
@@ -484,6 +483,10 @@ export default function TeamPage() {
                     <img
                       src={member.photo}
                       alt={getText(member.name, language)}
+                      width={360}
+                      height={260}
+                      loading="lazy"
+                      decoding="async"
                       style={{
                         width: '100%',
                         height: '100%',
@@ -506,7 +509,7 @@ export default function TeamPage() {
                     >
                       <h3
                         style={{
-                          fontFamily: "'Syne', sans-serif",
+                          fontFamily: "var(--font-syne), 'Syne', sans-serif",
                           fontWeight: 700,
                           fontSize: 20,
                           color: '#ffffff',
@@ -602,7 +605,7 @@ export default function TeamPage() {
               </div>
               <h2
                 style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "var(--font-syne), 'Syne', sans-serif",
                   fontWeight: 800,
                   fontSize: 'clamp(24px, 4vw, 38px)',
                   color: '#0d0d2b',
@@ -652,7 +655,7 @@ export default function TeamPage() {
                   </div>
                   <h3
                     style={{
-                      fontFamily: "'Syne', sans-serif",
+                      fontFamily: "var(--font-syne), 'Syne', sans-serif",
                       fontWeight: 700,
                       fontSize: 18,
                       color: '#0d0d2b',
@@ -698,7 +701,7 @@ export default function TeamPage() {
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <h2
                   style={{
-                    fontFamily: "'Syne', sans-serif",
+                    fontFamily: "var(--font-syne), 'Syne', sans-serif",
                     fontWeight: 800,
                     fontSize: 'clamp(22px, 4vw, 34px)',
                     color: '#fff',

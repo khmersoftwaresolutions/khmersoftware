@@ -86,7 +86,7 @@ export default function PageBanner({
 
         {/* Title */}
         <h1 style={{
-          fontFamily: "'Syne', sans-serif", fontWeight: 800,
+          fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800,
           fontSize: 'clamp(28px, 5vw, 54px)', lineHeight: 1.1,
           color: '#ffffff', marginBottom: 20,
           opacity: visible ? 1 : 0,

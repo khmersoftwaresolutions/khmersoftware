@@ -114,8 +114,7 @@ export default function TechnologiesPage() {
   }, [params.lang, setLanguage]);
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .tech-page-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
     .tech-section-label { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #0ABADF; padding: 6px 14px; background: rgba(10,186,223,0.08); border: 1px solid rgba(10,186,223,0.2); border-radius: 100px; margin-bottom: 16px; }
     .tech-cat-card { background: rgba(255,255,255,0.9); border: 1px solid rgba(5,5,69,0.07); border-radius: 24px; padding: clamp(24px,4vw,40px); box-shadow: 0 4px 24px rgba(5,5,69,0.06); transition: box-shadow 0.3s; }
@@ -144,7 +143,7 @@ export default function TechnologiesPage() {
           <ScrollReveal>
             <div style={{ textAlign: 'center', padding: '72px 0 48px' }}>
               <div className="tech-section-label">{language === 'km' ? "ហេតុអ្វីវាសំខាន់" : "Why it matters"}</div>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
                 {language === 'km' ? "បច្ចេកវិទ្យាដែល" : "Technology That"}{' '}
                 <span style={{ background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   {language === 'km' ? "រីកចម្រើនជាមួយអ្នក" : "Scales With You"}
@@ -165,7 +164,7 @@ export default function TechnologiesPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
                     <div style={{ width: 56, height: 56, borderRadius: 16, background: `${cat.color}15`, border: `1px solid ${cat.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>{cat.icon}</div>
                     <div>
-                      <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: '#0d0d2b', marginBottom: 4 }}>{getText(cat.title, language)}</h3>
+                      <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: '#0d0d2b', marginBottom: 4 }}>{getText(cat.title, language)}</h3>
                       <p style={{ color: 'rgba(26,26,46,0.55)', fontSize: 14, lineHeight: 1.6, margin: 0 }}>{getText(cat.desc, language)}</p>
                     </div>
                     <div style={{ marginLeft: 'auto', width: 48, height: 4, borderRadius: 2, background: `linear-gradient(90deg, ${cat.color}, transparent)` }} />
@@ -174,7 +173,7 @@ export default function TechnologiesPage() {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
                     {cat.techs.map((tech, ti) => (
                       <div key={ti} className="tech-item">
-                        <img src={tech.logo} alt={getText(tech.name, language)} style={{ width: 36, height: 36, objectFit: 'contain', flexShrink: 0 }} />
+                        <img src={tech.logo} alt={getText(tech.name, language)} width={36} height={36} loading="lazy" decoding="async" style={{ width: 36, height: 36, objectFit: 'contain', flexShrink: 0 }} />
                         <div>
                           <div style={{ fontWeight: 700, fontSize: 14, color: '#0d0d2b', marginBottom: 3 }}>{getText(tech.name, language)}</div>
                           <div style={{ fontSize: 12, color: 'rgba(26,26,46,0.5)', lineHeight: 1.5 }}>{getText(tech.detail, language)}</div>
@@ -192,7 +191,7 @@ export default function TechnologiesPage() {
             <div style={{ marginTop: 80, padding: 'clamp(40px,6vw,64px)', borderRadius: 24, background: 'linear-gradient(135deg,#050545,#0E62A2)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: '#0ABADF', filter: 'blur(120px)', opacity: 0.1, top: '-100px', right: '-50px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,4vw,36px)', color: '#fff', marginBottom: 12 }}>Not sure which stack is right for you?</h2>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,4vw,36px)', color: '#fff', marginBottom: 12 }}>Not sure which stack is right for you?</h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28, lineHeight: 1.6 }}>Our architects will help you choose the right technology for your use case — for free.</p>
                 <a href={`/${language}/contact`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 32px', borderRadius: 100, fontWeight: 600, fontSize: 14, background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', color: '#fff', textDecoration: 'none', boxShadow: '0 4px 20px rgba(10,186,223,0.4)' }}>
                   Get a Free Consultation →

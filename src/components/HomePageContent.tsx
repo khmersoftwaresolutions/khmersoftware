@@ -299,8 +299,6 @@ const AWARDS = [
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
 const techStyles = `
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -345,8 +343,8 @@ const techStyles = `
   100% { transform: translateY(-120px) translateX(30px); opacity: 0; }
 }
 @keyframes borderRotate {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.998); }
 }
 @keyframes blinkDot {
   0%, 100% { opacity: 1; }
@@ -369,7 +367,7 @@ const techStyles = `
   border-radius: 100px; margin-bottom: 16px;
 }
 .section-title {
-  font-family: 'Syne', sans-serif; font-size: clamp(28px, 4vw, 44px);
+  font-family: var(--font-syne), 'Syne', sans-serif; font-size: clamp(28px, 4vw, 44px);
   font-weight: 800; line-height: 1.15; color: #0d0d2b; margin-bottom: 0;
 }
 .grad-cyan { background: linear-gradient(135deg, ${COLORS.cyan}, ${COLORS.blue}); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -450,7 +448,7 @@ const techStyles = `
 }
 .stat-item:last-child { border-right: none; }
 .stat-item:hover { background: rgba(10,186,223,0.04); }
-.stat-num { font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1; margin-bottom: 8px; }
+.stat-num { font-family: var(--font-syne), 'Syne', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1; margin-bottom: 8px; }
 .stat-label { font-size: clamp(12px, 2vw, 13px); color: rgba(26,26,46,0.5); font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; }
 
 /* ── Service Cards ── */
@@ -615,21 +613,21 @@ export default function HomePageContent() {
 
   const SLIDES = [
     {
-      img: '/hero-slide-1.png',
+      img: '/hero-slide-1.webp',
       badge: t('home.badge'),
       title1: t('home.hero.title1'),
       title2: t('home.hero.title2'),
       title3: t('home.hero.title3'),
     },
     {
-      img: '/hero-slide-2.png',
+      img: '/hero-slide-2.webp',
       badge: "Cambodia's Leading Dev Team",
       title1: 'Expert Software',
       title2: 'Built for',
       title3: 'Your Business',
     },
     {
-      img: '/hero-slide-3.png',
+      img: '/hero-slide-3.webp',
       badge: 'Digital Transformation',
       title1: 'Powering the Future',
       title2: 'of Cambodian',
@@ -689,7 +687,7 @@ export default function HomePageContent() {
   ];
 
   return (
-    <>
+    <main id="main-content">
       <style>{techStyles}</style>
 
       {/* ── SCROLL PROGRESS BAR ─────────────────── */}
@@ -730,16 +728,29 @@ export default function HomePageContent() {
               </div>
 
               {/* Title */}
-              <h1 style={{
-                fontFamily: "'Syne', sans-serif", fontWeight: 800,
-                fontSize: 'clamp(24px, 4vw, 44px)', lineHeight: 1.1,
-                color: '#fff', marginBottom: 20, maxWidth: 800,
-                opacity: i === slide ? 1 : 0, transform: i === slide ? 'translateY(0)' : 'translateY(24px)',
-                transition: 'all 0.7s ease 0.35s',
-              }}>
-                {s.title1}<br />
-                {s.title2} {s.title3}
-              </h1>
+              {i === 0 ? (
+                <h1 style={{
+                  fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800,
+                  fontSize: 'clamp(24px, 4vw, 44px)', lineHeight: 1.1,
+                  color: '#fff', marginBottom: 20, maxWidth: 800,
+                  opacity: i === slide ? 1 : 0, transform: i === slide ? 'translateY(0)' : 'translateY(24px)',
+                  transition: 'all 0.7s ease 0.35s',
+                }}>
+                  {s.title1}<br />
+                  {s.title2} {s.title3}
+                </h1>
+              ) : (
+                <div style={{
+                  fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800,
+                  fontSize: 'clamp(24px, 4vw, 44px)', lineHeight: 1.1,
+                  color: '#fff', marginBottom: 20, maxWidth: 800,
+                  opacity: i === slide ? 1 : 0, transform: i === slide ? 'translateY(0)' : 'translateY(24px)',
+                  transition: 'all 0.7s ease 0.35s',
+                }}>
+                  {s.title1}<br />
+                  {s.title2} {s.title3}
+                </div>
+              )}
 
               {/* Subtitle */}
               <p style={{
@@ -806,7 +817,7 @@ export default function HomePageContent() {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             flexDirection: 'column', gap: 4, color: '#ffffff',
             textTransform: 'uppercase', fontSize: 12, fontWeight: 600,
-            fontFamily: "'DM Sans', sans-serif", letterSpacing: '0.1em',
+            fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", letterSpacing: '0.1em',
             boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
             animation: 'fadeInCursor 0.2s cubic-bezier(0.23,1,0.32,1)',
           }}>
@@ -817,7 +828,7 @@ export default function HomePageContent() {
 
         {/* Dot indicators */}
         <div 
-          style={{ position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 8, zIndex: 20, pointerEvents: 'auto', padding: '10px' }}
+          style={{ position: 'absolute', bottom: 16, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 4, zIndex: 20, pointerEvents: 'auto' }}
           onMouseEnter={() => setHoverZone(null)}
         >
           {SLIDES.map((_, i) => (
@@ -825,13 +836,20 @@ export default function HomePageContent() {
               key={i}
               onClick={() => { goTo(i); resetTimer(); }}
               style={{
-                width: i === slide ? 28 : 8, height: 8, borderRadius: 4,
-                border: 'none', cursor: 'pointer',
-                background: i === slide ? COLORS.cyan : 'rgba(255,255,255,0.35)',
-                transition: 'all 0.35s ease', padding: 0,
+                width: 44, height: 44,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                border: 'none', background: 'transparent', cursor: 'pointer',
+                padding: 0,
               }}
               aria-label={`Go to slide ${i + 1}`}
-            />
+            >
+              <span style={{
+                width: i === slide ? 28 : 8, height: 8, borderRadius: 4,
+                background: i === slide ? COLORS.cyan : 'rgba(255,255,255,0.7)',
+                transition: 'all 0.35s ease',
+                display: 'block',
+              }} />
+            </button>
           ))}
         </div>
       </section>
@@ -859,7 +877,7 @@ export default function HomePageContent() {
                   <div className="service-icon-wrap" style={{ background: s.bg, border: `1px solid ${s.color}30` }}>
                     <span style={{ fontSize: "clamp(20px, 5vw, 24px)", color: s.color }}>{s.icon}</span>
                   </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: "clamp(16px, 4vw, 19px)", fontWeight: 700, marginBottom: 10, color: "#0d0d2b" }}>{s.title}</h3>
+                  <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: "clamp(16px, 4vw, 19px)", fontWeight: 700, marginBottom: 10, color: "#0d0d2b" }}>{s.title}</h3>
                   <p style={{ color: "rgba(26,26,46,0.6)", fontSize: "clamp(13px, 3vw, 14px)", lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
                   <a href={`/${language}/services`} className="learn-link" style={{ color: s.linkColor }}>
                     {t('home.services.learnMore')} <span>→</span>
@@ -892,11 +910,11 @@ export default function HomePageContent() {
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
                     <div style={{ fontSize: 36, lineHeight: 1 }}>{item.icon}</div>
                     <div style={{ textAlign: "right" }}>
-                      <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 26, fontWeight: 800, color: item.color, lineHeight: 1 }}>{item.stat}</div>
-                      <div style={{ fontSize: 11, color: "rgba(26,26,46,0.4)", textTransform: "uppercase", letterSpacing: "0.1em" }}>{item.statLabel}</div>
+                      <div style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 26, fontWeight: 800, color: item.color, lineHeight: 1 }}>{item.stat}</div>
+                      <div style={{ fontSize: 11, color: "rgba(26,26,46,0.72)", textTransform: "uppercase", letterSpacing: "0.1em" }}>{item.statLabel}</div>
                     </div>
                   </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 17, fontWeight: 700, color: "#0d0d2b", marginBottom: 10 }}>{item.title}</h3>
+                  <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 17, fontWeight: 700, color: "#0d0d2b", marginBottom: 10 }}>{item.title}</h3>
                   <p style={{ fontSize: 14, color: "rgba(26,26,46,0.6)", lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
                   <div style={{ marginTop: 16, width: "100%", height: 3, borderRadius: 2, background: `linear-gradient(90deg, ${item.color}, transparent)` }} />
                 </TiltCard>
@@ -967,7 +985,7 @@ export default function HomePageContent() {
               marginTop: 24
             }}>
               <div style={{ fontSize: 48, color: INDUSTRIES[activeIndustry].color, display: 'flex' }}>{INDUSTRIES[activeIndustry].icon}</div>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 24, color: INDUSTRIES[activeIndustry].color }}>
+              <div style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 24, color: INDUSTRIES[activeIndustry].color }}>
                 {INDUSTRIES[activeIndustry].label}
               </div>
               <p style={{ color: "rgba(26,26,46,0.6)", fontSize: 16, lineHeight: 1.6, maxWidth: 600, margin: 0 }}>
@@ -1028,7 +1046,7 @@ export default function HomePageContent() {
                     <div key={i} className="tech-node" style={{ top: n.top, left: n.left, background: n.color, boxShadow: `0 0 10px ${n.color}, 0 0 20px ${n.color}80`, animationDelay: `${i * 0.4}s` }} />
                   ))}
                   <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "min(140px, 40%)", padding: 20, borderRadius: 20, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, background: "transparent" }}>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 36, fontWeight: 800, background: `linear-gradient(135deg, ${COLORS.cyan}, ${COLORS.yellow})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>99.9%</div>
+                    <div style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 36, fontWeight: 800, background: `linear-gradient(135deg, ${COLORS.cyan}, ${COLORS.yellow})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>99.9%</div>
                     <div style={{ fontSize: 12, color: "rgba(26,26,46,0.5)", textAlign: "center" }}>Uptime SLA</div>
                     <div style={{ width: 40, height: 2, background: `linear-gradient(90deg, ${COLORS.cyan}, ${COLORS.blue})`, borderRadius: 1 }} />
                     <div style={{ fontSize: 11, color: COLORS.green, fontWeight: 600 }}>● Live</div>
@@ -1072,7 +1090,7 @@ export default function HomePageContent() {
                       background: activeStep === i ? step.color : "white",
                       border: `2px solid ${step.color}`,
                       display: "flex", alignItems: "center", justifyContent: "center",
-                      fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 15,
+                      fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 15,
                       color: activeStep === i ? "#fff" : step.color,
                       transition: "all 0.3s ease", zIndex: 1,
                       boxShadow: activeStep === i ? `0 0 0 6px ${step.color}20` : "0 4px 12px rgba(0,0,0,0.08)",
@@ -1089,7 +1107,7 @@ export default function HomePageContent() {
                       transition: "all 0.35s cubic-bezier(0.16,1,0.3,1)",
                     }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 17, fontWeight: 700, color: "#0d0d2b", margin: 0 }}>{step.title}</h3>
+                        <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 17, fontWeight: 700, color: "#0d0d2b", margin: 0 }}>{step.title}</h3>
                         <span style={{ fontSize: 12, color: step.color, fontWeight: 600, background: `${step.color}15`, padding: "3px 10px", borderRadius: 100, whiteSpace: "nowrap", marginLeft: 12 }}>{step.duration}</span>
                       </div>
                       <p style={{ fontSize: 14, color: "rgba(26,26,46,0.6)", lineHeight: 1.7, margin: "10px 0 0" }}>{step.desc}</p>
@@ -1131,7 +1149,7 @@ export default function HomePageContent() {
                   { title: "Deploy & Support", desc: "Seamless go-live + 12-mo warranty", icon: "04", color: COLORS.blue, pct: 95 },
                 ].map((step, i) => (
                   <div key={i} className="glass-card" style={{ padding: "clamp(14px, 3vw, 20px)", display: "flex", alignItems: "center", gap: 16 }}>
-                    <div style={{ width: "clamp(36px, 5vw, 44px)", height: "clamp(36px, 5vw, 44px)", borderRadius: 12, background: `${step.color}15`, border: `1px solid ${step.color}30`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "clamp(13px, 3vw, 15px)", fontWeight: 800, color: step.color, fontFamily: "'Syne', sans-serif", flexShrink: 0 }}>
+                    <div style={{ width: "clamp(36px, 5vw, 44px)", height: "clamp(36px, 5vw, 44px)", borderRadius: 12, background: `${step.color}15`, border: `1px solid ${step.color}30`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "clamp(13px, 3vw, 15px)", fontWeight: 800, color: step.color, fontFamily: "var(--font-syne), 'Syne', sans-serif", flexShrink: 0 }}>
                       {step.icon}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
@@ -1198,7 +1216,7 @@ export default function HomePageContent() {
             <div className="tech-marquee-content">
               {[...TECHNOLOGY_STACK, ...TECHNOLOGY_STACK].map((tech, i) => (
                 <div key={i} className="tech-card" title={tech.name}>
-                  <img src={tech.logo} alt={tech.name} />
+                  <img src={tech.logo} alt={tech.name} width={36} height={36} loading="lazy" decoding="async" style={{ width: 36, height: 36, objectFit: "contain" }} />
                 </div>
               ))}
             </div>
@@ -1224,8 +1242,8 @@ export default function HomePageContent() {
             {AWARDS.map((award, i) => (
               <ScrollReveal key={i} delay={i * 80} direction="up">
                 <div className="award-card">
-                  <img src={award.logo} alt={award.name} style={{ width: 48, height: 48, objectFit: "contain" }} />
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 15, color: "#0d0d2b", textAlign: "center" }}>{award.name}</div>
+                  <img src={award.logo} alt={award.name} width={48} height={48} loading="lazy" decoding="async" style={{ width: 48, height: 48, objectFit: "contain" }} />
+                  <div style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 15, color: "#0d0d2b", textAlign: "center" }}>{award.name}</div>
                   <span style={{ fontSize: 11, padding: "3px 10px", borderRadius: 100, background: "rgba(10,186,223,0.08)", color: COLORS.cyan, fontWeight: 600 }}>{award.badge}</span>
                 </div>
               </ScrollReveal>
@@ -1296,7 +1314,7 @@ export default function HomePageContent() {
           <ScrollReveal direction="fade">
             <div style={{ position: "relative", overflow: "hidden", padding: "clamp(40px, 6vw, 72px)", textAlign: "center", borderRadius: 28, background: `linear-gradient(135deg, ${COLORS.navy} 0%, #0a1060 60%, #061050 100%)`, border: "1px solid rgba(10,186,223,0.25)", boxShadow: "0 24px 80px rgba(5,5,69,0.3)" }}>
               {/* Animated gradient border effect */}
-              <div style={{ position: "absolute", inset: -2, borderRadius: 30, background: `linear-gradient(90deg, ${COLORS.cyan}, ${COLORS.yellow}, ${COLORS.green}, ${COLORS.cyan})`, backgroundSize: "200% auto", animation: "borderRotate 4s linear infinite", zIndex: -1 }} />
+              <div style={{ position: "absolute", inset: -2, borderRadius: 30, background: `linear-gradient(135deg, ${COLORS.cyan}, ${COLORS.yellow}, ${COLORS.green})`, opacity: 0.85, animation: "borderRotate 4s ease-in-out infinite", zIndex: -1 }} />
 
               {/* Ambient orbs */}
               <div style={{ position: "absolute", width: "min(400px, 50vw)", height: "min(400px, 50vw)", borderRadius: "50%", background: COLORS.cyan, filter: "blur(100px)", opacity: 0.1, top: "-100px", right: "0%", pointerEvents: "none" }} />
@@ -1304,10 +1322,10 @@ export default function HomePageContent() {
 
               <div style={{ position: "relative", zIndex: 2 }}>
                 <div className="section-label" style={{ background: "rgba(10,186,223,0.12)", borderColor: "rgba(10,186,223,0.3)", color: COLORS.cyan, marginBottom: 8, fontSize: 12 }}>{t('home.cta.sectionLabel')}</div>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(28px, 4vw, 48px)", color: "#ffffff", lineHeight: 1.15, marginBottom: 12 }}>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: "clamp(28px, 4vw, 48px)", color: "#ffffff", lineHeight: 1.15, marginBottom: 12 }}>
                   {t('home.cta.title')} <span className="grad-cyan">{t('home.cta.titleHighlight')}</span><br />{t('home.cta.title2')}
                 </h2>
-                <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 16, lineHeight: 1.7, maxWidth: 520, margin: "0 auto 32px", textAlign: "center" }}>
+                <p style={{ color: "rgba(255,255,255,0.78)", fontSize: 16, lineHeight: 1.7, maxWidth: 520, margin: "0 auto 32px", textAlign: "center" }}>
                   {t('home.cta.description')}
                 </p>
 
@@ -1335,6 +1353,6 @@ export default function HomePageContent() {
           </ScrollReveal>
         </div>
       </section>
-    </>
+    </main>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Syne, DM_Sans, Hanuman } from "next/font/google";
 import Script from "next/script";
 import "../styles/globals.css";
 import "../styles/utilities.css";
@@ -7,15 +7,36 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import LanguageBody from "@/components/LanguageBody";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import HubSpotChat from "@/components/HubSpotChat";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  display: "optional",
+  preload: true,
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+  adjustFontFallback: true,
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "optional",
+  preload: true,
+  fallback: ["system-ui", "-apple-system", "sans-serif"],
+  adjustFontFallback: true,
+});
+
+const hanuman = Hanuman({
+  variable: "--font-hanuman",
+  subsets: ["khmer"],
+  weight: ["300", "400", "700"],
+  display: "optional",
+  preload: true,
+  fallback: ["sans-serif"],
+  adjustFontFallback: true,
 });
 
 export const viewport: Viewport = {
@@ -97,8 +118,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${syne.variable} ${dmSans.variable} ${hanuman.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="preload" href="/hero-slide-1.webp" as="image" fetchPriority="high" type="image/webp" />
+      </head>
       <body className="min-h-full flex flex-col">
         <LanguageProvider>
           <LanguageBody>
@@ -107,13 +131,7 @@ export default function RootLayout({
             <Footer />
           </LanguageBody>
         </LanguageProvider>
-        {/* Start of HubSpot Embed Code */}
-        <Script
-          id="hs-script-loader"
-          strategy="afterInteractive"
-          src="https://js-na2.hs-scripts.com/246983131.js"
-        />
-        {/* End of HubSpot Embed Code */}
+        <HubSpotChat />
 
         {/* Google Sitelinks Structured Data */}
         <Script

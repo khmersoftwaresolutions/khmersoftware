@@ -286,12 +286,11 @@ export default function CareersPage() {
   }, [params.lang, setLanguage]);
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .careers-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
 
     .stat-card { background: #ffffff; border: 1px solid ${COLORS.border}; border-radius: 12px; padding: 22px 16px; text-align: center; }
-    .stat-card .stat-num { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 26px; color: ${COLORS.ink}; }
+    .stat-card .stat-num { font-family: var(--font-syne), 'Syne', sans-serif; font-weight: 700; font-size: 26px; color: ${COLORS.ink}; }
     .stat-card .stat-label { font-size: 12.5px; color: ${COLORS.muted}; font-weight: 500; margin-top: 6px; }
 
     .job-card { background: #ffffff; border: 1px solid ${COLORS.border}; border-radius: 14px; overflow: hidden; transition: border-color 0.25s ease, box-shadow 0.25s ease; cursor: pointer; }
@@ -305,15 +304,15 @@ export default function CareersPage() {
     .apply-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; border-radius: 8px; font-weight: 600; font-size: 13.5px; background: ${COLORS.navy}; color: white; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s ease; }
     .apply-btn:hover { background: ${COLORS.blue}; }
 
-    .closed-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 5px; background: rgba(26,26,46,0.06); color: rgba(26,26,46,0.55); }
-    .closed-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; border-radius: 8px; font-weight: 600; font-size: 13.5px; background: rgba(5,5,69,0.05); color: rgba(26,26,46,0.4); border: 1px solid ${COLORS.border}; cursor: not-allowed; }
+    .closed-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 5px; background: rgba(26,26,46,0.06); color: rgba(26,26,46,0.72); }
+    .closed-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; border-radius: 8px; font-weight: 600; font-size: 13.5px; background: rgba(5,5,69,0.05); color: rgba(26,26,46,0.72); border: 1px solid ${COLORS.border}; cursor: not-allowed; }
 
-    .detail-heading { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: ${COLORS.ink}; margin: 22px 0 10px; }
+    .detail-heading { font-family: var(--font-syne), 'Syne', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: ${COLORS.ink}; margin: 22px 0 10px; }
     .detail-list { margin: 0; padding-left: 18px; }
     .detail-list li { font-size: 14.5px; color: rgba(26,26,46,0.72); line-height: 1.75; margin-bottom: 6px; }
 
     .section-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: ${COLORS.blue}; margin-bottom: 14px; }
-    .section-heading { font-family: 'Syne', sans-serif; font-weight: 700; font-size: clamp(24px,3.6vw,34px); color: ${COLORS.ink}; letter-spacing: -0.01em; }
+    .section-heading { font-family: var(--font-syne), 'Syne', sans-serif; font-weight: 700; font-size: clamp(24px,3.6vw,34px); color: ${COLORS.ink}; letter-spacing: -0.01em; }
   `;
 
   return (
@@ -368,7 +367,7 @@ export default function CareersPage() {
               <ScrollReveal key={i} delay={i * 50} direction="up">
                 <div className="perk-card">
                   <div className="perk-icon">{PERK_ICONS[p.icon]}</div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: COLORS.ink, marginBottom: 8 }}>{getText(p.title, language)}</h3>
+                  <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: COLORS.ink, marginBottom: 8 }}>{getText(p.title, language)}</h3>
                   <p style={{ fontSize: 14, color: COLORS.muted, lineHeight: 1.6, margin: 0 }}>{getText(p.desc, language)}</p>
                 </div>
               </ScrollReveal>
@@ -397,7 +396,7 @@ export default function CareersPage() {
                       <div style={{ flex: 1, padding: '28px 32px', display: 'flex', alignItems: 'flex-start', gap: 20, flexWrap: 'wrap' as const }}>
                         <div style={{ flex: 1, minWidth: 280 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12, flexWrap: 'wrap' }}>
-                            <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: COLORS.ink, margin: 0 }}>{getText(job.title, language)}</h3>
+                            <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: COLORS.ink, margin: 0 }}>{getText(job.title, language)}</h3>
                             <span style={{ fontSize: 12, color: dc, fontWeight: 700, padding: '3px 10px', background: `${dc}12`, borderRadius: 5 }}>{getText(job.dept, language)}</span>
                             {isClosed(job.deadline) && (
                               <span className="closed-badge">
@@ -427,7 +426,7 @@ export default function CareersPage() {
                           </div>
                         </div>
 
-                        <div style={{ color: 'rgba(26,26,46,0.4)', width: 36, height: 36, borderRadius: '50%', border: `1px solid ${COLORS.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.3s ease', transform: openJob === i ? 'rotate(180deg)' : 'none', flexShrink: 0 }}>
+                        <div style={{ color: 'rgba(26,26,46,0.72)', width: 36, height: 36, borderRadius: '50%', border: `1px solid ${COLORS.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.3s ease', transform: openJob === i ? 'rotate(180deg)' : 'none', flexShrink: 0 }}>
                           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                       </div>
@@ -482,7 +481,7 @@ export default function CareersPage() {
           {/* CTA */}
           <ScrollReveal>
             <div style={{ padding: 'clamp(40px,6vw,56px)', borderRadius: 16, background: COLORS.navy, textAlign: 'center' }}>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 'clamp(22px,3.6vw,30px)', color: '#fff', marginBottom: 12 }}>
+              <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 'clamp(22px,3.6vw,30px)', color: '#fff', marginBottom: 12 }}>
                 {language === 'km' ? 'មិនឃើញមុខតំណែងសមស្របមែនទេ?' : "Don't see the right role?"}
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15.5, marginBottom: 26 }}>

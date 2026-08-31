@@ -69,20 +69,19 @@ export default function ContactPage() {
   };
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .contact-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
     
     .dept-card { background: rgba(255,255,255,0.92); border: 1px solid rgba(5,5,69,0.07); border-radius: 18px; padding: 24px; box-shadow: 0 4px 16px rgba(5,5,69,0.04); transition: all 0.3s; }
     .dept-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(5,5,69,0.08); }
     
-    .form-input { width: 100%; padding: 14px 16px; border-radius: 12px; border: 1.5px solid rgba(5,5,69,0.1); background: rgba(255,255,255,0.8); font-size: 15px; color: #0d0d2b; font-family: 'DM Sans', sans-serif; transition: all 0.2s; box-sizing: border-box; }
+    .form-input { width: 100%; padding: 14px 16px; border-radius: 12px; border: 1.5px solid rgba(5,5,69,0.1); background: rgba(255,255,255,0.8); font-size: 15px; color: #0d0d2b; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; transition: all 0.2s; box-sizing: border-box; }
     .form-input:focus { border-color: #0ABADF; outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(10,186,223,0.1); }
     .form-label { display: block; font-size: 13px; font-weight: 600; color: rgba(5,5,69,0.7); margin-bottom: 6px; }
     
     .office-card { background: white; border: 1px solid rgba(5,5,69,0.07); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(5,5,69,0.05); }
     .faq-item { border-bottom: 1px solid rgba(5,5,69,0.07); }
-    .faq-btn { width: 100%; text-align: left; background: none; border: none; padding: 20px 0; font-size: 16px; font-weight: 600; color: #0d0d2b; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'DM Sans', sans-serif; }
+    .faq-btn { width: 100%; text-align: left; background: none; border: none; padding: 20px 0; font-size: 16px; font-weight: 600; color: #0d0d2b; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
   `;
 
   return (
@@ -108,7 +107,7 @@ export default function ContactPage() {
                   <div style={{ width: 52, height: 52, borderRadius: 14, background: `${dept.color}12`, border: `1px solid ${dept.color}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: dept.color, marginBottom: 16 }}>
                     <dept.Icon />
                   </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#0d0d2b', marginBottom: 8 }}>{dept.name}</h3>
+                  <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#0d0d2b', marginBottom: 8 }}>{dept.name}</h3>
                   <p style={{ fontSize: 13, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 16 }}>{dept.desc}</p>
                   <a href={`mailto:${dept.email}`} style={{ fontSize: 13, fontWeight: 700, color: dept.color, textDecoration: 'none' }}>{dept.email} →</a>
                 </div>
@@ -121,36 +120,36 @@ export default function ContactPage() {
             
             <ScrollReveal direction="up">
               <div style={{ background: 'white', borderRadius: 24, padding: 'clamp(24px,5vw,48px)', border: '1px solid rgba(5,5,69,0.07)', boxShadow: '0 8px 32px rgba(5,5,69,0.04)' }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,3vw,30px)', color: '#0d0d2b', marginBottom: 8 }}>Send a Message</h2>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,3vw,30px)', color: '#0d0d2b', marginBottom: 8 }}>Send a Message</h2>
                 <p style={{ fontSize: 15, color: 'rgba(26,26,46,0.55)', marginBottom: 32 }}>Fill out the form below and our team will get back to you within 24 hours.</p>
                 
                 {submitted ? (
                   <div style={{ padding: 32, background: 'rgba(81,180,28,0.08)', borderRadius: 16, border: '1px solid rgba(81,180,28,0.2)', textAlign: 'center' }}>
                     <div style={{ fontSize: 40, marginBottom: 12 }}>✅</div>
-                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 8 }}>Message Sent Successfully!</h3>
+                    <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 8 }}>Message Sent Successfully!</h3>
                     <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)' }}>Thank you for reaching out. A member of our team will review your inquiry and contact you shortly.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                       <div>
-                        <label className="form-label">Full Name *</label>
-                        <input type="text" className="form-input" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="John Doe" />
+                        <label htmlFor="contact-name" className="form-label">Full Name *</label>
+                        <input id="contact-name" type="text" className="form-input" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="John Doe" />
                       </div>
                       <div>
-                        <label className="form-label">Work Email *</label>
-                        <input type="email" className="form-input" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} placeholder="john@company.com" />
+                        <label htmlFor="contact-email" className="form-label">Work Email *</label>
+                        <input id="contact-email" type="email" className="form-input" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} placeholder="john@company.com" />
                       </div>
                     </div>
                     
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                       <div>
-                        <label className="form-label">Company Name</label>
-                        <input type="text" className="form-input" value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} placeholder="Acme Corp" />
+                        <label htmlFor="contact-company" className="form-label">Company Name</label>
+                        <input id="contact-company" type="text" className="form-input" value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} placeholder="Acme Corp" />
                       </div>
                       <div>
-                        <label className="form-label">Budget Range</label>
-                        <select className="form-input" value={formData.budget} onChange={e => setFormData({...formData, budget: e.target.value})}>
+                        <label htmlFor="contact-budget" className="form-label">Budget Range</label>
+                        <select id="contact-budget" className="form-input" value={formData.budget} onChange={e => setFormData({...formData, budget: e.target.value})}>
                           <option value="">Select a range...</option>
                           <option value="under_10k">Under $10,000</option>
                           <option value="10k_50k">$10,000 - $50,000</option>
@@ -161,8 +160,8 @@ export default function ContactPage() {
                     </div>
                     
                     <div>
-                      <label className="form-label">Primary Interest</label>
-                      <select className="form-input" required value={formData.interest} onChange={e => setFormData({...formData, interest: e.target.value})}>
+                      <label htmlFor="contact-interest" className="form-label">Primary Interest</label>
+                      <select id="contact-interest" className="form-input" required value={formData.interest} onChange={e => setFormData({...formData, interest: e.target.value})}>
                         <option value="">What can we help you with?</option>
                         <option value="web">Web Application Development</option>
                         <option value="mobile">Mobile App Development</option>
@@ -173,14 +172,14 @@ export default function ContactPage() {
                     </div>
 
                     <div>
-                      <label className="form-label">Message *</label>
-                      <textarea className="form-input" required rows={4} value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} placeholder="Tell us about your project goals, timeline, and requirements..."></textarea>
+                      <label htmlFor="contact-message" className="form-label">Message *</label>
+                      <textarea id="contact-message" className="form-input" required rows={4} value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} placeholder="Tell us about your project goals, timeline, and requirements..."></textarea>
                     </div>
 
-                    <button type="submit" disabled={submitting} style={{ padding: '16px 32px', borderRadius: 12, background: 'linear-gradient(135deg,#050545,#0E62A2)', color: 'white', fontWeight: 700, fontSize: 15, border: 'none', cursor: submitting ? 'wait' : 'pointer', fontFamily: "'DM Sans', sans-serif", opacity: submitting ? 0.8 : 1, transition: 'all 0.2s', marginTop: 8 }}>
+                    <button type="submit" disabled={submitting} style={{ padding: '16px 32px', borderRadius: 12, background: 'linear-gradient(135deg,#050545,#0E62A2)', color: 'white', fontWeight: 700, fontSize: 15, border: 'none', cursor: submitting ? 'wait' : 'pointer', fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif", opacity: submitting ? 0.8 : 1, transition: 'all 0.2s', marginTop: 8 }}>
                       {submitting ? 'Sending...' : 'Send Message'}
                     </button>
-                    <p style={{ fontSize: 12, color: 'rgba(26,26,46,0.4)', textAlign: 'center', marginTop: 4 }}>By submitting, you agree to our Privacy Policy and Terms of Service.</p>
+                    <p style={{ fontSize: 12, color: 'rgba(26,26,46,0.72)', textAlign: 'center', marginTop: 4 }}>By submitting, you agree to our Privacy Policy and Terms of Service.</p>
                   </form>
                 )}
               </div>
@@ -191,18 +190,18 @@ export default function ContactPage() {
           <ScrollReveal>
             <div style={{ background: 'white', borderRadius: 24, padding: 'clamp(32px,5vw,64px)', border: '1px solid rgba(5,5,69,0.07)', boxShadow: '0 8px 32px rgba(5,5,69,0.03)', maxWidth: 800, margin: '0 auto' }}>
               <div style={{ textAlign: 'center', marginBottom: 40 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,3vw,30px)', color: '#0d0d2b', marginBottom: 8 }}>Frequently Asked Questions</h2>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,3vw,30px)', color: '#0d0d2b', marginBottom: 8 }}>Frequently Asked Questions</h2>
                 <p style={{ fontSize: 15, color: 'rgba(26,26,46,0.55)' }}>Everything you need to know before reaching out.</p>
               </div>
               
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {FAQS.map((faq, i) => (
                   <div key={i} className="faq-item">
-                    <button className="faq-btn" onClick={() => setActiveFaq(activeFaq === i ? null : i)}>
+                    <button className="faq-btn" aria-expanded={activeFaq === i} aria-controls={`faq-answer-${i}`} onClick={() => setActiveFaq(activeFaq === i ? null : i)}>
                       <span>{faq.q}</span>
                       <span style={{ color: COLORS.cyan, transition: 'transform 0.3s', transform: activeFaq === i ? 'rotate(45deg)' : 'none' }}>+</span>
                     </button>
-                    <div style={{ overflow: 'hidden', maxHeight: activeFaq === i ? 200 : 0, transition: 'max-height 0.3s ease' }}>
+                    <div id={`faq-answer-${i}`} style={{ overflow: 'hidden', maxHeight: activeFaq === i ? 200 : 0, transition: 'max-height 0.3s ease' }}>
                       <p style={{ paddingBottom: 24, fontSize: 14, color: 'rgba(26,26,46,0.65)', lineHeight: 1.7, margin: 0 }}>{faq.a}</p>
                     </div>
                   </div>

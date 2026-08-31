@@ -7,8 +7,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const navStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&family=Hanuman:wght@400;500;600;700&display=swap');
-
   .ks-nav {
     position: fixed;
     top: 0;
@@ -46,7 +44,7 @@ const navStyles = `
 
   /* Logo */
   .ks-logo {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-weight: 800;
     font-size: 48px;
     text-decoration: none;
@@ -78,7 +76,7 @@ const navStyles = `
 
   .ks-link {
     position: relative;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
     color: rgba(20, 20, 50, 0.65);
@@ -99,7 +97,7 @@ const navStyles = `
 
   /* Logo always uses English font */
   .lang-km .ks-logo {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
   }
 
   .lang-km .ks-cta {
@@ -169,7 +167,7 @@ const navStyles = `
   }
   
   .ks-mega-col h4 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-syne), 'Syne', sans-serif;
     font-size: 14px;
     font-weight: 700;
     color: rgba(20,20,50, 0.5);
@@ -210,7 +208,7 @@ const navStyles = `
     transition: all 0.2s;
     margin-left: -12px;
     color: #141432;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
   }
@@ -221,7 +219,7 @@ const navStyles = `
   }
 
   .ks-mega-link-text h5 {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: #141432;
@@ -234,7 +232,7 @@ const navStyles = `
   }
 
   .ks-mega-link-text p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 13px;
     color: rgba(20, 20, 50, 0.6);
     margin: 0;
@@ -253,7 +251,7 @@ const navStyles = `
   }
 
   .ks-mega-featured-card h4 {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-syne), 'Syne', sans-serif;
     font-size: 20px;
     font-weight: 700;
     color: #ffffff;
@@ -263,7 +261,7 @@ const navStyles = `
   }
 
   .ks-mega-featured-card p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.8);
     margin: 0 0 24px 0;
@@ -271,7 +269,7 @@ const navStyles = `
   }
 
   .ks-mega-about p {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 14px;
     color: rgba(20, 20, 50, 0.65);
     margin: 0 0 24px 0;
@@ -294,7 +292,7 @@ const navStyles = `
 
   /* CTA button */
   .ks-cta {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
     color: #fff;
@@ -335,8 +333,12 @@ const navStyles = `
   .ks-hamburger {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
     padding: 8px;
     background: rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -373,13 +375,17 @@ const navStyles = `
     right: 0;
     z-index: 1000;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+    transition: max-height 0.4s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease, visibility 0.3s ease;
     max-height: 0;
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
   .ks-mobile-menu.open {
     max-height: 600px;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
   .ks-mobile-inner {
     background: #ffffff;
@@ -391,7 +397,7 @@ const navStyles = `
     gap: 4px;
   }
   .ks-mobile-link {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 500;
     color: rgba(20, 20, 50, 0.65);
@@ -423,7 +429,7 @@ const navStyles = `
     margin: 8px 0;
   }
   .ks-mobile-cta {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 15px;
     font-weight: 600;
     color: #fff;
@@ -458,7 +464,7 @@ const navStyles = `
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 12px;
     padding: 8px 36px 8px 16px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: rgba(20, 20, 50, 0.75);
@@ -801,6 +807,7 @@ export default function Navigation() {
           <Link
             href="/"
             className="ks-logo"
+            aria-label="KhmerSoftware Home"
             style={{ alignItems: 'flex-start' }}
             onClick={handleLogoClick}
           >
@@ -857,8 +864,12 @@ export default function Navigation() {
 
               {/* The actual icon image */}
               <img
-                src="/angkoricon.png"
-                alt="Angkor Wat"
+                src="/angkoricon.webp"
+                alt="KhmerSoftware Angkor Logo Icon"
+                width={22}
+                height={15}
+                loading="eager"
+                decoding="async"
                 className={`angkor-icon${logoAnimating ? ' pop' : ''}`}
                 style={{
                   height: '15px',
@@ -937,7 +948,7 @@ export default function Navigation() {
               {/* If About-Mixed layout */}
               {MEGA_MENUS[activeMegaMenu].type === 'about-mixed' && (
                 <div className="ks-mega-about" style={{ paddingRight: 40, borderRight: '1px solid rgba(0,0,0,0.05)' }}>
-                  <h4 style={{ fontFamily: "'Syne', sans-serif", fontSize: 20, fontWeight: 700, color: '#141432', marginBottom: 12 }}>
+                  <h4 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 20, fontWeight: 700, color: '#141432', marginBottom: 12 }}>
                     {MEGA_MENUS[activeMegaMenu].about.title}
                   </h4>
                   <p>{MEGA_MENUS[activeMegaMenu].about.desc}</p>
@@ -1009,7 +1020,11 @@ export default function Navigation() {
       )}
 
       {/* Mobile drawer */}
-      <div className={`ks-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`} aria-hidden={!isMobileMenuOpen}>
+      <div
+        className={`ks-mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
+        aria-hidden={!isMobileMenuOpen}
+        inert={!isMobileMenuOpen}
+      >
         <div className="ks-mobile-inner">
           {navLinks.map(link => (
             <Link
@@ -1027,7 +1042,7 @@ export default function Navigation() {
           <div className="ks-mobile-divider" />
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 0 8px' }}>
-            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', fontFamily: "'DM Sans', sans-serif" }}>Language</span>
+            <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', fontFamily: "var(--font-dm-sans), 'DM Sans', sans-serif" }}>Language</span>
             <LanguageSwitcher />
           </div>
 

@@ -136,7 +136,7 @@ function StatCard({ val, label, color }: { val: string; label: string; color: st
         transition: 'transform 0.3s, box-shadow 0.3s',
       }}
     >
-      <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 42, fontWeight: 800, color, lineHeight: 1 }}>{val}</div>
+      <div style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 42, fontWeight: 800, color, lineHeight: 1 }}>{val}</div>
       <div style={{ color: C.muted, fontSize: 13, fontWeight: 500, marginTop: 8, lineHeight: 1.4 }}>{label}</div>
     </div>
   );
@@ -171,7 +171,7 @@ function FeatureCard({
       }}>
         <IconComp />
       </div>
-      <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 17, fontWeight: 700, color: C.ink, margin: 0 }}>{title}</h3>
+      <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 17, fontWeight: 700, color: C.ink, margin: 0 }}>{title}</h3>
       <p style={{ color: C.mutedMed, fontSize: 14, lineHeight: 1.7, margin: 0 }}>{desc}</p>
     </div>
   );
@@ -251,7 +251,7 @@ export default function About() {
                   }}>
                     Our Story
                   </div>
-                  <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 'clamp(22px,3vw,34px)', fontWeight: 800, color: C.ink, marginBottom: 20, lineHeight: 1.2 }}>
+                  <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 'clamp(22px,3vw,34px)', fontWeight: 800, color: C.ink, marginBottom: 20, lineHeight: 1.2 }}>
                     {t('about.ourStory')}
                   </h2>
                   {[t('about.storyText1'), t('about.storyText2'), t('about.storyText3')].map((txt, i) => (
@@ -272,7 +272,7 @@ export default function About() {
             <Reveal>
               <div style={{ textAlign: 'center', marginBottom: 44 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.blue, marginBottom: 10 }}>Purpose</div>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 'clamp(24px,3vw,36px)', fontWeight: 800, color: C.ink }}>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 'clamp(24px,3vw,36px)', fontWeight: 800, color: C.ink }}>
                   Mission &amp;{' '}
                   <span style={{ background: `linear-gradient(135deg,${C.cyan},${C.blue})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Vision</span>
                 </h2>
@@ -284,7 +284,7 @@ export default function About() {
                   <div style={{ width: 64, height: 64, borderRadius: 18, background: `linear-gradient(135deg,${C.cyan},${C.blue})`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', marginBottom: 24, boxShadow: `0 8px 24px ${C.cyan}40` }}>
                     <LightningIcon />
                   </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 700, color: C.ink, marginBottom: 14 }}>{t('about.mission')}</h3>
+                  <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 22, fontWeight: 700, color: C.ink, marginBottom: 14 }}>{t('about.mission')}</h3>
                   <p style={{ color: C.mutedMed, lineHeight: 1.8, fontSize: 15 }}>{t('about.missionText')}</p>
                 </div>
               </Reveal>
@@ -293,7 +293,7 @@ export default function About() {
                   <div style={{ width: 64, height: 64, borderRadius: 18, background: `linear-gradient(135deg,${C.yellow},${C.green})`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', marginBottom: 24, boxShadow: `0 8px 24px ${C.green}40` }}>
                     <EyeIcon />
                   </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 700, color: C.ink, marginBottom: 14 }}>{t('about.vision')}</h3>
+                  <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 22, fontWeight: 700, color: C.ink, marginBottom: 14 }}>{t('about.vision')}</h3>
                   <p style={{ color: C.mutedMed, lineHeight: 1.8, fontSize: 15 }}>{t('about.visionText')}</p>
                 </div>
               </Reveal>
@@ -314,7 +314,7 @@ export default function About() {
                 <div style={{ position: 'relative', zIndex: 1 }}>
                   <div style={{ textAlign: 'center', marginBottom: 44 }}>
                     <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.cyan, marginBottom: 10 }}>What We Stand For</div>
-                    <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 'clamp(22px,3vw,34px)', fontWeight: 800, color: '#fff' }}>Our Core Values</h2>
+                    <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 'clamp(22px,3vw,34px)', fontWeight: 800, color: '#fff' }}>Our Core Values</h2>
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(220px,100%),1fr))', gap: 20 }}>
                     {values.map((v, i) => (
@@ -331,7 +331,7 @@ export default function About() {
             <Reveal>
               <div style={{ textAlign: 'center', marginBottom: 48 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: C.cyan, marginBottom: 10 }}>Why Choose Us</div>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 'clamp(24px,3vw,38px)', fontWeight: 800, color: C.ink, marginBottom: 12 }}>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 'clamp(24px,3vw,38px)', fontWeight: 800, color: C.ink, marginBottom: 12 }}>
                   What Sets Us{' '}
                   <span style={{ background: `linear-gradient(135deg,${C.yellow},${C.green})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Apart</span>
                 </h2>
@@ -382,7 +382,7 @@ function ValueCard({ label, desc }: { label: string; desc: string }) {
         <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'rgba(10,186,223,0.2)', border: '1px solid rgba(10,186,223,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0ABADF', flexShrink: 0 }}>
           <CheckIcon />
         </div>
-        <h4 style={{ fontFamily: "'Syne', sans-serif", fontSize: 16, fontWeight: 700, color: '#fff', margin: 0 }}>{label}</h4>
+        <h4 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 16, fontWeight: 700, color: '#fff', margin: 0 }}>{label}</h4>
       </div>
       <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13.5, lineHeight: 1.65, margin: 0 }}>{desc}</p>
     </div>
@@ -404,7 +404,7 @@ function CTABlock({ language, t }: { language: string; t: (key: string) => strin
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.04, backgroundImage: 'linear-gradient(rgba(255,255,255,0.4) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.4) 1px,transparent 1px)', backgroundSize: '40px 40px' }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#0ABADF', marginBottom: 16 }}>Get Started</div>
-        <h2 style={{ fontFamily: "'Syne', sans-serif", fontSize: 'clamp(26px,4vw,44px)', fontWeight: 800, color: '#fff', marginBottom: 14 }}>
+        <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontSize: 'clamp(26px,4vw,44px)', fontWeight: 800, color: '#fff', marginBottom: 14 }}>
           Ready to{' '}
           <span style={{ background: 'linear-gradient(135deg,#0ABADF,#7AEFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Join</span>
           {' '}Our Success?

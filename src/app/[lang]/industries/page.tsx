@@ -79,8 +79,7 @@ export default function IndustriesPage() {
   }, [params.lang, setLanguage]);
 
   const pageStyles = `
-    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
-    body { background: #f8f9fc; margin: 0; font-family: 'DM Sans', sans-serif; }
+    body { background: #f8f9fc; margin: 0; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; }
     .ind-container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px,4vw,40px); }
     .ind-card { background: rgba(255,255,255,0.9); border: 1px solid rgba(5,5,69,0.07); border-radius: 20px; padding: 28px; box-shadow: 0 4px 16px rgba(5,5,69,0.05); transition: all 0.35s ease; cursor: pointer; }
     .ind-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(5,5,69,0.1); }
@@ -106,7 +105,7 @@ export default function IndustriesPage() {
           <ScrollReveal>
             <div style={{ textAlign: 'center', padding: '72px 0 48px' }}>
               <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.blue, padding: '6px 14px', background: 'rgba(14,98,162,0.08)', border: '1px solid rgba(14,98,162,0.2)', borderRadius: 100, marginBottom: 16 }}>{language === 'km' ? "១២ ឧស្សាហកម្ម" : "12 Industries"}</div>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
                 {language === 'km' ? 'យើងដឹងពី' : 'We Know Your'} <span style={{ background: 'linear-gradient(135deg,#0E62A2,#0ABADF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{language === 'km' ? 'វិស័យអាជីវកម្មរបស់អ្នក' : 'Business Domain'}</span>
               </h2>
               <p style={{ color: 'rgba(26,26,46,0.55)', fontSize: 16, maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
@@ -128,7 +127,7 @@ export default function IndustriesPage() {
                       <ind.Icon />
                     </div>
                     <div style={{ flex: 1 }}>
-                      <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#0d0d2b', marginBottom: 2 }}>{getText(ind.title, language)}</h3>
+                      <h3 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#0d0d2b', marginBottom: 2 }}>{getText(ind.title, language)}</h3>
                       <span style={{ fontSize: 11, color: ind.color, fontWeight: 600, background: `${ind.color}10`, padding: '2px 8px', borderRadius: 100 }}>{getText(ind.clients, language)}</span>
                     </div>
                     <div style={{ color: ind.color, fontSize: 18, transition: 'transform 0.3s', transform: active === i ? 'rotate(180deg)' : 'none' }}>▾</div>
@@ -138,7 +137,7 @@ export default function IndustriesPage() {
                   {/* Expanded solutions */}
                   <div style={{ overflow: 'hidden', maxHeight: active === i ? 120 : 0, transition: 'max-height 0.4s cubic-bezier(0.16,1,0.3,1)' }}>
                     <div style={{ paddingTop: 8 }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.1em', color: 'rgba(26,26,46,0.4)', marginBottom: 8 }}>{language === 'km' ? "ដំណោះស្រាយសំខាន់ៗ" : "Key Solutions"}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.1em', color: 'rgba(26,26,46,0.72)', marginBottom: 8 }}>{language === 'km' ? "ដំណោះស្រាយសំខាន់ៗ" : "Key Solutions"}</div>
                       <div>{ind.solutions.map((s, si) => <span key={si} className="solution-tag" style={{ background: `${ind.color}10`, color: ind.color }}>✓ {getText(s, language)}</span>)}</div>
                     </div>
                   </div>
@@ -152,7 +151,7 @@ export default function IndustriesPage() {
             <div style={{ marginTop: 80, padding: 'clamp(40px,6vw,64px)', borderRadius: 24, background: 'linear-gradient(135deg,#050545,#0E62A2)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: COLORS.cyan, filter: 'blur(120px)', opacity: 0.1, top: '-100px', right: '-50px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>{language === 'km' ? "មិនឃើញឧស្សាហកម្មរបស់អ្នក?" : "Don't see your industry?"}</h2>
+                <h2 style={{ fontFamily: "var(--font-syne), 'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>{language === 'km' ? "មិនឃើញឧស្សាហកម្មរបស់អ្នក?" : "Don't see your industry?"}</h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28, lineHeight: 1.6 }}>{language === 'km' ? "យើងបានធ្វើការនៅទូទាំងវិស័យជាច្រើនទៀត។ ប្រាប់យើងអំពីអាជីវកម្មរបស់អ្នក ហើយយើងនឹងរៀបចំដំណោះស្រាយសម្រាប់អ្នក។" : "We've worked across many more sectors. Tell us about your business and we'll tailor a solution for you."}</p>
                 <a href={`/${language}/contact`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 32px', borderRadius: 100, fontWeight: 600, fontSize: 14, background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', color: '#fff', textDecoration: 'none', boxShadow: '0 4px 20px rgba(10,186,223,0.4)' }}>
                   {language === 'km' ? "និយាយជាមួយក្រុមរបស់យើង →" : "Talk to Our Team →"}

@@ -11,8 +11,6 @@ const COLORS = {
 };
 
 const footerStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap');
-
   .ks-footer {
     position: relative;
     z-index: 2;
@@ -35,7 +33,7 @@ const footerStyles = `
   }
 
   .ks-footer-logo {
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     font-weight: 800;
     font-size: 32px;
     margin-bottom: 14px;
@@ -52,46 +50,46 @@ const footerStyles = `
   }
 
   .ks-footer-desc {
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 14px;
-    line-height: 1.8;
-    max-width: 260px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 13.5px;
+    line-height: 1.65;
+    max-width: 280px;
   }
 
   .ks-social-icons {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     margin-top: 20px;
     margin-bottom: 28px;
   }
 
   .ks-social-icon {
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
     transition: all 0.2s;
   }
 
   .ks-social-icon:hover {
     background: rgba(10, 186, 223, 0.25);
     color: #0ABADF;
-    border-color: rgba(10, 186, 223, 0.4);
+    border-color: rgba(10, 186, 223, 0.5);
   }
 
-  .ks-footer-col h4 {
-    font-family: 'Syne', sans-serif;
+  .ks-footer-col h3 {
+    font-family: var(--font-syne), 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 15px;
     margin-bottom: 16px;
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
   }
 
   .ks-footer-links {
@@ -104,7 +102,7 @@ const footerStyles = `
   }
 
   .ks-footer-links a {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.78);
     font-size: 13px;
     text-decoration: none;
     transition: color 0.2s;
@@ -115,13 +113,13 @@ const footerStyles = `
   }
 
   .ks-footer-links li {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.78);
     font-size: 13px;
     line-height: 1.5;
   }
 
   .ks-footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding-top: 24px;
     display: flex;
     justify-content: space-between;
@@ -131,7 +129,7 @@ const footerStyles = `
   }
 
   .ks-footer-copyright {
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 13px;
   }
 
@@ -141,13 +139,13 @@ const footerStyles = `
   }
 
   .ks-footer-legal a {
-    color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.75);
     font-size: 13px;
     text-decoration: none;
   }
 
   .ks-footer-legal a:hover {
-    color: rgba(255, 255, 255, 0.7);
+    color: #0ABADF;
   }
 
   @media (max-width: 1024px) {
@@ -253,8 +251,12 @@ export default function Footer() {
               <div className="ks-footer-logo">
                 <span className="ks-footer-logo-text">KS</span>
                 <img
-                  src="/angkoricon.png"
-                  alt="Angkor Wat"
+                  src="/angkoricon.webp"
+                  alt="KhmerSoftware Angkor Wat Icon"
+                  width={16}
+                  height={12}
+                  loading="lazy"
+                  decoding="async"
                   style={{ height: '12px', width: 'auto', marginLeft: '3px', alignSelf: 'flex-start' }}
                 />
               </div>
@@ -262,12 +264,12 @@ export default function Footer() {
                 {t('footer.description')}
               </p>
               <div className="ks-social-icons">
-                <a href="https://www.facebook.com/khmersoftwaresolutions" target="_blank" rel="noopener noreferrer" className="ks-social-icon">
+                <a href="https://www.facebook.com/khmersoftwaresolutions" target="_blank" rel="noopener noreferrer" className="ks-social-icon" aria-label="KhmerSoftware on Facebook">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                   </svg>
                 </a>
-                <a href="https://t.me/khmersoftwaresolutions" target="_blank" rel="noopener noreferrer" className="ks-social-icon">
+                <a href="https://t.me/khmersoftwaresolutions" target="_blank" rel="noopener noreferrer" className="ks-social-icon" aria-label="KhmerSoftware on Telegram">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                   </svg>
@@ -277,7 +279,7 @@ export default function Footer() {
 
             {/* Services */}
             <div className="ks-footer-col">
-              <h4>{t('footer.services.title')}</h4>
+              <h3>{t('footer.services.title')}</h3>
               <ul className="ks-footer-links">
                 <li><a href={`/${language}/services`}>{t('footer.services.softwareSales')}</a></li>
                 <li><a href={`/${language}/services`}>{t('footer.services.softwareRental')}</a></li>
@@ -289,19 +291,19 @@ export default function Footer() {
 
             {/* Company */}
             <div className="ks-footer-col">
-              <h4>{t('footer.company.title')}</h4>
+              <h3>{t('footer.company.title')}</h3>
               <ul className="ks-footer-links">
                 <li><a href={`/${language}/about`}>{t('footer.company.about')}</a></li>
-                <li><a href="#">{t('footer.company.blog')}</a></li>
-                <li><a href="#">{t('footer.company.careers')}</a></li>
-                <li><a href="#">{t('footer.company.partners')}</a></li>
-                <li><a href="#">{t('footer.company.press')}</a></li>
+                <li><a href={`/${language}/blog`}>{t('footer.company.blog')}</a></li>
+                <li><a href={`/${language}/careers`}>{t('footer.company.careers')}</a></li>
+                <li><a href={`/${language}/about`}>{t('footer.company.partners')}</a></li>
+                <li><a href={`/${language}/contact`}>{t('footer.company.press')}</a></li>
               </ul>
             </div>
 
             {/* Contact */}
             <div className="ks-footer-col">
-              <h4>{t('footer.contact.title')}</h4>
+              <h3>{t('footer.contact.title')}</h3>
               <ul className="ks-footer-links">
                 <li><a href={`mailto:info@khmersoftware.com`}>{t('footer.contact.email')}</a></li>
                 <li><a href="tel:+855966039418">{t('footer.contact.phone')}</a></li>
@@ -318,9 +320,9 @@ export default function Footer() {
               © 2024 KhmerSoftware. {t('footer.copyright')} · {t('footer.serving')}
             </p>
             <div className="ks-footer-legal">
-              <a href="#">{t('footer.legal.privacy')}</a>
-              <a href="#">{t('footer.legal.terms')}</a>
-              <a href="#">{t('footer.legal.cookies')}</a>
+              <a href={`/${language}/contact`}>{t('footer.legal.privacy')}</a>
+              <a href={`/${language}/contact`}>{t('footer.legal.terms')}</a>
+              <a href={`/${language}/contact`}>{t('footer.legal.cookies')}</a>
             </div>
           </div>
         </div>
