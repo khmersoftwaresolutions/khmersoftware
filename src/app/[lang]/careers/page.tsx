@@ -39,175 +39,183 @@ function ScrollReveal({ children, delay = 0, direction = 'up' }: { children: Rea
   );
 }
 
+type Localized = string | { en?: string; km?: string };
+
+function getText(val: Localized | undefined, lang: string): string {
+  if (!val) return '';
+  if (typeof val === 'string') return val;
+  return (lang === 'km' ? val.km : val.en) || val.en || val.km || '';
+}
+
 type Job = {
-  title: string;
-  dept: string;
-  type: string;
-  location: string;
+  title: Localized;
+  dept: Localized;
+  type: Localized;
+  location: Localized;
   deadline: string;
   tags: string[];
-  desc: string;
-  responsibilities: string[];
-  requirements: string[];
-  niceToHave: string[];
+  desc: Localized;
+  responsibilities: Localized[];
+  requirements: Localized[];
+  niceToHave: Localized[];
 };
 
 const JOBS: Job[] = [
   {
-    title: 'Senior Full-Stack Engineer',
-    dept: 'Engineering',
-    type: 'Full-time',
-    location: 'Phnom Penh / Remote',
+    title: { en: 'Senior Full-Stack Engineer', km: "វិស្វករ Full-Stack ជាន់ខ្ពស់" },
+    dept: { en: 'Engineering', km: "វិស្វកម្ម" },
+    type: { en: 'Full-time', km: "ពេញម៉ោង" },
+    location: { en: 'Phnom Penh / Remote', km: "ភ្នំពេញ / ធ្វើការពីចម្ងាយ" },
     deadline: '2026-06-12',
     tags: ['React', 'Node.js', 'PostgreSQL', '5+ yrs'],
-    desc: 'Own end-to-end features across web and API for multiple client platforms. You\'ll work in small teams with high autonomy and direct client interaction.',
+    desc: { en: 'Own end-to-end features across web and API for multiple client platforms. You\'ll work in small teams with high autonomy and direct client interaction.', km: "ទទួលខុសត្រូវលើមុខងារពីដើមដល់ចប់សម្រាប់គេហទំព័រ និង API សម្រាប់វេទិកាអតិថិជនជាច្រើន។ អ្នកនឹងធ្វើការក្នុងក្រុមតូចៗដែលមានស្វ័យភាពខ្ពស់ និងអន្តរកម្មផ្ទាល់ជាមួយអតិថិជន។" },
     responsibilities: [
-      'Design, build, and ship features across the full stack, from database schema to production UI.',
-      'Partner directly with clients and product stakeholders to scope work and set realistic delivery timelines.',
-      'Review pull requests and mentor mid-level engineers on architecture and code quality.',
-      'Identify performance bottlenecks and lead remediation across services and data layers.',
-      'Contribute to technical planning for new client engagements, including estimation and risk assessment.',
+      { en: 'Design, build, and ship features across the full stack, from database schema to production UI.', km: "រចនា កសាង និងបញ្ចេញមុខងារនៅទូទាំង full stack ពី schema មូលដ្ឋានទិន្នន័យដល់ UI ផលិតកម្ម។" },
+      { en: 'Partner directly with clients and product stakeholders to scope work and set realistic delivery timelines.', km: "សហការផ្ទាល់ជាមួយអតិថិជន និងអ្នកពាក់ព័ន្ធផលិតផលដើម្បីកំណត់ទំហំការងារ និងពេលវេលាប្រគល់គម្រោងជាក់ស្តែង។" },
+      { en: 'Review pull requests and mentor mid-level engineers on architecture and code quality.', km: "ពិនិត្យ pull requests និងណែនាំវិស្វករកម្រិតមធ្យមស្តីពីស្ថាបត្យកម្ម និងគុណភាពកូដ។" },
+      { en: 'Identify performance bottlenecks and lead remediation across services and data layers.', km: "កំណត់បញ្ហាដំណើរការ និងដឹកនាំការដោះស្រាយនៅទូទាំងសេវាកម្ម និងស្រទាប់ទិន្នន័យ។" },
+      { en: 'Contribute to technical planning for new client engagements, including estimation and risk assessment.', km: "ចូលរួមក្នុងការធ្វើផែនការបច្ចេកទេសសម្រាប់គម្រោងអតិថិជនថ្មី រួមទាំងការប៉ាន់ប្រមាណ និងការវាយតម្លៃហានិភ័យ។" }
     ],
     requirements: [
-      '5+ years building production web applications with a modern JavaScript or TypeScript stack.',
-      'Strong command of React and a Node.js-based backend framework.',
-      'Working knowledge of relational databases (PostgreSQL or similar) and query optimization.',
-      'Comfortable owning a feature from technical design through deployment and monitoring.',
-      'Clear written and verbal communication for direct client-facing work.',
+      { en: '5+ years building production web applications with a modern JavaScript or TypeScript stack.', km: "បទពិសោធន៍ ៥+ ឆ្នាំក្នុងការកសាងកម្មវិធីគេហទំព័រជាមួយ JavaScript ឬ TypeScript ទំនើប។" },
+      { en: 'Strong command of React and a Node.js-based backend framework.', km: "មានសមត្ថភាពខ្លាំងលើ React និង framework ផ្នែកខាងក្រោយផ្អែកលើ Node.js។" },
+      { en: 'Working knowledge of relational databases (PostgreSQL or similar) and query optimization.', km: "ចំណេះដឹងទូលំទូលាយអំពីមូលដ្ឋានទិន្នន័យ (PostgreSQL ឬស្រដៀងគ្នា) និងការធ្វើឱ្យប្រសើរឡើងនូវ query។" },
+      { en: 'Comfortable owning a feature from technical design through deployment and monitoring.', km: "មានផាសុកភាពក្នុងការទទួលខុសត្រូវមុខងារពីការរចនាបច្ចេកទេសរហូតដល់ការដាក់ឱ្យប្រើប្រាស់ និងការត្រួតពិនិត្យ។" },
+      { en: 'Clear written and verbal communication for direct client-facing work.', km: "មានការប្រាស្រ័យទាក់ទងច្បាស់លាស់ទាំងសំណេរ និងពាក្យសំដីសម្រាប់ការងារប្រឈមមុខនឹងអតិថិជនផ្ទាល់។" }
     ],
     niceToHave: [
-      'Experience with infrastructure-as-code and CI/CD pipelines.',
-      'Prior work in a consultancy or agency delivering multiple concurrent client projects.',
+      { en: 'Experience with infrastructure-as-code and CI/CD pipelines.', km: "មានបទពិសោធន៍ជាមួយហេដ្ឋារចនាសម្ព័ន្ធជាកូដ (IaC) និង CI/CD pipelines។" },
+      { en: 'Prior work in a consultancy or agency delivering multiple concurrent client projects.', km: "ការងារពីមុននៅក្នុងក្រុមហ៊ុនប្រឹក្សា ឬភ្នាក់ងារដែលប្រគល់គម្រោងអតិថិជនច្រើនក្នុងពេលតែមួយ។" }
     ],
   },
   {
-    title: 'React Native Developer',
-    dept: 'Mobile',
-    type: 'Full-time',
-    location: 'Phnom Penh',
+    title: { en: 'React Native Developer', km: "អ្នកអភិវឌ្ឍន៍ React Native" },
+    dept: { en: 'Mobile', km: "ទូរស័ព្ទ" },
+    type: { en: 'Full-time', km: "ពេញម៉ោង" },
+    location: { en: 'Phnom Penh', km: "ភ្នំពេញ" },
     deadline: '2026-05-28',
     tags: ['React Native', 'iOS', 'Android', '3+ yrs'],
-    desc: 'Build cross-platform mobile apps for clients across banking, retail, and healthcare. Experience with offline-first architecture is a plus.',
+    desc: { en: 'Build cross-platform mobile apps for clients across banking, retail, and healthcare. Experience with offline-first architecture is a plus.', km: "កសាងកម្មវិធីទូរស័ព្ទសម្រាប់អតិថិជននៅទូទាំងវិស័យធនាគារ លក់រាយ និងសុខាភិបាល។ បទពិសោធន៍ជាមួយស្ថាបត្យកម្ម offline-first គឺជាអត្ថប្រយោជន៍មួយ។" },
     responsibilities: [
-      'Develop and maintain cross-platform mobile applications using React Native.',
-      'Implement offline-first data sync strategies for clients operating in low-connectivity environments.',
-      'Work closely with backend engineers to define and consume REST and GraphQL APIs.',
-      'Profile and optimize app performance across a range of device tiers.',
-      'Coordinate with QA to define test plans and resolve platform-specific issues.',
+      { en: 'Develop and maintain cross-platform mobile applications using React Native.', km: "អភិវឌ្ឍ និងថែទាំកម្មវិធីទូរស័ព្ទឆ្លងប្រព័ន្ធប្រតិបត្តិការដោយប្រើ React Native។" },
+      { en: 'Implement offline-first data sync strategies for clients operating in low-connectivity environments.', km: "អនុវត្តយុទ្ធសាស្ត្រធ្វើសមកាលកម្មទិន្នន័យ offline-first សម្រាប់អតិថិជនដែលប្រតិបត្តិការក្នុងបរិស្ថានដែលមិនសូវមានការតភ្ជាប់អ៊ិនធឺណិត។" },
+      { en: 'Work closely with backend engineers to define and consume REST and GraphQL APIs.', km: "ធ្វើការយ៉ាងជិតស្និទ្ធជាមួយវិស្វករផ្នែកខាងក្រោយដើម្បីកំណត់ និងប្រើប្រាស់ REST និង GraphQL APIs។" },
+      { en: 'Profile and optimize app performance across a range of device tiers.', km: "ត្រួតពិនិត្យ និងធ្វើឱ្យប្រសើរឡើងនូវដំណើរការកម្មវិធីនៅទូទាំងឧបករណ៍ជាច្រើនកម្រិត។" },
+      { en: 'Coordinate with QA to define test plans and resolve platform-specific issues.', km: "សម្របសម្រួលជាមួយក្រុមធានាគុណភាព (QA) ដើម្បីកំណត់ផែនការធ្វើតេស្ត និងដោះស្រាយបញ្ហាជាក់លាក់នៃប្រព័ន្ធប្រតិបត្តិការ។" }
     ],
     requirements: [
-      '3+ years shipping production React Native applications on iOS and Android.',
-      'Solid understanding of native module integration and platform-specific build tooling.',
-      'Experience with state management patterns at scale (Redux, Zustand, or similar).',
-      'Familiarity with app store submission and release processes for both platforms.',
+      { en: '3+ years shipping production React Native applications on iOS and Android.', km: "បទពិសោធន៍ ៣+ ឆ្នាំក្នុងការបញ្ចេញកម្មវិធី React Native នៅលើ iOS និង Android។" },
+      { en: 'Solid understanding of native module integration and platform-specific build tooling.', km: "មានការយល់ដឹងច្បាស់លាស់អំពីការរួមបញ្ចូលម៉ូឌុលដើម និងឧបករណ៍បង្កើតជាក់លាក់នៃប្រព័ន្ធប្រតិបត្តិការ។" },
+      { en: 'Experience with state management patterns at scale (Redux, Zustand, or similar).', km: "បទពិសោធន៍ជាមួយការគ្រប់គ្រង state (Redux, Zustand ឬស្រដៀងគ្នា) ក្នុងទំហំធំ។" },
+      { en: 'Familiarity with app store submission and release processes for both platforms.', km: "ស្គាល់អំពីដំណើរការបញ្ជូន និងបញ្ចេញកម្មវិធីនៅលើ app store សម្រាប់ប្រព័ន្ធប្រតិបត្តិការទាំងពីរ។" }
     ],
     niceToHave: [
-      'Exposure to native iOS (Swift) or Android (Kotlin) development.',
-      'Experience in regulated industries such as banking or healthcare.',
+      { en: 'Exposure to native iOS (Swift) or Android (Kotlin) development.', km: "មានបទពិសោធន៍ក្នុងការអភិវឌ្ឍ iOS (Swift) ឬ Android (Kotlin) ដើម។" },
+      { en: 'Experience in regulated industries such as banking or healthcare.', km: "បទពិសោធន៍ក្នុងឧស្សាហកម្មដែលមានការគ្រប់គ្រងខ្លាំងដូចជា ធនាគារ ឬសុខាភិបាល។" }
     ],
   },
   {
-    title: 'UI/UX Designer',
-    dept: 'Design',
-    type: 'Full-time',
-    location: 'Phnom Penh / Remote',
+    title: { en: 'UI/UX Designer', km: "អ្នករចនា UI/UX" },
+    dept: { en: 'Design', km: "ការរចនា" },
+    type: { en: 'Full-time', km: "ពេញម៉ោង" },
+    location: { en: 'Phnom Penh / Remote', km: "ភ្នំពេញ / ធ្វើការពីចម្ងាយ" },
     deadline: '2026-04-30',
     tags: ['Figma', 'User Research', 'Prototyping', '3+ yrs'],
-    desc: 'Lead end-to-end design for client products — from research and wireframes through to high-fidelity UI and developer handoff.',
+    desc: { en: 'Lead end-to-end design for client products — from research and wireframes through to high-fidelity UI and developer handoff.', km: "ដឹកនាំការរចនាពីដើមដល់ចប់សម្រាប់ផលិតផលអតិថិជន — ពីការស្រាវជ្រាវ និង wireframes រហូតដល់ UI គុណភាពខ្ពស់ និងការប្រគល់ឱ្យអ្នកអភិវឌ្ឍន៍។" },
     responsibilities: [
-      'Lead discovery and research to translate client requirements into clear product goals.',
-      'Produce wireframes, prototypes, and high-fidelity UI for web and mobile products.',
-      'Maintain and evolve design systems shared across multiple client engagements.',
-      'Facilitate usability testing and iterate on designs based on findings.',
-      'Partner with engineering during implementation to ensure design fidelity.',
+      { en: 'Lead discovery and research to translate client requirements into clear product goals.', km: "ដឹកនាំការស្វែងយល់ និងការស្រាវជ្រាវដើម្បីបកប្រែតម្រូវការអតិថិជនទៅជាគោលដៅផលិតផលច្បាស់លាស់។" },
+      { en: 'Produce wireframes, prototypes, and high-fidelity UI for web and mobile products.', km: "ផលិត wireframes គំរូ និង UI គុណភាពខ្ពស់សម្រាប់ផលិតផលគេហទំព័រ និងទូរស័ព្ទ។" },
+      { en: 'Maintain and evolve design systems shared across multiple client engagements.', km: "ថែទាំ និងអភិវឌ្ឍប្រព័ន្ធរចនាដែលចែករំលែកនៅទូទាំងគម្រោងអតិថិជនជាច្រើន។" },
+      { en: 'Facilitate usability testing and iterate on designs based on findings.', km: "សម្របសម្រួលការធ្វើតេស្តភាពងាយស្រួលប្រើប្រាស់ និងធ្វើការកែលម្អលើការរចនាដោយផ្អែកលើការរកឃើញ។" },
+      { en: 'Partner with engineering during implementation to ensure design fidelity.', km: "សហការជាមួយវិស្វកម្មក្នុងអំឡុងពេលអនុវត្តដើម្បីធានាភាពត្រឹមត្រូវនៃការរចនា។" }
     ],
     requirements: [
-      '3+ years of product design experience with a strong portfolio of shipped work.',
-      'Expert-level proficiency in Figma, including component and variant systems.',
-      'Demonstrated experience conducting user research and usability testing.',
-      'Ability to present and defend design decisions to non-design stakeholders.',
+      { en: '3+ years of product design experience with a strong portfolio of shipped work.', km: "បទពិសោធន៍ ៣+ ឆ្នាំនៃការរចនាផលិតផល ជាមួយស្នាដៃដ៏រឹងមាំដែលបានចេញផ្សាយ។" },
+      { en: 'Expert-level proficiency in Figma, including component and variant systems.', km: "ជំនាញកម្រិតអ្នកជំនាញនៅក្នុង Figma រួមទាំងប្រព័ន្ធសមាសធាតុ និងប្រព័ន្ធ variant។" },
+      { en: 'Demonstrated experience conducting user research and usability testing.', km: "បទពិសោធន៍ដែលបង្ហាញឱ្យឃើញក្នុងការធ្វើការស្រាវជ្រាវអ្នកប្រើប្រាស់ និងការធ្វើតេស្តភាពងាយស្រួលប្រើប្រាស់។" },
+      { en: 'Ability to present and defend design decisions to non-design stakeholders.', km: "សមត្ថភាពក្នុងការបង្ហាញ និងការពារការសម្រេចចិត្តលើការរចនាដល់អ្នកពាក់ព័ន្ធដែលមិនមែនជាអ្នករចនា។" }
     ],
     niceToHave: [
-      'Basic front-end coding literacy (HTML/CSS) for closer collaboration with engineers.',
-      'Experience designing for both consumer and enterprise audiences.',
+      { en: 'Basic front-end coding literacy (HTML/CSS) for closer collaboration with engineers.', km: "ចំណេះដឹងសរសេរកូដ front-end ជាមូលដ្ឋាន (HTML/CSS) សម្រាប់កិច្ចសហការកាន់តែជិតស្និទ្ធជាមួយវិស្វករ។" },
+      { en: 'Experience designing for both consumer and enterprise audiences.', km: "បទពិសោធន៍ក្នុងការរចនាសម្រាប់ទាំងទស្សនិកជនអ្នកប្រើប្រាស់ទូទៅ និងសហគ្រាស។" }
     ],
   },
   {
-    title: 'DevOps / Cloud Engineer',
-    dept: 'Infrastructure',
-    type: 'Full-time',
-    location: 'Phnom Penh',
+    title: { en: 'DevOps / Cloud Engineer', km: "វិស្វករ DevOps / Cloud" },
+    dept: { en: 'Infrastructure', km: "ហេដ្ឋារចនាសម្ព័ន្ធ" },
+    type: { en: 'Full-time', km: "ពេញម៉ោង" },
+    location: { en: 'Phnom Penh', km: "ភ្នំពេញ" },
     deadline: '2026-07-03',
     tags: ['AWS', 'Kubernetes', 'Terraform', '4+ yrs'],
-    desc: 'Own cloud infrastructure for multiple client environments. You\'ll implement CI/CD pipelines, monitoring, and disaster recovery solutions.',
+    desc: { en: 'Own cloud infrastructure for multiple client environments. You\'ll implement CI/CD pipelines, monitoring, and disaster recovery solutions.', km: "គ្រប់គ្រងហេដ្ឋារចនាសម្ព័ន្ធ cloud សម្រាប់បរិស្ថានអតិថិជនច្រើន។ អ្នកនឹងអនុវត្ត CI/CD pipelines ការត្រួតពិនិត្យ និងដំណោះស្រាយសង្គ្រោះទិន្នន័យពេលមានគ្រោះមហន្តរាយ។" },
     responsibilities: [
-      'Design and maintain cloud infrastructure across multiple client AWS accounts.',
-      'Build and improve CI/CD pipelines to support frequent, reliable deployments.',
-      'Implement monitoring, alerting, and incident response processes.',
-      'Define and test disaster recovery and backup strategies for production systems.',
-      'Enforce infrastructure security best practices and support client compliance audits.',
+      { en: 'Design and maintain cloud infrastructure across multiple client AWS accounts.', km: "រចនា និងថែទាំហេដ្ឋារចនាសម្ព័ន្ធ cloud នៅទូទាំងគណនី AWS របស់អតិថិជនជាច្រើន។" },
+      { en: 'Build and improve CI/CD pipelines to support frequent, reliable deployments.', km: "កសាង និងកែលម្អ CI/CD pipelines ដើម្បីគាំទ្រការដាក់ឱ្យប្រើប្រាស់ញឹកញាប់ និងអាចទុកចិត្តបាន។" },
+      { en: 'Implement monitoring, alerting, and incident response processes.', km: "អនុវត្តដំណើរការត្រួតពិនិត្យ ការដាស់តឿន និងការឆ្លើយតបចំពោះឧប្បត្តិហេតុ។" },
+      { en: 'Define and test disaster recovery and backup strategies for production systems.', km: "កំណត់ និងសាកល្បងយុទ្ធសាស្ត្រសង្គ្រោះពេលមានគ្រោះមហន្តរាយ និងការបម្រុងទុកសម្រាប់ប្រព័ន្ធផលិតកម្ម។" },
+      { en: 'Enforce infrastructure security best practices and support client compliance audits.', km: "អនុវត្តការអនុវត្តល្អបំផុតលើសុវត្ថិភាពហេដ្ឋារចនាសម្ព័ន្ធ និងគាំទ្រសវនកម្មអនុលោមភាពរបស់អតិថិជន។" }
     ],
     requirements: [
-      '4+ years in a DevOps, SRE, or cloud infrastructure role.',
-      'Hands-on experience with AWS core services and Kubernetes in production.',
-      'Proficiency with infrastructure-as-code tooling, particularly Terraform.',
-      'Experience building CI/CD pipelines with tools such as GitHub Actions, GitLab CI, or Jenkins.',
+      { en: '4+ years in a DevOps, SRE, or cloud infrastructure role.', km: "បទពិសោធន៍ ៤+ ឆ្នាំក្នុងតួនាទី DevOps, SRE, ឬហេដ្ឋារចនាសម្ព័ន្ធ cloud។" },
+      { en: 'Hands-on experience with AWS core services and Kubernetes in production.', km: "បទពិសោធន៍ជាក់ស្តែងជាមួយសេវាកម្មស្នូលរបស់ AWS និង Kubernetes ក្នុងការផលិត។" },
+      { en: 'Proficiency with infrastructure-as-code tooling, particularly Terraform.', km: "ជំនាញលើឧបករណ៍ហេដ្ឋារចនាសម្ព័ន្ធជាកូដ (IaC) ជាពិសេស Terraform។" },
+      { en: 'Experience building CI/CD pipelines with tools such as GitHub Actions, GitLab CI, or Jenkins.', km: "បទពិសោធន៍ក្នុងការបង្កើត CI/CD pipelines ជាមួយឧបករណ៍ដូចជា GitHub Actions, GitLab CI, ឬ Jenkins។" }
     ],
     niceToHave: [
-      'Relevant AWS certification (Solutions Architect or DevOps Engineer).',
-      'Experience supporting clients in regulated or compliance-heavy industries.',
+      { en: 'Relevant AWS certification (Solutions Architect or DevOps Engineer).', km: "មានវិញ្ញាបនបត្រ AWS ពាក់ព័ន្ធ (ស្ថាបត្យករដំណោះស្រាយ ឬវិស្វករ DevOps)។" },
+      { en: 'Experience supporting clients in regulated or compliance-heavy industries.', km: "បទពិសោធន៍ក្នុងការគាំទ្រអតិថិជនក្នុងឧស្សាហកម្មដែលមានការគ្រប់គ្រង និងអនុលោមភាពខ្លាំង។" }
     ],
   },
   {
-    title: 'Project Manager',
-    dept: 'Delivery',
-    type: 'Full-time',
-    location: 'Phnom Penh',
+    title: { en: 'Project Manager', km: "អ្នកគ្រប់គ្រងគម្រោង" },
+    dept: { en: 'Delivery', km: "ការប្រគល់គម្រោង" },
+    type: { en: 'Full-time', km: "ពេញម៉ោង" },
+    location: { en: 'Phnom Penh', km: "ភ្នំពេញ" },
     deadline: '2026-05-08',
     tags: ['Agile', 'PMP preferred', 'Enterprise', '4+ yrs'],
-    desc: 'Lead delivery of complex, multi-stakeholder software projects. You\'ll own timelines, client relationships, and sprint ceremonies.',
+    desc: { en: 'Lead delivery of complex, multi-stakeholder software projects. You\'ll own timelines, client relationships, and sprint ceremonies.', km: "ដឹកនាំការផ្តល់គម្រោងសូហ្វវែរដ៏ស្មុគស្មាញ និងមានអ្នកពាក់ព័ន្ធច្រើន។ អ្នកនឹងគ្រប់គ្រងកាលវិភាគ ទំនាក់ទំនងអតិថិជន និងកម្មវិធី sprint ។" },
     responsibilities: [
-      'Own delivery of software projects from kickoff through launch and handover.',
-      'Manage client relationships, including expectation-setting and status reporting.',
-      'Run sprint planning, standups, and retrospectives across cross-functional teams.',
-      'Track scope, budget, and timeline, escalating risks before they become blockers.',
-      'Coordinate across engineering, design, and QA to keep delivery on schedule.',
+      { en: 'Own delivery of software projects from kickoff through launch and handover.', km: "គ្រប់គ្រងការប្រគល់គម្រោងសូហ្វវែរចាប់ពីការចាប់ផ្តើម រហូតដល់ការដាក់ឱ្យដំណើរការ និងការប្រគល់។" },
+      { en: 'Manage client relationships, including expectation-setting and status reporting.', km: "គ្រប់គ្រងទំនាក់ទំនងអតិថិជន រួមទាំងការកំណត់ការរំពឹងទុក និងការរាយការណ៍អំពីស្ថានភាព។" },
+      { en: 'Run sprint planning, standups, and retrospectives across cross-functional teams.', km: "ដំណើរការការរៀបចំផែនការ sprint ការប្រជុំប្រចាំថ្ងៃ និងការវាយតម្លៃអតីតកាលនៅទូទាំងក្រុមចម្រុះ។" },
+      { en: 'Track scope, budget, and timeline, escalating risks before they become blockers.', km: "តាមដានវិសាលភាព ថវិកា និងកាលវិភាគ ដោយលើកឡើងពីហានិភ័យមុនពេលវាអាក់ខានដល់ការងារ។" },
+      { en: 'Coordinate across engineering, design, and QA to keep delivery on schedule.', km: "សម្របសម្រួលជាមួយវិស្វកម្ម ការរចនា និង QA ដើម្បីរក្សាការប្រគល់គម្រោងតាមកាលវិភាគ។" }
     ],
     requirements: [
-      '4+ years managing software delivery projects, ideally in a client-services setting.',
-      'Strong working knowledge of Agile and Scrum methodologies.',
-      'Proven ability to manage multiple concurrent projects and stakeholders.',
-      'Excellent written and verbal communication skills in English.',
+      { en: '4+ years managing software delivery projects, ideally in a client-services setting.', km: "បទពិសោធន៍ ៤+ ឆ្នាំក្នុងការគ្រប់គ្រងគម្រោងប្រគល់សូហ្វវែរ គួរតែនៅក្នុងបរិបទសេវាកម្មអតិថិជន។" },
+      { en: 'Strong working knowledge of Agile and Scrum methodologies.', km: "មានចំណេះដឹងការងារខ្លាំងលើវិធីសាស្ត្រ Agile និង Scrum។" },
+      { en: 'Proven ability to manage multiple concurrent projects and stakeholders.', km: "មានសមត្ថភាពដែលបង្ហាញឱ្យឃើញក្នុងការគ្រប់គ្រងគម្រោង និងអ្នកពាក់ព័ន្ធច្រើនក្នុងពេលតែមួយ។" },
+      { en: 'Excellent written and verbal communication skills in English.', km: "ជំនាញប្រាស្រ័យទាក់ទងជាភាសាអង់គ្លេសទាំងសំណេរ និងពាក្យសំដីបានល្អប្រសើរ។" }
     ],
     niceToHave: [
-      'PMP or equivalent project management certification.',
-      'Experience with enterprise clients in finance, healthcare, or retail.',
+      { en: 'PMP or equivalent project management certification.', km: "មានវិញ្ញាបនបត្រ PMP ឬវិញ្ញាបនបត្រគ្រប់គ្រងគម្រោងដែលស្មើនឹងនេះ។" },
+      { en: 'Experience with enterprise clients in finance, healthcare, or retail.', km: "បទពិសោធន៍ជាមួយអតិថិជនសហគ្រាសក្នុងវិស័យហិរញ្ញវត្ថុ សុខាភិបាល ឬការលក់រាយ។" }
     ],
   },
   {
-    title: 'Backend Engineer (Python)',
-    dept: 'Engineering',
-    type: 'Full-time',
-    location: 'Phnom Penh / Remote',
+    title: { en: 'Backend Engineer (Python)', km: "វិស្វករ Backend (Python)" },
+    dept: { en: 'Engineering', km: "វិស្វកម្ម" },
+    type: { en: 'Full-time', km: "ពេញម៉ោង" },
+    location: { en: 'Phnom Penh / Remote', km: "ភ្នំពេញ / ធ្វើការពីចម្ងាយ" },
     deadline: '2026-06-25',
     tags: ['Python', 'Django', 'PostgreSQL', '3+ yrs'],
-    desc: 'Design and build RESTful APIs, background jobs, and data pipelines for enterprise clients across healthcare and finance.',
+    desc: { en: 'Design and build RESTful APIs, background jobs, and data pipelines for enterprise clients across healthcare and finance.', km: "[KM] Design and build RESTful APIs, background jobs, and data pipelines for enterprise clients across healthcare and finance." },
     responsibilities: [
-      'Design and implement RESTful APIs serving web and mobile clients.',
-      'Build and maintain background job processing and data pipelines.',
-      'Write and maintain automated tests to ensure system reliability.',
-      'Optimize database schemas and queries for performance at scale.',
-      'Participate in code reviews and contribute to backend architecture decisions.',
+      { en: 'Design and implement RESTful APIs serving web and mobile clients.', km: "[KM] Design and implement RESTful APIs serving web and mobile clients." },
+      { en: 'Build and maintain background job processing and data pipelines.', km: "[KM] Build and maintain background job processing and data pipelines." },
+      { en: 'Write and maintain automated tests to ensure system reliability.', km: "[KM] Write and maintain automated tests to ensure system reliability." },
+      { en: 'Optimize database schemas and queries for performance at scale.', km: "[KM] Optimize database schemas and queries for performance at scale." },
+      { en: 'Participate in code reviews and contribute to backend architecture decisions.', km: "[KM] Participate in code reviews and contribute to backend architecture decisions." }
     ],
     requirements: [
-      '3+ years of production experience with Python and Django or a comparable framework.',
-      'Strong understanding of relational database design, particularly PostgreSQL.',
-      'Experience designing and documenting RESTful APIs.',
-      'Familiarity with automated testing practices and CI pipelines.',
+      { en: '3+ years of production experience with Python and Django or a comparable framework.', km: "[KM] 3+ years of production experience with Python and Django or a comparable framework." },
+      { en: 'Strong understanding of relational database design, particularly PostgreSQL.', km: "[KM] Strong understanding of relational database design, particularly PostgreSQL." },
+      { en: 'Experience designing and documenting RESTful APIs.', km: "[KM] Experience designing and documenting RESTful APIs." },
+      { en: 'Familiarity with automated testing practices and CI pipelines.', km: "[KM] Familiarity with automated testing practices and CI pipelines." }
     ],
     niceToHave: [
-      'Experience in healthcare or financial services with data compliance requirements.',
-      'Exposure to asynchronous task queues such as Celery.',
+      { en: 'Experience in healthcare or financial services with data compliance requirements.', km: "[KM] Experience in healthcare or financial services with data compliance requirements." },
+      { en: 'Exposure to asynchronous task queues such as Celery.', km: "[KM] Exposure to asynchronous task queues such as Celery." }
     ],
   },
 ];
@@ -249,12 +257,12 @@ const PERK_ICONS: Record<string, React.ReactNode> = {
 };
 
 const PERKS = [
-  { icon: 'salary', title: 'Competitive Salary', desc: 'Market-rate salaries benchmarked against Singapore and Bangkok — with performance bonuses.' },
-  { icon: 'remote', title: 'Remote-Friendly', desc: 'Most roles are fully remote or hybrid. We care about output, not hours at a desk.' },
-  { icon: 'learning', title: 'Learning Budget', desc: '$1,200 USD / year for courses, certifications, conferences, and books.' },
-  { icon: 'health', title: 'Health Insurance', desc: 'Full private health insurance for you and your immediate family, from day one.' },
-  { icon: 'hours', title: 'Flexible Hours', desc: 'Core hours 10am–4pm. Outside of that, work when you\'re most productive.' },
-  { icon: 'leave', title: '20 Days Annual Leave', desc: 'Plus all Cambodian public holidays. We believe in proper rest.' },
+  { icon: 'salary', title: { en: 'Competitive Salary', km: "ប្រាក់ខែសមរម្យ" }, desc: { en: 'Market-rate salaries benchmarked against Singapore and Bangkok — with performance bonuses.', km: "[KM] Market-rate salaries benchmarked against Singapore and Bangkok — with performance bonuses." } },
+  { icon: 'remote', title: { en: 'Remote-Friendly', km: "[KM] Remote-Friendly" }, desc: { en: 'Most roles are fully remote or hybrid. We care about output, not hours at a desk.', km: "[KM] Most roles are fully remote or hybrid. We care about output, not hours at a desk." } },
+  { icon: 'learning', title: { en: 'Learning Budget', km: "ថវិកាសិក្សា" }, desc: { en: '$1,200 USD / year for courses, certifications, conferences, and books.', km: "[KM] $1,200 USD / year for courses, certifications, conferences, and books." } },
+  { icon: 'health', title: { en: 'Health Insurance', km: "ការធានារ៉ាប់រងសុខភាព" }, desc: { en: 'Full private health insurance for you and your immediate family, from day one.', km: "[KM] Full private health insurance for you and your immediate family, from day one." } },
+  { icon: 'hours', title: { en: 'Flexible Hours', km: "[KM] Flexible Hours" }, desc: { en: 'Core hours 10am–4pm. Outside of that, work when you\'re most productive.', km: "[KM] Core hours 10am–4pm. Outside of that, work when you're most productive." } },
+  { icon: 'leave', title: { en: '20 Days Annual Leave', km: "[KM] 20 Days Annual Leave" }, desc: { en: 'Plus all Cambodian public holidays. We believe in proper rest.', km: "[KM] Plus all Cambodian public holidays. We believe in proper rest." } },
 ];
 
 const STATS = [
@@ -312,10 +320,10 @@ export default function CareersPage() {
     <>
       <style>{pageStyles}</style>
       <PageBanner
-        badge="Careers at KhmerSoftware"
-        title="Build the Future of"
-        titleHighlight="Tech in Cambodia"
-        subtitle="Join a team of ambitious engineers, designers, and builders working on projects that matter — for Cambodia's biggest brands and fastest-growing startups."
+        badge={language === 'km' ? "ឱកាសការងារនៅ KhmerSoftware" : "Careers at KhmerSoftware"}
+        title={language === 'km' ? "កសាងអនាគតនៃ" : "Build the Future of"}
+        titleHighlight={language === 'km' ? "បច្ចេកវិទ្យានៅកម្ពុជា" : "Tech in Cambodia"}
+        subtitle={language === 'km' ? "ចូលរួមជាមួយក្រុមវិស្វករ អ្នករចនា និងអ្នកកសាងដ៏មានមហិច្ឆតាដែលកំពុងធ្វើការលើគម្រោងសំខាន់ៗ — សម្រាប់ម៉ាកល្បីៗ និងក្រុមហ៊ុន startup របស់កម្ពុជា។" : "Join a team of ambitious engineers, designers, and builders working on projects that matter — for Cambodia's biggest brands and fastest-growing startups."}
         accentColor={COLORS.blue}
         accentColor2={COLORS.accent}
       />
@@ -326,12 +334,16 @@ export default function CareersPage() {
           <ScrollReveal>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(300px,100%),1fr))', gap: 48, alignItems: 'center', padding: '72px 0 64px' }}>
               <div>
-                <div className="section-eyebrow">Our Culture</div>
+                <div className="section-eyebrow">{language === 'km' ? "វប្បធម៌របស់យើង" : "Our Culture"}</div>
                 <h2 className="section-heading" style={{ marginBottom: 20, lineHeight: 1.2 }}>
-                  A Place Where Great Engineers Thrive
+                  {language === 'km' ? "កន្លែងដែលវិស្វករឆ្នើមរីកចម្រើន" : "A Place Where Great Engineers Thrive"}
                 </h2>
-                <p style={{ color: COLORS.muted, fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>We believe the best software comes from happy, empowered, and continually-growing engineers. We invest heavily in our team's professional development, wellbeing, and work-life balance.</p>
-                <p style={{ color: COLORS.muted, fontSize: 16, lineHeight: 1.8 }}>Small teams, big autonomy. You'll own features end-to-end and have a direct impact on Cambodia's digital economy.</p>
+                <p style={{ color: COLORS.muted, fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
+                  {language === 'km' ? "យើងជឿជាក់ថាសូហ្វវែរល្អបំផុតកើតចេញពីវិស្វករដែលមានសុភមង្គល មានអំណាច និងរីកចម្រើនឥតឈប់ឈរ។ យើងវិនិយោគយ៉ាងច្រើនលើការអភិវឌ្ឍជំនាញវិជ្ជាជីវៈ សុខុមាលភាព និងតុល្យភាពការងារ-ជីវិតរបស់ក្រុមយើង។" : "We believe the best software comes from happy, empowered, and continually-growing engineers. We invest heavily in our team's professional development, wellbeing, and work-life balance."}
+                </p>
+                <p style={{ color: COLORS.muted, fontSize: 16, lineHeight: 1.8 }}>
+                  {language === 'km' ? "ក្រុមតូចៗ ស្វ័យភាពធំ។ អ្នកនឹងទទួលខុសត្រូវមុខងារពីដើមដល់ចប់ និងមានឥទ្ធិពលផ្ទាល់លើសេដ្ឋកិច្ចឌីជីថលរបស់កម្ពុជា។" : "Small teams, big autonomy. You'll own features end-to-end and have a direct impact on Cambodia's digital economy."}
+                </p>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
                 {STATS.map((item, i) => (
@@ -347,8 +359,8 @@ export default function CareersPage() {
           {/* Perks */}
           <ScrollReveal>
             <div style={{ textAlign: 'center', marginBottom: 36 }}>
-              <div className="section-eyebrow">Why Join Us</div>
-              <h2 className="section-heading">Benefits & Perks</h2>
+              <div className="section-eyebrow">{language === 'km' ? "ហេតុអ្វីចូលរួមជាមួយយើង" : "Why Join Us"}</div>
+              <h2 className="section-heading">{language === 'km' ? 'អត្ថប្រយោជន៍ និងអត្ថប្រយោជន៍ផ្សេងៗ' : 'Benefits & Perks'}</h2>
             </div>
           </ScrollReveal>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(260px,100%),1fr))', gap: 16, marginBottom: 80 }}>
@@ -356,8 +368,8 @@ export default function CareersPage() {
               <ScrollReveal key={i} delay={i * 50} direction="up">
                 <div className="perk-card">
                   <div className="perk-icon">{PERK_ICONS[p.icon]}</div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: COLORS.ink, marginBottom: 8 }}>{p.title}</h3>
-                  <p style={{ fontSize: 14, color: COLORS.muted, lineHeight: 1.6, margin: 0 }}>{p.desc}</p>
+                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: COLORS.ink, marginBottom: 8 }}>{getText(p.title, language)}</h3>
+                  <p style={{ fontSize: 14, color: COLORS.muted, lineHeight: 1.6, margin: 0 }}>{getText(p.desc, language)}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -366,14 +378,17 @@ export default function CareersPage() {
           {/* Open Roles */}
           <ScrollReveal>
             <div style={{ textAlign: 'center', marginBottom: 8 }}>
-              <div className="section-eyebrow">Careers</div>
-              <h2 className="section-heading">Open Positions</h2>
+              <div className="section-eyebrow">{language === 'km' ? "ឱកាសការងារ" : "Careers"}</div>
+              <h2 className="section-heading">{language === 'km' ? "មុខតំណែងបើកចំហ" : "Open Positions"}</h2>
             </div>
-            <p style={{ color: 'rgba(26,26,46,0.5)', fontSize: 14.5, textAlign: 'center', marginBottom: 40 }}>Click any role to see details and apply.</p>
+            <p style={{ color: 'rgba(26,26,46,0.5)', fontSize: 14.5, textAlign: 'center', marginBottom: 40 }}>
+              {language === 'km' ? "ចុចលើមុខតំណែងណាមួយដើម្បីមើលព័ត៌មានលម្អិត និងដាក់ពាក្យ។" : "Click any role to see details and apply."}
+            </p>
           </ScrollReveal>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 80 }}>
             {JOBS.map((job, i) => {
-              const dc = DEPT_COLOR[job.dept] ?? COLORS.blue;
+              const deptEn = getText(job.dept, 'en');
+              const dc = DEPT_COLOR[deptEn] ?? COLORS.blue;
               return (
                 <ScrollReveal key={i} delay={i * 40}>
                   <div className="job-card" onClick={() => setOpenJob(openJob === i ? null : i)}>
@@ -382,12 +397,12 @@ export default function CareersPage() {
                       <div style={{ flex: 1, padding: '28px 32px', display: 'flex', alignItems: 'flex-start', gap: 20, flexWrap: 'wrap' as const }}>
                         <div style={{ flex: 1, minWidth: 280 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12, flexWrap: 'wrap' }}>
-                            <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: COLORS.ink, margin: 0 }}>{job.title}</h3>
-                            <span style={{ fontSize: 12, color: dc, fontWeight: 700, padding: '3px 10px', background: `${dc}12`, borderRadius: 5 }}>{job.dept}</span>
+                            <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 20, color: COLORS.ink, margin: 0 }}>{getText(job.title, language)}</h3>
+                            <span style={{ fontSize: 12, color: dc, fontWeight: 700, padding: '3px 10px', background: `${dc}12`, borderRadius: 5 }}>{getText(job.dept, language)}</span>
                             {isClosed(job.deadline) && (
                               <span className="closed-badge">
                                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9"></circle><path d="M9 12l2 2 4-4"></path></svg>
-                                Applications Closed
+                                {language === 'km' ? 'បានបិទការទទួលពាក្យ' : 'Applications Closed'}
                               </span>
                             )}
                           </div>
@@ -395,15 +410,15 @@ export default function CareersPage() {
                           <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', alignItems: 'center', marginBottom: 16 }}>
                             <span style={{ fontSize: 13, color: 'rgba(26,26,46,0.6)', display: 'flex', alignItems: 'center', gap: 6 }}>
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                              {job.type}
+                              {getText(job.type, language)}
                             </span>
                             <span style={{ fontSize: 13, color: 'rgba(26,26,46,0.6)', display: 'flex', alignItems: 'center', gap: 6 }}>
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                              {job.location}
+                              {getText(job.location, language)}
                             </span>
                             <span style={{ fontSize: 13, color: 'rgba(26,26,46,0.5)', display: 'flex', alignItems: 'center', gap: 6, fontWeight: 500 }}>
                               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                              Closed {job.deadline}
+                              {language === 'km' ? 'ផុតកំណត់ ' : 'Closed '} {job.deadline}
                             </span>
                           </div>
 
@@ -421,29 +436,29 @@ export default function CareersPage() {
                     {/* Expandable details */}
                     <div style={{ overflow: 'hidden', maxHeight: openJob === i ? 1600 : 0, transition: 'max-height 0.5s cubic-bezier(0.16,1,0.3,1)' }}>
                       <div style={{ padding: '0 32px 28px 36px', borderTop: `1px solid ${COLORS.border}` }}>
-                        <p style={{ fontSize: 15, color: 'rgba(26,26,46,0.75)', lineHeight: 1.8, margin: '22px 0', maxWidth: 840 }}>{job.desc}</p>
+                        <p style={{ fontSize: 15, color: 'rgba(26,26,46,0.75)', lineHeight: 1.8, margin: '22px 0', maxWidth: 840 }}>{getText(job.desc, language)}</p>
 
                         <div style={{ maxWidth: 840 }}>
-                          <div className="detail-heading">Responsibilities</div>
+                          <div className="detail-heading">{language === 'km' ? 'ទំនួលខុសត្រូវ' : 'Responsibilities'}</div>
                           <ul className="detail-list">
-                            {job.responsibilities.map((r, ri) => <li key={ri}>{r}</li>)}
+                            {job.responsibilities.map((r, ri) => <li key={ri}>{getText(r, language)}</li>)}
                           </ul>
 
-                          <div className="detail-heading">Requirements</div>
+                          <div className="detail-heading">{language === 'km' ? 'តម្រូវការ' : 'Requirements'}</div>
                           <ul className="detail-list">
-                            {job.requirements.map((r, ri) => <li key={ri}>{r}</li>)}
+                            {job.requirements.map((r, ri) => <li key={ri}>{getText(r, language)}</li>)}
                           </ul>
 
-                          <div className="detail-heading">Nice to Have</div>
+                          <div className="detail-heading">{language === 'km' ? 'ចំណុចបន្ថែមដែលមានប្រៀប' : 'Nice to Have'}</div>
                           <ul className="detail-list">
-                            {job.niceToHave.map((r, ri) => <li key={ri}>{r}</li>)}
+                            {job.niceToHave.map((r, ri) => <li key={ri}>{getText(r, language)}</li>)}
                           </ul>
                         </div>
 
                         <div style={{ marginTop: 24 }}>
                           {isClosed(job.deadline) ? (
                             <span className="closed-btn" onClick={(e) => e.stopPropagation()}>
-                              Applications Closed
+                              {language === 'km' ? 'បានបិទការទទួលពាក្យ' : 'Applications Closed'}
                             </span>
                           ) : (
                             <a
@@ -451,7 +466,7 @@ export default function CareersPage() {
                               className="apply-btn"
                               onClick={(e) => e.stopPropagation()}
                             >
-                              Apply for this Position
+                              {language === 'km' ? 'ដាក់ពាក្យសម្រាប់មុខតំណែងនេះ' : 'Apply for this Position'}
                               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                             </a>
                           )}
@@ -467,10 +482,14 @@ export default function CareersPage() {
           {/* CTA */}
           <ScrollReveal>
             <div style={{ padding: 'clamp(40px,6vw,56px)', borderRadius: 16, background: COLORS.navy, textAlign: 'center' }}>
-              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 'clamp(22px,3.6vw,30px)', color: '#fff', marginBottom: 12 }}>Don't see the right role?</h2>
-              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15.5, marginBottom: 26 }}>Send us your CV anyway. We're always growing and looking for exceptional people.</p>
+              <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 'clamp(22px,3.6vw,30px)', color: '#fff', marginBottom: 12 }}>
+                {language === 'km' ? 'មិនឃើញមុខតំណែងសមស្របមែនទេ?' : "Don't see the right role?"}
+              </h2>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: 15.5, marginBottom: 26 }}>
+                {language === 'km' ? 'ផ្ញើប្រវត្តិរូប (CV) របស់អ្នកមកយើង។ យើងតែងតែរីកចម្រើន និងស្វែងរកបុគ្គលិកឆ្នើម។' : "Send us your CV anyway. We're always growing and looking for exceptional people."}
+              </p>
               <a href={`/${language}/contact`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 30px', borderRadius: 8, fontWeight: 600, fontSize: 13.5, background: '#fff', color: COLORS.navy, textDecoration: 'none' }}>
-                Send Your CV →
+                {language === 'km' ? 'ផ្ញើប្រវត្តិរូបរបស់អ្នក →' : 'Send Your CV →'}
               </a>
             </div>
           </ScrollReveal>

@@ -1,0 +1,25 @@
+# KhmerSoftware (ខ្មែរសូហ្វវែរ)
+
+> Cambodia's Premier Enterprise Software Development & IT Solutions Company
+
+KhmerSoftware is a leading software engineering agency based in Phnom Penh, Cambodia. We specialize in custom software development, mobile application engineering (iOS & Android), cloud infrastructure & AWS migration, cybersecurity audits & penetration testing, DevOps automation, and digital transformation consulting.
+
+## Core Offerings
+
+- **Custom Software Development**: Bespoke enterprise systems, internal tools, ERP integrations, and workflow automation. URL: https://www.khmersoftware.com/en/services/custom
+- **Mobile App Development**: Native and cross-platform (React Native, Flutter) apps with offline-first support, biometric auth, and local payment integration (Wing, ABA, ACLEDA, Bakong). URL: https://www.khmersoftware.com/en/services/mobile
+- **Web Application Engineering**: High-performance, scalable SaaS platforms and customer portals built with Next.js, React, Node.js, and PostgreSQL. URL: https://www.khmersoftware.com/en/services/web
+- **Cloud Infrastructure & AWS Migration**: Zero-downtime cloud migration, architecture reviews, cost optimization (saving up to 40%), and high availability design. URL: https://www.khmersoftware.com/en/services/cloud
+- **DevOps & CI/CD Services**: Automated deployment pipelines, Docker containerization, Kubernetes orchestration, and 24/7 observability. URL: https://www.khmersoftware.com/en/services/devops
+- **Cybersecurity & Penetration Testing**: Vulnerability assessments, code security audits, and compliance readiness (SOC2, ISO27001, NBC guidelines). URL: https://www.khmersoftware.com/en/services/security
+- **IT Strategy & Consulting**: Technology roadmaps, system architecture advisory, and digital transformation for leadership teams. URL: https://www.khmersoftware.com/en/services/strategy
+- **UI/UX Design**: User research, Figma design systems, interactive prototypes, and bilingual (Khmer/English) interfaces. URL: https://www.khmersoftware.com/en/services/design
+
+## Languages Supported
+- English: https://www.khmersoftware.com/en
+- Khmer (ភាសាខ្មែរ): https://www.khmersoftware.com/km
+
+## Contact Information
+- Website: https://www.khmersoftware.com
+- Email: contact@khmersoftware.com
+- Location: Phnom Penh, Cambodia

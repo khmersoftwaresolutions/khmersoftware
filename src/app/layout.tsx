@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "../styles/globals.css";
@@ -18,22 +18,65 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
-  title: "KhmerSoftware - Professional Software Solutions in Cambodia",
-  description: "Leading software company in Cambodia offering software sales, rental, and custom development services. Affordable solutions for Cambodian businesses.",
-  keywords: ["software Cambodia", "custom development", "software rental", "business solutions", "Phnom Penh", "Khmer software"],
-  authors: [{ name: "KhmerSoftware" }],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
+  metadataBase: new URL("https://www.khmersoftware.com"),
+  title: {
+    default: "KhmerSoftware - Professional Software Solutions in Cambodia",
+    template: "%s | KhmerSoftware",
+  },
+  description:
+    "Leading software company in Cambodia offering custom development, mobile apps, cloud architecture, and enterprise software solutions.",
+  keywords: [
+    "software Cambodia",
+    "custom software development",
+    "mobile app development Phnom Penh",
+    "cloud migration AWS",
+    "cybersecurity Cambodia",
+    "KhmerSoftware",
+    "enterprise software solutions",
+  ],
+  authors: [{ name: "KhmerSoftware", url: "https://www.khmersoftware.com" }],
+  creator: "KhmerSoftware",
+  publisher: "KhmerSoftware",
+  alternates: {
+    canonical: "https://www.khmersoftware.com/en",
+    languages: {
+      en: "https://www.khmersoftware.com/en",
+      km: "https://www.khmersoftware.com/km",
+      "x-default": "https://www.khmersoftware.com/en",
+    },
   },
   openGraph: {
     title: "KhmerSoftware - Professional Software Solutions in Cambodia",
-    description: "Leading software company in Cambodia offering software sales, rental, and custom development services.",
+    description:
+      "Leading software development company in Cambodia offering custom enterprise software, mobile apps, cloud infrastructure, and cybersecurity.",
+    url: "https://www.khmersoftware.com",
+    siteName: "KhmerSoftware",
     type: "website",
-    locale: "en_KH",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KhmerSoftware - Professional Software Solutions in Cambodia",
+    description:
+      "Leading software development company in Cambodia offering custom enterprise software, mobile apps, and cloud solutions.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -71,14 +114,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "KhmerSoftware",
-              "url": "https://www.khmersoftware.com",
-              "potentialAction": {
+              name: "KhmerSoftware",
+              url: "https://www.khmersoftware.com",
+              potentialAction: {
                 "@type": "SearchAction",
-                "target": "https://www.khmersoftware.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            })
+                target: "https://www.khmersoftware.com/en/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
           }}
         />
       </body>

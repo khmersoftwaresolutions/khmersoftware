@@ -25,78 +25,86 @@ function ScrollReveal({ children, delay = 0, direction = 'up' }: { children: Rea
 
 const TECH_CATEGORIES = [
   {
-    title: 'Frontend Development',
+    title: { en: 'Frontend Development', km: "ការអភិវឌ្ឍ Frontend" },
     icon: '🖥️',
     color: COLORS.cyan,
-    desc: 'We craft blazing-fast, pixel-perfect user interfaces using the latest frontend frameworks and design systems.',
+    desc: { en: 'We craft blazing-fast, pixel-perfect user interfaces using the latest frontend frameworks and design systems.', km: "យើងបង្កើតចំណុចប្រទាក់អ្នកប្រើប្រាស់ដែលលឿនបំផុត និងល្អឥតខ្ចោះដោយប្រើ frameworks និងប្រព័ន្ធរចនាចុងក្រោយបង្អស់។" },
     techs: [
-      { name: 'React & Next.js', detail: 'Server-side rendering, static generation, and full-stack React apps', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
-      { name: 'Vue & Nuxt', detail: 'Progressive framework for building modern web applications', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
-      { name: 'TypeScript', detail: 'Type-safe JavaScript for large-scale application development', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
-      { name: 'Tailwind CSS', detail: 'Utility-first CSS framework for rapid UI development', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+      { name: { en: 'React & Next.js', km: "React និង Next.js" }, detail: { en: 'Server-side rendering, static generation, and full-stack React apps', km: "ការបង្ហាញលើម៉ាស៊ីនមេ ការបង្កើតទំព័រឋិតិវន្ត និងកម្មវិធី React ពេញលេញ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+      { name: { en: 'Vue & Nuxt', km: "Vue និង Nuxt" }, detail: { en: 'Progressive framework for building modern web applications', km: "Framework ទំនើបសម្រាប់ការកសាងកម្មវិធីគេហទំព័រ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg' },
+      { name: { en: 'TypeScript', km: "TypeScript" }, detail: { en: 'Type-safe JavaScript for large-scale application development', km: "JavaScript មានសុវត្ថិភាពសម្រាប់ការអភិវឌ្ឍកម្មវិធីខ្នាតធំ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+      { name: { en: 'Tailwind CSS', km: "Tailwind CSS" }, detail: { en: 'Utility-first CSS framework for rapid UI development', km: "CSS framework សម្រាប់ការអភិវឌ្ឍ UI យ៉ាងឆាប់រហ័ស" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
     ],
   },
   {
-    title: 'Backend & APIs',
+    title: { en: 'Backend & APIs', km: "Backend និង APIs" },
     icon: '⚙️',
     color: COLORS.green,
-    desc: 'Scalable, secure server-side solutions built with performance and maintainability at their core.',
+    desc: { en: 'Scalable, secure server-side solutions built with performance and maintainability at their core.', km: "ដំណោះស្រាយម៉ាស៊ីនមេដែលមានសុវត្ថិភាព និងអាចពង្រីកបាន ដែលកសាងឡើងដោយផ្តោតលើដំណើរការ និងភាពងាយស្រួលថែទាំ។" },
     techs: [
-      { name: 'Node.js', detail: 'High-performance JavaScript runtime for scalable backend services', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
-      { name: 'Python & Django', detail: 'Rapid development with clean, pragmatic design', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
-      { name: 'Go', detail: 'Compiled, concurrent language for high-throughput microservices', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg' },
-      { name: 'GraphQL & REST', detail: 'Flexible API design for web and mobile clients', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg' },
+      { name: { en: 'Node.js', km: "Node.js" }, detail: { en: 'High-performance JavaScript runtime for scalable backend services', km: "បរិស្ថានដំណើរការ JavaScript ខ្ពស់សម្រាប់សេវាកម្ម backend" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+      { name: { en: 'Python & Django', km: "Python និង Django" }, detail: { en: 'Rapid development with clean, pragmatic design', km: "ការអភិវឌ្ឍរហ័សជាមួយនឹងការរចនាច្បាស់លាស់ និងអនុវត្តជាក់ស្តែង" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+      { name: { en: 'Go', km: "Go" }, detail: { en: 'Compiled, concurrent language for high-throughput microservices', km: "ភាសាសរសេរកូដសម្រាប់ដំណើរការក្នុងពេលតែមួយ និង microservices ខ្ពស់" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg' },
+      { name: { en: 'GraphQL & REST', km: "GraphQL និង REST" }, detail: { en: 'Flexible API design for web and mobile clients', km: "ការរចនា API ប្រកបដោយភាពបត់បែនសម្រាប់អតិថិជនគេហទំព័រ និងទូរស័ព្ទ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg' },
     ],
   },
   {
-    title: 'Cloud & DevOps',
+    title: { en: 'Cloud & DevOps', km: "ក្លោដ និង DevOps" },
     icon: '☁️',
     color: COLORS.blue,
-    desc: 'Cloud-native infrastructure that scales automatically and never sleeps — with zero-downtime deployments.',
+    desc: { en: 'Cloud-native infrastructure that scales automatically and never sleeps — with zero-downtime deployments.', km: "ហេដ្ឋារចនាសម្ព័ន្ធក្លោដដែលពង្រីកដោយស្វ័យប្រវត្តិ និងមិនដែលឈប់សម្រាក — ជាមួយនឹងការដាក់ឱ្យប្រើប្រាស់ដោយគ្មានការផ្អាកដំណើរការ។" },
     techs: [
-      { name: 'AWS', detail: 'EC2, RDS, Lambda, S3, CloudFront and the full AWS ecosystem', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
-      { name: 'Docker & Kubernetes', detail: 'Container orchestration for production-grade microservices', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
-      { name: 'CI/CD Pipelines', detail: 'GitHub Actions, Jenkins — automated test and deploy workflows', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
-      { name: 'Terraform', detail: 'Infrastructure as code for reproducible cloud environments', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg' },
+      { name: { en: 'AWS', km: "AWS" }, detail: { en: 'EC2, RDS, Lambda, S3, CloudFront and the full AWS ecosystem', km: "EC2, RDS, Lambda, S3, CloudFront និងប្រព័ន្ធអេកូឡូស៊ី AWS ពេញលេញ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg' },
+      { name: { en: 'Docker & Kubernetes', km: "Docker និង Kubernetes" }, detail: { en: 'Container orchestration for production-grade microservices', km: "ការគ្រប់គ្រង Container សម្រាប់ microservices កម្រិតផលិតកម្ម" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+      { name: { en: 'CI/CD Pipelines', km: "CI/CD Pipelines" }, detail: { en: 'GitHub Actions, Jenkins — automated test and deploy workflows', km: "GitHub Actions, Jenkins — លំហូរការងារធ្វើតេស្ត និងដាក់ឱ្យប្រើប្រាស់ដោយស្វ័យប្រវត្តិ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
+      { name: { en: 'Terraform', km: "Terraform" }, detail: { en: 'Infrastructure as code for reproducible cloud environments', km: "ហេដ្ឋារចនាសម្ព័ន្ធជាកូដសម្រាប់បរិស្ថានក្លោដដែលអាចផលិតឡើងវិញបាន" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg' },
     ],
   },
   {
-    title: 'Databases & Storage',
+    title: { en: 'Databases & Storage', km: "មូលដ្ឋានទិន្នន័យ និងការផ្ទុក" },
     icon: '🗄️',
     color: COLORS.yellow,
-    desc: 'From relational to NoSQL and time-series — we choose the right storage technology for your data model.',
+    desc: { en: 'From relational to NoSQL and time-series — we choose the right storage technology for your data model.', km: "ពីទំនាក់ទំនងទៅ NoSQL និងស៊េរីពេលវេលា — យើងជ្រើសរើសបច្ចេកវិទ្យាផ្ទុកត្រឹមត្រូវសម្រាប់គំរូទិន្នន័យរបស់អ្នក។" },
     techs: [
-      { name: 'PostgreSQL', detail: 'The world\'s most advanced open-source relational database', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
-      { name: 'MongoDB', detail: 'Flexible document database for modern applications', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
-      { name: 'Redis', detail: 'In-memory caching and real-time data structures', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
-      { name: 'MySQL', detail: 'Reliable, proven relational database used across Cambodia\'s enterprise sector', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+      { name: { en: 'PostgreSQL', km: "PostgreSQL" }, detail: { en: 'The world\'s most advanced open-source relational database', km: "[KM] The world\\'s most advanced open-source relational database" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+      { name: { en: 'MongoDB', km: "MongoDB" }, detail: { en: 'Flexible document database for modern applications', km: "មូលដ្ឋានទិន្នន័យឯកសារដែលអាចបត់បែនបានសម្រាប់កម្មវិធីទំនើប" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+      { name: { en: 'Redis', km: "Redis" }, detail: { en: 'In-memory caching and real-time data structures', km: "Caching ក្នុងអង្គចងចាំ និងរចនាសម្ព័ន្ធទិន្នន័យជាក់ស្តែង" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg' },
+      { name: { en: 'MySQL', km: "MySQL" }, detail: { en: 'Reliable, proven relational database used across Cambodia\'s enterprise sector', km: "[KM] Reliable, proven relational database used across Cambodia\\'s enterprise sector" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
     ],
   },
   {
-    title: 'Mobile Development',
+    title: { en: 'Mobile Development', km: "ការអភិវឌ្ឍទូរស័ព្ទចល័ត" },
     icon: '📱',
     color: COLORS.cyan,
-    desc: 'Native and cross-platform mobile apps that deliver a seamless experience on iOS and Android.',
+    desc: { en: 'Native and cross-platform mobile apps that deliver a seamless experience on iOS and Android.', km: "កម្មវិធីទូរស័ព្ទ Native និង cross-platform ដែលផ្តល់នូវបទពិសោធន៍រលូននៅលើ iOS និង Android។" },
     techs: [
-      { name: 'React Native', detail: 'Cross-platform mobile apps sharing code with your web app', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
-      { name: 'Flutter', detail: 'Google\'s UI toolkit for natively compiled mobile, web and desktop', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
-      { name: 'Swift (iOS)', detail: 'Native iOS development for maximum performance', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg' },
-      { name: 'Kotlin (Android)', detail: 'Modern, concise Android development', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg' },
+      { name: { en: 'React Native', km: "React Native" }, detail: { en: 'Cross-platform mobile apps sharing code with your web app', km: "កម្មវិធីទូរស័ព្ទ Cross-platform ដែលចែករំលែកកូដជាមួយកម្មវិធីគេហទំព័ររបស់អ្នក" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg' },
+      { name: { en: 'Flutter', km: "Flutter" }, detail: { en: 'Google\'s UI toolkit for natively compiled mobile, web and desktop', km: "[KM] Google\\'s UI toolkit for natively compiled mobile, web and desktop" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
+      { name: { en: 'Swift (iOS)', km: "Swift (iOS)" }, detail: { en: 'Native iOS development for maximum performance', km: "ការអភិវឌ្ឍ iOS ដើមសម្រាប់ដំណើរការអតិបរមា" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg' },
+      { name: { en: 'Kotlin (Android)', km: "Kotlin (Android)" }, detail: { en: 'Modern, concise Android development', km: "ការអភិវឌ្ឍ Android ទំនើប និងខ្លី" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg' },
     ],
   },
   {
-    title: 'AI & Data',
+    title: { en: 'AI & Data', km: "បញ្ញាសិប្បនិម្មិត (AI) និងទិន្នន័យ" },
     icon: '🤖',
     color: COLORS.green,
-    desc: 'Intelligent features powered by machine learning — from predictive analytics to natural language processing.',
+    desc: { en: 'Intelligent features powered by machine learning — from predictive analytics to natural language processing.', km: "មុខងារឆ្លាតវៃដែលដំណើរការដោយការរៀនរបស់ម៉ាស៊ីន (Machine Learning) — ពីការវិភាគទស្សន៍ទាយរហូតដល់ដំណើរការភាសាធម្មជាតិ។" },
     techs: [
-      { name: 'TensorFlow & PyTorch', detail: 'Deep learning frameworks for custom AI model development', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg' },
-      { name: 'OpenAI APIs', detail: 'GPT-4 integration for chatbots, summarization and content generation', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
-      { name: 'Apache Spark', detail: 'Large-scale data processing for analytics pipelines', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachespark/apachespark-original.svg' },
-      { name: 'Elasticsearch', detail: 'Full-text search and analytics engine', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/elasticsearch/elasticsearch-original.svg' },
+      { name: { en: 'TensorFlow & PyTorch', km: "TensorFlow និង PyTorch" }, detail: { en: 'Deep learning frameworks for custom AI model development', km: "Frameworks សម្រាប់ការរៀនស៊ីជម្រៅ ដើម្បីអភិវឌ្ឍគំរូ AI តាមតម្រូវការ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg' },
+      { name: { en: 'OpenAI APIs', km: "OpenAI APIs" }, detail: { en: 'GPT-4 integration for chatbots, summarization and content generation', km: "ការរួមបញ្ចូល GPT-4 សម្រាប់ chatbots ការសង្ខេប និងការបង្កើតមាតិកា" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+      { name: { en: 'Apache Spark', km: "Apache Spark" }, detail: { en: 'Large-scale data processing for analytics pipelines', km: "ដំណើរការទិន្នន័យខ្នាតធំសម្រាប់បណ្តាញវិភាគ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachespark/apachespark-original.svg' },
+      { name: { en: 'Elasticsearch', km: "Elasticsearch" }, detail: { en: 'Full-text search and analytics engine', km: "ម៉ាស៊ីនស្វែងរកអត្ថបទពេញលេញ និងការវិភាគ" }, logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/elasticsearch/elasticsearch-original.svg' },
     ],
   },
 ];
+
+type Localized = string | { en?: string; km?: string };
+
+function getText(val: Localized | undefined, lang: string): string {
+  if (!val) return '';
+  if (typeof val === 'string') return val;
+  return (lang === 'km' ? val.km : val.en) || val.en || val.km || '';
+}
 
 export default function TechnologiesPage() {
   const params = useParams();
@@ -120,11 +128,11 @@ export default function TechnologiesPage() {
     <>
       <style>{pageStyles}</style>
       <PageBanner
-        badge="Our Technology Stack"
-        title="Built With"
-        titleHighlight="World-Class Tools"
-        subtitle="We choose the best technology for each challenge — not the most popular. Here's the curated stack we use to build reliable, scalable software across Cambodia and beyond."
-        ctaLabel="Discuss Your Stack"
+        badge={language === 'km' ? "បច្ចេកវិទ្យារបស់យើង" : "Our Technology Stack"}
+        title={language === 'km' ? "បង្កើតឡើងដោយ" : "Built With"}
+        titleHighlight={language === 'km' ? "ឧបករណ៍ស្តង់ដារពិភពលោក" : "World-Class Tools"}
+        subtitle={language === 'km' ? "យើងជ្រើសរើសបច្ចេកវិទ្យាល្អបំផុតសម្រាប់រាល់បញ្ហាប្រឈម — មិនមែនគ្រាន់តែជាការពេញនិយមនោះទេ។ នេះគឺជាបច្ចេកវិទ្យាដែលយើងប្រើដើម្បីកសាងសូហ្វវែរដែលអាចទុកចិត្តបាន និងអាចពង្រីកបាន។" : "We choose the best technology for each challenge — not the most popular. Here's the curated stack we use to build reliable, scalable software across Cambodia and beyond."}
+        ctaLabel={language === 'km' ? "ពិភាក្សាអំពីបច្ចេកវិទ្យារបស់អ្នក" : "Discuss Your Stack"}
         ctaHref={`/${language}/contact`}
         accentColor={COLORS.cyan}
         accentColor2={COLORS.blue}
@@ -135,12 +143,15 @@ export default function TechnologiesPage() {
           {/* Intro */}
           <ScrollReveal>
             <div style={{ textAlign: 'center', padding: '72px 0 48px' }}>
-              <div className="tech-section-label">Why it matters</div>
+              <div className="tech-section-label">{language === 'km' ? "ហេតុអ្វីវាសំខាន់" : "Why it matters"}</div>
               <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
-                Technology That <span style={{ background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Scales With You</span>
+                {language === 'km' ? "បច្ចេកវិទ្យាដែល" : "Technology That"}{' '}
+                <span style={{ background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  {language === 'km' ? "រីកចម្រើនជាមួយអ្នក" : "Scales With You"}
+                </span>
               </h2>
               <p style={{ color: 'rgba(26,26,46,0.55)', fontSize: 16, maxWidth: 580, margin: '0 auto', lineHeight: 1.7 }}>
-                Every technology in our stack was chosen after rigorous evaluation for performance, security, community support, and long-term maintainability.
+                {language === 'km' ? "គ្រប់បច្ចេកវិទ្យានៅក្នុង stack របស់យើងត្រូវបានជ្រើសរើសបន្ទាប់ពីការវាយតម្លៃយ៉ាងម៉ត់ចត់សម្រាប់ដំណើរការ សន្តិសុខ ការគាំទ្រពីសហគមន៍ និងភាពងាយស្រួលថែទាំរយៈពេលវែង។" : "Every technology in our stack was chosen after rigorous evaluation for performance, security, community support, and long-term maintainability."}
               </p>
             </div>
           </ScrollReveal>
@@ -154,8 +165,8 @@ export default function TechnologiesPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
                     <div style={{ width: 56, height: 56, borderRadius: 16, background: `${cat.color}15`, border: `1px solid ${cat.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28, flexShrink: 0 }}>{cat.icon}</div>
                     <div>
-                      <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: '#0d0d2b', marginBottom: 4 }}>{cat.title}</h3>
-                      <p style={{ color: 'rgba(26,26,46,0.55)', fontSize: 14, lineHeight: 1.6, margin: 0 }}>{cat.desc}</p>
+                      <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 20, color: '#0d0d2b', marginBottom: 4 }}>{getText(cat.title, language)}</h3>
+                      <p style={{ color: 'rgba(26,26,46,0.55)', fontSize: 14, lineHeight: 1.6, margin: 0 }}>{getText(cat.desc, language)}</p>
                     </div>
                     <div style={{ marginLeft: 'auto', width: 48, height: 4, borderRadius: 2, background: `linear-gradient(90deg, ${cat.color}, transparent)` }} />
                   </div>
@@ -163,10 +174,10 @@ export default function TechnologiesPage() {
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px,100%),1fr))', gap: 12 }}>
                     {cat.techs.map((tech, ti) => (
                       <div key={ti} className="tech-item">
-                        <img src={tech.logo} alt={tech.name} style={{ width: 36, height: 36, objectFit: 'contain', flexShrink: 0 }} />
+                        <img src={tech.logo} alt={getText(tech.name, language)} style={{ width: 36, height: 36, objectFit: 'contain', flexShrink: 0 }} />
                         <div>
-                          <div style={{ fontWeight: 700, fontSize: 14, color: '#0d0d2b', marginBottom: 3 }}>{tech.name}</div>
-                          <div style={{ fontSize: 12, color: 'rgba(26,26,46,0.5)', lineHeight: 1.5 }}>{tech.detail}</div>
+                          <div style={{ fontWeight: 700, fontSize: 14, color: '#0d0d2b', marginBottom: 3 }}>{getText(tech.name, language)}</div>
+                          <div style={{ fontSize: 12, color: 'rgba(26,26,46,0.5)', lineHeight: 1.5 }}>{getText(tech.detail, language)}</div>
                         </div>
                       </div>
                     ))}

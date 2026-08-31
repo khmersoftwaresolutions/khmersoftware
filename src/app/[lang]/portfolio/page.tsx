@@ -42,20 +42,45 @@ function IconBox({ color, Icon, size = 80 }: { color: string; Icon: React.FC; si
   );
 }
 
-const FILTERS = ['All', 'Web App', 'Mobile', 'E-Commerce', 'Government', 'Healthcare', 'Finance'];
+const FILTERS = [
+  { id: 'All', en: 'All', km: 'ទាំងអស់' },
+  { id: 'Web App', en: 'Web App', km: 'កម្មវិធីវែប' },
+  { id: 'Mobile', en: 'Mobile', km: 'ទូរស័ព្ទ' },
+  { id: 'E-Commerce', en: 'E-Commerce', km: 'ពាណិជ្ជកម្មអេឡិចត្រូនិក' },
+  { id: 'Government', en: 'Government', km: 'រដ្ឋាភិបាល' },
+  { id: 'Healthcare', en: 'Healthcare', km: 'សុខាភិបាល' },
+  { id: 'Finance', en: 'Finance', km: 'ហិរញ្ញវត្ថុ' }
+];
 
-type Project = { title: string; industry: string; type: string; color: string; Icon: React.FC; desc: string; tech: string[]; results: string[] };
+type Localized = string | { en?: string; km?: string };
+
+function getText(val: Localized | undefined, lang: string): string {
+  if (!val) return '';
+  if (typeof val === 'string') return val;
+  return (lang === 'km' ? val.km : val.en) || val.en || val.km || '';
+}
+
+type Project = {
+  title: Localized;
+  industry: Localized;
+  type: Localized;
+  color: string;
+  Icon: React.FC;
+  desc: Localized;
+  tech: string[];
+  results: Localized[];
+};
 
 const PROJECTS: Project[] = [
-  { title: 'NagaWorld Digital Wallet', industry: 'Finance', type: 'Web App', color: COLORS.cyan, Icon: CreditCardIcon, desc: 'A full-featured digital wallet platform with KYC verification, QR payments, and real-time transaction analytics for 50,000+ users.', tech: ['React', 'Node.js', 'PostgreSQL', 'AWS'], results: ['50K+ users', '99.99% uptime', '<200ms API'] },
-  { title: 'MekongPharma ERP', industry: 'Healthcare', type: 'Web App', color: COLORS.green, Icon: BriefcaseIcon, desc: 'End-to-end ERP system covering inventory, patient prescriptions, billing, and supplier management for a 12-branch pharmacy chain.', tech: ['Next.js', 'Python', 'MongoDB', 'Docker'], results: ['12 branches', '40% cost saving', 'Real-time sync'] },
-  { title: 'AgroCambodia Marketplace', industry: 'E-Commerce', type: 'Web App', color: COLORS.yellow, Icon: ShoppingCartIcon, desc: 'B2B agricultural marketplace connecting 3,000+ farmers directly with buyers, featuring live price feeds and logistics tracking.', tech: ['Vue.js', 'Node.js', 'MySQL', 'Redis'], results: ['3K+ farmers', '$2M GMV/mo', 'Mobile-first'] },
-  { title: 'PhnomPenh City App', industry: 'Government', type: 'Mobile', color: COLORS.blue, Icon: MapPinIcon, desc: 'A citizen services mobile app for Phnom Penh Municipality — report issues, pay fees, access permits, and track public transport.', tech: ['React Native', 'Go', 'PostgreSQL', 'AWS'], results: ['200K downloads', '4.7★ rating', 'Khmer & English'] },
-  { title: 'SiemReap Hotel Suite', industry: 'E-Commerce', type: 'Web App', color: COLORS.cyan, Icon: BuildingIcon, desc: 'Property management system + online booking engine for a 5-star resort group, integrated with Agoda, Booking.com, and AirBnB.', tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe'], results: ['30% booking uplift', 'OTA sync', 'Revenue analytics'] },
-  { title: 'ACLEDA Mobile Banking', industry: 'Finance', type: 'Mobile', color: COLORS.green, Icon: LandmarkIcon, desc: 'Rebuilt mobile banking application with biometric login, P2P transfers, bill payment, and NBC-compliant KYC flows.', tech: ['Flutter', 'Java', 'Oracle DB', 'AWS'], results: ['500K+ installs', 'Biometric auth', 'NBC compliant'] },
-  { title: 'KhmerLearn LMS', industry: 'Healthcare', type: 'Web App', color: COLORS.yellow, Icon: BookOpenIcon, desc: 'A bilingual (Khmer/English) learning management system for 20 universities across Cambodia, with video streaming and assessments.', tech: ['React', 'Django', 'PostgreSQL', 'CloudFront'], results: ['20 universities', '100K students', '4K+ courses'] },
-  { title: 'CambodiaPost Tracker', industry: 'Government', type: 'Mobile', color: COLORS.blue, Icon: PackageIcon, desc: 'National parcel tracking app with real-time GPS updates, automated SMS notifications, and a public API for e-commerce integration.', tech: ['React Native', 'Node.js', 'MongoDB', 'GCP'], results: ['1M+ parcels/mo', 'Real-time GPS', 'Public API'] },
-  { title: 'Sorya Mall POS', industry: 'E-Commerce', type: 'Web App', color: COLORS.cyan, Icon: StoreIcon, desc: 'Cloud POS system with loyalty rewards, inventory sync, sales analytics, and franchise management for 50+ retail outlets.', tech: ['React', 'Node.js', 'MySQL', 'Redis'], results: ['50+ outlets', 'Offline mode', 'Real-time reports'] },
+  { title: { en: 'NagaWorld Digital Wallet', km: "[KM] NagaWorld Digital Wallet" }, industry: { en: 'Finance', km: "ហិរញ្ញវត្ថុ" }, type: { en: 'Web App', km: "កម្មវិធីវែប" }, color: COLORS.cyan, Icon: CreditCardIcon, desc: { en: 'A full-featured digital wallet platform with KYC verification, QR payments, and real-time transaction analytics for 50,000+ users.', km: "[KM] A full-featured digital wallet platform with KYC verification, QR payments, and real-time transaction analytics for 50,000+ users." }, tech: ['React', 'Node.js', 'PostgreSQL', 'AWS'], results: [{ en: '50K+ users', km: "[KM] 50K+ users" }, { en: '99.99% uptime', km: "[KM] 99.99% uptime" }, { en: '<200ms API', km: "[KM] <200ms API" }] },
+  { title: { en: 'MekongPharma ERP', km: "[KM] MekongPharma ERP" }, industry: { en: 'Healthcare', km: "សុខាភិបាល" }, type: { en: 'Web App', km: "កម្មវិធីវែប" }, color: COLORS.green, Icon: BriefcaseIcon, desc: { en: 'End-to-end ERP system covering inventory, patient prescriptions, billing, and supplier management for a 12-branch pharmacy chain.', km: "[KM] End-to-end ERP system covering inventory, patient prescriptions, billing, and supplier management for a 12-branch pharmacy chain." }, tech: ['Next.js', 'Python', 'MongoDB', 'Docker'], results: [{ en: '12 branches', km: "[KM] 12 branches" }, { en: '40% cost saving', km: "[KM] 40% cost saving" }, { en: 'Real-time sync', km: "[KM] Real-time sync" }] },
+  { title: { en: 'AgroCambodia Marketplace', km: "[KM] AgroCambodia Marketplace" }, industry: { en: 'E-Commerce', km: "ពាណិជ្ជកម្មអេឡិចត្រូនិក" }, type: { en: 'Web App', km: "កម្មវិធីវែប" }, color: COLORS.yellow, Icon: ShoppingCartIcon, desc: { en: 'B2B agricultural marketplace connecting 3,000+ farmers directly with buyers, featuring live price feeds and logistics tracking.', km: "[KM] B2B agricultural marketplace connecting 3,000+ farmers directly with buyers, featuring live price feeds and logistics tracking." }, tech: ['Vue.js', 'Node.js', 'MySQL', 'Redis'], results: [{ en: '3K+ farmers', km: "[KM] 3K+ farmers" }, { en: '$2M GMV/mo', km: "[KM] $2M GMV/mo" }, { en: 'Mobile-first', km: "[KM] Mobile-first" }] },
+  { title: { en: 'PhnomPenh City App', km: "[KM] PhnomPenh City App" }, industry: { en: 'Government', km: "រដ្ឋាភិបាល" }, type: { en: 'Mobile', km: "ទូរស័ព្ទ" }, color: COLORS.blue, Icon: MapPinIcon, desc: { en: 'A citizen services mobile app for Phnom Penh Municipality — report issues, pay fees, access permits, and track public transport.', km: "[KM] A citizen services mobile app for Phnom Penh Municipality — report issues, pay fees, access permits, and track public transport." }, tech: ['React Native', 'Go', 'PostgreSQL', 'AWS'], results: [{ en: '200K downloads', km: "[KM] 200K downloads" }, { en: '4.7★ rating', km: "[KM] 4.7★ rating" }, { en: 'Khmer & English', km: "[KM] Khmer & English" }] },
+  { title: { en: 'SiemReap Hotel Suite', km: "[KM] SiemReap Hotel Suite" }, industry: { en: 'E-Commerce', km: "ពាណិជ្ជកម្មអេឡិចត្រូនិក" }, type: { en: 'Web App', km: "កម្មវិធីវែប" }, color: COLORS.cyan, Icon: BuildingIcon, desc: { en: 'Property management system + online booking engine for a 5-star resort group, integrated with Agoda, Booking.com, and AirBnB.', km: "[KM] Property management system + online booking engine for a 5-star resort group, integrated with Agoda, Booking.com, and AirBnB." }, tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Stripe'], results: [{ en: '30% booking uplift', km: "[KM] 30% booking uplift" }, { en: 'OTA sync', km: "[KM] OTA sync" }, { en: 'Revenue analytics', km: "[KM] Revenue analytics" }] },
+  { title: { en: 'ACLEDA Mobile Banking', km: "[KM] ACLEDA Mobile Banking" }, industry: { en: 'Finance', km: "ហិរញ្ញវត្ថុ" }, type: { en: 'Mobile', km: "ទូរស័ព្ទ" }, color: COLORS.green, Icon: LandmarkIcon, desc: { en: 'Rebuilt mobile banking application with biometric login, P2P transfers, bill payment, and NBC-compliant KYC flows.', km: "[KM] Rebuilt mobile banking application with biometric login, P2P transfers, bill payment, and NBC-compliant KYC flows." }, tech: ['Flutter', 'Java', 'Oracle DB', 'AWS'], results: [{ en: '500K+ installs', km: "[KM] 500K+ installs" }, { en: 'Biometric auth', km: "[KM] Biometric auth" }, { en: 'NBC compliant', km: "[KM] NBC compliant" }] },
+  { title: { en: 'KhmerLearn LMS', km: "[KM] KhmerLearn LMS" }, industry: { en: 'Healthcare', km: "សុខាភិបាល" }, type: { en: 'Web App', km: "កម្មវិធីវែប" }, color: COLORS.yellow, Icon: BookOpenIcon, desc: { en: 'A bilingual (Khmer/English) learning management system for 20 universities across Cambodia, with video streaming and assessments.', km: "[KM] A bilingual (Khmer/English) learning management system for 20 universities across Cambodia, with video streaming and assessments." }, tech: ['React', 'Django', 'PostgreSQL', 'CloudFront'], results: [{ en: '20 universities', km: "[KM] 20 universities" }, { en: '100K students', km: "[KM] 100K students" }, { en: '4K+ courses', km: "[KM] 4K+ courses" }] },
+  { title: { en: 'CambodiaPost Tracker', km: "កម្មវិធីតាមដានប្រៃសណីយ៍កម្ពុជា" }, industry: { en: 'Government', km: "រដ្ឋាភិបាល" }, type: { en: 'Mobile', km: "ទូរស័ព្ទ" }, color: COLORS.blue, Icon: PackageIcon, desc: { en: 'National parcel tracking app with real-time GPS updates, automated SMS notifications, and a public API for e-commerce integration.', km: "[KM] National parcel tracking app with real-time GPS updates, automated SMS notifications, and a public API for e-commerce integration." }, tech: ['React Native', 'Node.js', 'MongoDB', 'GCP'], results: [{ en: '1M+ parcels/mo', km: "[KM] 1M+ parcels/mo" }, { en: 'Real-time GPS', km: "[KM] Real-time GPS" }, { en: 'Public API', km: "[KM] Public API" }] },
+  { title: { en: 'Sorya Mall POS', km: "ប្រព័ន្ធ POS ផ្សារទំនើបសូរិយា" }, industry: { en: 'E-Commerce', km: "ពាណិជ្ជកម្មអេឡិចត្រូនិក" }, type: { en: 'Web App', km: "កម្មវិធីវែប" }, color: COLORS.cyan, Icon: StoreIcon, desc: { en: 'Cloud POS system with loyalty rewards, inventory sync, sales analytics, and franchise management for 50+ retail outlets.', km: "[KM] Cloud POS system with loyalty rewards, inventory sync, sales analytics, and franchise management for 50+ retail outlets." }, tech: ['React', 'Node.js', 'MySQL', 'Redis'], results: [{ en: '50+ outlets', km: "[KM] 50+ outlets" }, { en: 'Offline mode', km: "[KM] Offline mode" }, { en: 'Real-time reports', km: "របាយការណ៍ជាក់ស្តែង" }] },
 ];
 
 export default function PortfolioPage() {
@@ -67,7 +92,7 @@ export default function PortfolioPage() {
     if (params.lang && (params.lang === 'en' || params.lang === 'km')) setLanguage(params.lang as 'en' | 'km');
   }, [params.lang, setLanguage]);
 
-  const filtered = filter === 'All' ? PROJECTS : PROJECTS.filter(p => p.type === filter || p.industry === filter);
+  const filtered = filter === 'All' ? PROJECTS : PROJECTS.filter(p => getText(p.type, 'en') === filter || getText(p.industry, 'en') === filter);
 
   const pageStyles = `
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
@@ -85,10 +110,10 @@ export default function PortfolioPage() {
     <>
       <style>{pageStyles}</style>
       <PageBanner
-        badge="Our Work"
-        title="Projects That"
-        titleHighlight="Speak for Themselves"
-        subtitle="A selection of impactful projects we've delivered across Cambodia and Southeast Asia — each one solving a real business challenge with measurable results."
+        badge={language === 'km' ? "ស្នាដៃរបស់យើង" : "Our Work"}
+        title={language === 'km' ? "គម្រោងដែល" : "Projects That"}
+        titleHighlight={language === 'km' ? "និយាយដោយខ្លួនឯង" : "Speak for Themselves"}
+        subtitle={language === 'km' ? "ជម្រើសនៃគម្រោងដែលមានឥទ្ធិពលដែលយើងបានប្រគល់នៅទូទាំងប្រទេសកម្ពុជា និងអាស៊ីអាគ្នេយ៍ — គម្រោងនីមួយៗដោះស្រាយបញ្ហាអាជីវកម្មជាក់ស្តែងជាមួយនឹងលទ្ធផលដែលអាចវាស់វែងបាន។" : "A selection of impactful projects we've delivered across Cambodia and Southeast Asia — each one solving a real business challenge with measurable results."}
         accentColor={COLORS.cyan}
         accentColor2={COLORS.blue}
       />
@@ -99,14 +124,14 @@ export default function PortfolioPage() {
           <ScrollReveal>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(180px,100%),1fr))', gap: 0, borderRadius: 20, overflow: 'hidden', background: 'white', border: '1px solid rgba(5,5,69,0.06)', boxShadow: '0 4px 24px rgba(5,5,69,0.06)', margin: '48px 0' }}>
               {[
-                { val: '50+', label: 'Projects Delivered', color: COLORS.cyan },
-                { val: '5+', label: 'Years Experience', color: COLORS.green },
-                { val: '98%', label: 'Client Satisfaction', color: COLORS.yellow },
-                { val: '12', label: 'Industries Served', color: COLORS.blue },
+                { val: '50+', label: { en: 'Projects Delivered', km: 'គម្រោងបានបញ្ចប់' }, color: COLORS.cyan },
+                { val: '5+', label: { en: 'Years Experience', km: 'បទពិសោធន៍ឆ្នាំ' }, color: COLORS.green },
+                { val: '98%', label: { en: 'Client Satisfaction', km: 'ការពេញចិត្តរបស់អតិថិជន' }, color: COLORS.yellow },
+                { val: '12', label: { en: 'Industries Served', km: 'ឧស្សាហកម្មដែលបានបម្រើ' }, color: COLORS.blue },
               ].map((s, i) => (
                 <div key={i} style={{ textAlign: 'center', padding: 'clamp(20px,4vw,36px) 20px', borderRight: i < 3 ? '1px solid rgba(5,5,69,0.05)' : 'none' }}>
                   <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(28px,4vw,44px)', color: s.color, lineHeight: 1, marginBottom: 6 }}>{s.val}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(26,26,46,0.5)', textTransform: 'uppercase' as const, letterSpacing: '0.08em', fontWeight: 600 }}>{s.label}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(26,26,46,0.5)', textTransform: 'uppercase' as const, letterSpacing: '0.08em', fontWeight: 600 }}>{getText(s.label, language)}</div>
                 </div>
               ))}
             </div>
@@ -116,7 +141,7 @@ export default function PortfolioPage() {
           <ScrollReveal delay={50}>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 48 }}>
               {FILTERS.map(f => (
-                <button key={f} className={`filter-btn${filter === f ? ' active' : ''}`} onClick={() => setFilter(f)}>{f}</button>
+                <button key={f.id} className={`filter-btn${filter === f.id ? ' active' : ''}`} onClick={() => setFilter(f.id)}>{f[language as keyof typeof f] || f.en}</button>
               ))}
             </div>
           </ScrollReveal>
@@ -124,24 +149,24 @@ export default function PortfolioPage() {
           {/* Project Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(340px,100%),1fr))', gap: 24 }}>
             {filtered.map((p, i) => (
-              <ScrollReveal key={p.title} delay={i * 60} direction="up">
+              <ScrollReveal key={getText(p.title, 'en')} delay={i * 60} direction="up">
                 <div className="port-card">
                   {/* Banner */}
                   <div style={{ height: 160, background: `linear-gradient(135deg, ${p.color}12, ${p.color}05)`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', borderBottom: `1px solid ${p.color}15` }}>
-                    <div style={{ position: 'absolute', top: 14, left: 14, fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 100, background: `${p.color}15`, color: p.color }}>{p.industry}</div>
-                    <div style={{ position: 'absolute', top: 14, right: 14, fontSize: 11, fontWeight: 600, padding: '4px 10px', borderRadius: 100, background: 'rgba(5,5,69,0.06)', color: 'rgba(5,5,69,0.5)' }}>{p.type}</div>
+                    <div style={{ position: 'absolute', top: 14, left: 14, fontSize: 11, fontWeight: 700, padding: '4px 10px', borderRadius: 100, background: `${p.color}15`, color: p.color }}>{getText(p.industry, language)}</div>
+                    <div style={{ position: 'absolute', top: 14, right: 14, fontSize: 11, fontWeight: 600, padding: '4px 10px', borderRadius: 100, background: 'rgba(5,5,69,0.06)', color: 'rgba(5,5,69,0.5)' }}>{getText(p.type, language)}</div>
                     <IconBox color={p.color} Icon={p.Icon} size={76} />
                   </div>
                   {/* Content */}
                   <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 8 }}>{p.title}</h3>
-                    <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 16, flex: 1 }}>{p.desc}</p>
+                    <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 8 }}>{getText(p.title, language)}</h3>
+                    <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 16, flex: 1 }}>{getText(p.desc, language)}</p>
                     {/* Tech */}
                     <div style={{ marginBottom: 14 }}>{p.tech.map((t, ti) => <span key={ti} className="tech-badge">{t}</span>)}</div>
                     {/* Results */}
                     <div style={{ paddingTop: 14, borderTop: '1px solid rgba(5,5,69,0.06)' }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.1em', color: 'rgba(26,26,46,0.4)', marginBottom: 8 }}>Key Results</div>
-                      {p.results.map((r, ri) => <span key={ri} className="result-badge">✓ {r}</span>)}
+                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.1em', color: 'rgba(26,26,46,0.4)', marginBottom: 8 }}>{language === 'km' ? "លទ្ធផលសំខាន់ៗ" : "Key Results"}</div>
+                      {p.results.map((r, ri) => <span key={ri} className="result-badge">✓ {getText(r, language)}</span>)}
                     </div>
                   </div>
                 </div>

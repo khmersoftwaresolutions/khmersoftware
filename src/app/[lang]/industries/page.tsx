@@ -37,21 +37,37 @@ const WifiIcon = () => <svg width="26" height="26" fill="none" viewBox="0 0 24 2
 const UtensilsIcon = () => <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><line x1="7" y1="2" x2="7" y2="11"/><path d="M21 15V2a5 5 0 0 0-5 5v6h3v2a2 2 0 0 1-2 2v3"/></svg>;
 const MonitorIcon = () => <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>;
 
-const INDUSTRIES = [
-  { Icon: ShoppingCartIcon, title: 'E-Commerce & Retail', color: COLORS.cyan, clients: '12+ clients', desc: 'Multi-vendor marketplaces, POS systems, inventory management, and omnichannel retail platforms tailored for Cambodia\'s growing consumer market.', solutions: ['Multi-vendor marketplace', 'POS & inventory system', 'Customer loyalty platform', 'Analytics dashboard'] },
-  { Icon: LandmarkIcon, title: 'Banking & Finance', color: COLORS.blue, clients: '8+ clients', desc: 'Core banking integrations, digital wallets, loan management systems, and compliance-ready fintech platforms meeting NBC regulations.', solutions: ['Digital wallet gateway', 'Loan management system', 'KYC verification platform', 'Transaction analytics'] },
-  { Icon: HeartPulseIcon, title: 'Healthcare', color: COLORS.green, clients: '6+ clients', desc: 'Hospital information systems, patient management, telemedicine platforms, and health data analytics built to international standards.', solutions: ['Hospital information system', 'Telemedicine platform', 'Patient record management', 'Medical billing'] },
-  { Icon: GraduationCapIcon, title: 'Education & EdTech', color: COLORS.yellow, clients: '10+ clients', desc: 'Learning management systems, school administration platforms, e-learning apps, and student performance analytics for Cambodian institutions.', solutions: ['LMS platform', 'School admin system', 'E-learning mobile app', 'Student analytics'] },
-  { Icon: BuildingIcon, title: 'Government & Public Sector', color: COLORS.navy, clients: '5+ clients', desc: 'Citizen service portals, digital ID systems, tax management platforms, and e-governance solutions meeting GDA compliance standards.', solutions: ['Citizen service portal', 'Digital ID integration', 'Tax management system', 'Document management'] },
-  { Icon: TruckIcon, title: 'Logistics & Supply Chain', color: COLORS.cyan, clients: '7+ clients', desc: 'Fleet management, warehouse automation, last-mile delivery tracking, and supply chain visibility platforms for Cambodia\'s logistics sector.', solutions: ['Fleet management system', 'Last-mile tracking', 'Warehouse automation', 'Supply chain visibility'] },
-  { Icon: PlaneIcon, title: 'Tourism & Hospitality', color: COLORS.blue, clients: '9+ clients', desc: 'Booking engines, hotel property management systems, travel aggregation platforms, and guest experience apps for Cambodia\'s tourism industry.', solutions: ['Hotel PMS', 'Online booking engine', 'Tour management platform', 'Guest loyalty app'] },
-  { Icon: HomeIcon, title: 'Real Estate', color: COLORS.green, clients: '4+ clients', desc: 'Property listing platforms, CRM for real estate agencies, rental management systems, and investment analytics dashboards.', solutions: ['Property listing portal', 'Agency CRM', 'Rental management', 'Investment dashboard'] },
-  { Icon: LeafIcon, title: 'Agriculture & AgriTech', color: COLORS.yellow, clients: '3+ clients', desc: 'Farm management systems, crop monitoring dashboards, supply chain traceability, and market price data platforms for Cambodian farmers.', solutions: ['Farm management app', 'Crop monitoring', 'Market price tracker', 'Supply traceability'] },
-  { Icon: WifiIcon, title: 'Telecommunications', color: COLORS.cyan, clients: '4+ clients', desc: 'Billing systems, customer self-service portals, network monitoring dashboards, and CRM integrations for telco operators in Cambodia.', solutions: ['Billing platform', 'Customer self-service', 'Network monitoring', 'CRM integration'] },
-  { Icon: UtensilsIcon, title: 'Food & Restaurant', color: COLORS.blue, clients: '11+ clients', desc: 'Restaurant POS, food delivery platforms, kitchen display systems, table reservation apps, and menu management solutions.', solutions: ['Restaurant POS', 'Delivery platform', 'Kitchen display system', 'Reservation system'] },
-  { Icon: MonitorIcon, title: 'Media & Publishing', color: COLORS.green, clients: '5+ clients', desc: 'Content management systems, video streaming platforms, digital publishing tools, and audience analytics for Cambodian media houses.', solutions: ['CMS platform', 'Video streaming', 'Audience analytics', 'Ad management'] },
-];
+type Localized = string | { en?: string; km?: string };
 
+function getText(val: Localized | undefined, lang: string): string {
+  if (!val) return '';
+  if (typeof val === 'string') return val;
+  return (lang === 'km' ? val.km : val.en) || val.en || val.km || '';
+}
+
+type Industry = {
+  Icon: React.FC;
+  title: Localized;
+  color: string;
+  clients: Localized;
+  desc: Localized;
+  solutions: Localized[];
+};
+
+const INDUSTRIES: Industry[] = [
+  { Icon: ShoppingCartIcon, title: { en: 'E-Commerce & Retail', km: "ពាណិជ្ជកម្មអេឡិចត្រូនិក និងការលក់រាយ" }, color: COLORS.cyan, clients: { en: '12+ clients', km: "១២+ អតិថិជន" }, desc: { en: 'Multi-vendor marketplaces, POS systems, inventory management, and omnichannel retail platforms tailored for Cambodia\'s growing consumer market.', km: "ទីផ្សារពហុអ្នកលក់, ប្រព័ន្ធ POS, ការគ្រប់គ្រងស្តុក និងវេទិកាលក់រាយគ្រប់បណ្តាញដែលត្រូវបានកែសម្រួលសម្រាប់ទីផ្សារអ្នកប្រើប្រាស់ដែលកំពុងរីកចម្រើនរបស់កម្ពុជា។" }, solutions: [{ en: 'Multi-vendor marketplace', km: 'ទីផ្សារពហុអ្នកលក់' }, { en: 'POS & inventory system', km: 'ប្រព័ន្ធ POS និងស្តុកទំនិញ' }, { en: 'Customer loyalty platform', km: 'វេទិកាភាពស្មោះត្រង់របស់អតិថិជន' }, { en: 'Analytics dashboard', km: 'ផ្ទាំងគ្រប់គ្រងវិភាគ' }] },
+  { Icon: LandmarkIcon, title: { en: 'Banking & Finance', km: "ធនាគារ និងហិរញ្ញវត្ថុ" }, color: COLORS.blue, clients: { en: '8+ clients', km: "៨+ អតិថិជន" }, desc: { en: 'Core banking integrations, digital wallets, loan management systems, and compliance-ready fintech platforms meeting NBC regulations.', km: "ការរួមបញ្ចូលធនាគារស្នូល, កាបូបឌីជីថល, ប្រព័ន្ធគ្រប់គ្រងប្រាក់កម្ចី និងវេទិកាហិរញ្ញវត្ថុបច្ចេកវិទ្យាស្របតាមបទប្បញ្ញត្តិរបស់ NBC។" }, solutions: [{ en: 'Digital wallet gateway', km: 'ច្រកទ្វារកាបូបឌីជីថល' }, { en: 'Loan management system', km: 'ប្រព័ន្ធគ្រប់គ្រងប្រាក់កម្ចី' }, { en: 'KYC verification platform', km: 'វេទិកាផ្ទៀងផ្ទាត់ KYC' }, { en: 'Transaction analytics', km: 'ការវិភាគប្រតិបត្តិការ' }] },
+  { Icon: HeartPulseIcon, title: { en: 'Healthcare', km: "សុខាភិបាល" }, color: COLORS.green, clients: { en: '6+ clients', km: "៦+ អតិថិជន" }, desc: { en: 'Hospital information systems, patient management, telemedicine platforms, and health data analytics built to international standards.', km: "ប្រព័ន្ធព័ត៌មានមន្ទីរពេទ្យ, ការគ្រប់គ្រងអ្នកជំងឺ, វេទិកាព្យាបាលពីចម្ងាយ និងការវិភាគទិន្នន័យសុខភាពដែលបង្កើតឡើងតាមស្តង់ដារអន្តរជាតិ។" }, solutions: [{ en: 'Hospital information system', km: 'ប្រព័ន្ធព័ត៌មានមន្ទីរពេទ្យ' }, { en: 'Telemedicine platform', km: 'វេទិកាព្យាបាលពីចម្ងាយ' }, { en: 'Patient record management', km: 'ការគ្រប់គ្រងកំណត់ត្រាអ្នកជំងឺ' }, { en: 'Medical billing', km: 'ការទូទាត់វេជ្ជសាស្ត្រ' }] },
+  { Icon: GraduationCapIcon, title: { en: 'Education & EdTech', km: "ការអប់រំ និង EdTech" }, color: COLORS.yellow, clients: { en: '10+ clients', km: "១០+ អតិថិជន" }, desc: { en: 'Learning management systems, school administration platforms, e-learning apps, and student performance analytics for Cambodian institutions.', km: "ប្រព័ន្ធគ្រប់គ្រងការរៀនសូត្រ, វេទិការដ្ឋបាលសាលារៀន, កម្មវិធីរៀនតាមអេឡិចត្រូនិក និងការវិភាគសមត្ថភាពសិស្សសម្រាប់ស្ថាប័នកម្ពុជា។" }, solutions: [{ en: 'LMS platform', km: 'វេទិកា LMS' }, { en: 'School admin system', km: 'ប្រព័ន្ធរដ្ឋបាលសាលា' }, { en: 'E-learning mobile app', km: 'កម្មវិធីទូរស័ព្ទរៀនតាមអនឡាញ' }, { en: 'Student analytics', km: 'ការវិភាគសិស្ស' }] },
+  { Icon: BuildingIcon, title: { en: 'Government & Public Sector', km: "រដ្ឋាភិបាល និងវិស័យសាធារណៈ" }, color: COLORS.navy, clients: { en: '5+ clients', km: "៥+ អតិថិជន" }, desc: { en: 'Citizen service portals, digital ID systems, tax management platforms, and e-governance solutions meeting GDA compliance standards.', km: "វិបផតថលសេវាប្រជាពលរដ្ឋ, ប្រព័ន្ធអត្តសញ្ញាណប័ណ្ណឌីជីថល, វេទិកាគ្រប់គ្រងពន្ធ និងដំណោះស្រាយអភិបាលកិច្ចអេឡិចត្រូនិកស្របតាមស្តង់ដារអនុលោមភាពរបស់ GDA។" }, solutions: [{ en: 'Citizen service portal', km: 'វិបផតថលសេវាប្រជាពលរដ្ឋ' }, { en: 'Digital ID integration', km: 'ការរួមបញ្ចូលអត្តសញ្ញាណប័ណ្ណឌីជីថល' }, { en: 'Tax management system', km: 'ប្រព័ន្ធគ្រប់គ្រងពន្ធ' }, { en: 'Document management', km: 'ការគ្រប់គ្រងឯកសារ' }] },
+  { Icon: TruckIcon, title: { en: 'Logistics & Supply Chain', km: "ឡូជីស្ទិក និងខ្សែសង្វាក់ផ្គត់ផ្គង់" }, color: COLORS.cyan, clients: { en: '7+ clients', km: "៧+ អតិថិជន" }, desc: { en: 'Fleet management, warehouse automation, last-mile delivery tracking, and supply chain visibility platforms for Cambodia\'s logistics sector.', km: "ការគ្រប់គ្រងកងនាវា, ស្វ័យប្រវត្តិកម្មឃ្លាំង, ការតាមដានការដឹកជញ្ជូនដំណាក់កាលចុងក្រោយ និងវេទិកាមើលឃើញខ្សែសង្វាក់ផ្គត់ផ្គង់សម្រាប់វិស័យភស្តុភារកម្មកម្ពុជា។" }, solutions: [{ en: 'Fleet management system', km: 'ប្រព័ន្ធគ្រប់គ្រងកងនាវា' }, { en: 'Last-mile tracking', km: 'ការតាមដានការដឹកជញ្ជូនដំណាក់កាលចុងក្រោយ' }, { en: 'Warehouse automation', km: 'ស្វ័យប្រវត្តិកម្មឃ្លាំង' }, { en: 'Supply chain visibility', km: 'ភាពមើលឃើញខ្សែសង្វាក់ផ្គត់ផ្គង់' }] },
+  { Icon: PlaneIcon, title: { en: 'Tourism & Hospitality', km: "ទេសចរណ៍ និងបដិសណ្ឋារកិច្ច" }, color: COLORS.blue, clients: { en: '9+ clients', km: "៩+ អតិថិជន" }, desc: { en: 'Booking engines, hotel property management systems, travel aggregation platforms, and guest experience apps for Cambodia\'s tourism industry.', km: "ប្រព័ន្ធកក់សំបុត្រ, ប្រព័ន្ធគ្រប់គ្រងអចលនទ្រព្យសណ្ឋាគារ, វេទិកាប្រមូលផ្តុំការធ្វើដំណើរ និងកម្មវិធីបទពិសោធន៍ភ្ញៀវសម្រាប់ឧស្សាហកម្មទេសចរណ៍កម្ពុជា។" }, solutions: [{ en: 'Hotel PMS', km: 'PMS សណ្ឋាគារ' }, { en: 'Online booking engine', km: 'ម៉ាស៊ីនកក់អនឡាញ' }, { en: 'Tour management platform', km: 'វេទិកាគ្រប់គ្រងដំណើរកម្សាន្ត' }, { en: 'Guest loyalty app', km: 'កម្មវិធីភាពស្មោះត្រង់របស់ភ្ញៀវ' }] },
+  { Icon: HomeIcon, title: { en: 'Real Estate', km: "អចលនទ្រព្យ" }, color: COLORS.green, clients: { en: '4+ clients', km: "៤+ អតិថិជន" }, desc: { en: 'Property listing platforms, CRM for real estate agencies, rental management systems, and investment analytics dashboards.', km: "វេទិកាចុះបញ្ជីអចលនទ្រព្យ, CRM សម្រាប់ភ្នាក់ងារអចលនទ្រព្យ, ប្រព័ន្ធគ្រប់គ្រងការជួល និងផ្ទាំងគ្រប់គ្រងវិភាគការវិនិយោគ។" }, solutions: [{ en: 'Property listing portal', km: 'វិបផតថលចុះបញ្ជីអចលនទ្រព្យ' }, { en: 'Agency CRM', km: 'CRM ភ្នាក់ងារ' }, { en: 'Rental management', km: 'ការគ្រប់គ្រងការជួល' }, { en: 'Investment dashboard', km: 'ផ្ទាំងគ្រប់គ្រងការវិនិយោគ' }] },
+  { Icon: LeafIcon, title: { en: 'Agriculture & AgriTech', km: "កសិកម្ម និង AgriTech" }, color: COLORS.yellow, clients: { en: '3+ clients', km: "៣+ អតិថិជន" }, desc: { en: 'Farm management systems, crop monitoring dashboards, supply chain traceability, and market price data platforms for Cambodian farmers.', km: "ប្រព័ន្ធគ្រប់គ្រងកសិដ្ឋាន, ផ្ទាំងគ្រប់គ្រងការត្រួតពិនិត្យដំណាំ, ការតាមដានប្រភពដើមខ្សែសង្វាក់ផ្គត់ផ្គង់ និងវេទិកាទិន្នន័យតម្លៃទីផ្សារសម្រាប់កសិករកម្ពុជា។" }, solutions: [{ en: 'Farm management app', km: 'កម្មវិធីគ្រប់គ្រងកសិដ្ឋាន' }, { en: 'Crop monitoring', km: 'ការត្រួតពិនិត្យដំណាំ' }, { en: 'Market price tracker', km: 'ការតាមដានតម្លៃទីផ្សារ' }, { en: 'Supply traceability', km: 'ការតាមដានប្រភពដើមផ្គត់ផ្គង់' }] },
+  { Icon: WifiIcon, title: { en: 'Telecommunications', km: "ទូរគមនាគមន៍" }, color: COLORS.cyan, clients: { en: '4+ clients', km: "៤+ អតិថិជន" }, desc: { en: 'Billing systems, customer self-service portals, network monitoring dashboards, and CRM integrations for telco operators in Cambodia.', km: "ប្រព័ន្ធទូទាត់ប្រាក់, វិបផតថលសេវាស្វ័យប្រវត្តិសម្រាប់អតិថិជន, ផ្ទាំងគ្រប់គ្រងការត្រួតពិនិត្យបណ្តាញ និងការរួមបញ្ចូល CRM សម្រាប់ប្រតិបត្តិករទូរគមនាគមន៍នៅកម្ពុជា។" }, solutions: [{ en: 'Billing platform', km: 'វេទិកាទូទាត់ប្រាក់' }, { en: 'Customer self-service', km: 'សេវាកម្មស្វ័យប្រវត្តិរបស់អតិថិជន' }, { en: 'Network monitoring', km: 'ការត្រួតពិនិត្យបណ្តាញ' }, { en: 'CRM integration', km: 'ការរួមបញ្ចូល CRM' }] },
+  { Icon: UtensilsIcon, title: { en: 'Food & Restaurant', km: "ម្ហូបអាហារ និងភោជនីយដ្ឋាន" }, color: COLORS.blue, clients: { en: '11+ clients', km: "១១+ អតិថិជន" }, desc: { en: 'Restaurant POS, food delivery platforms, kitchen display systems, table reservation apps, and menu management solutions.', km: "POS ភោជនីយដ្ឋាន, វេទិកាដឹកជញ្ជូនអាហារ, ប្រព័ន្ធបង្ហាញផ្ទះបាយ, កម្មវិធីកក់តុ និងដំណោះស្រាយគ្រប់គ្រងបញ្ជីមុខម្ហូប។" }, solutions: [{ en: 'Restaurant POS', km: 'POS ភោជនីយដ្ឋាន' }, { en: 'Delivery platform', km: 'វេទិកាដឹកជញ្ជូន' }, { en: 'Kitchen display system', km: 'ប្រព័ន្ធបង្ហាញផ្ទះបាយ' }, { en: 'Reservation system', km: 'ប្រព័ន្ធកក់តុ' }] },
+  { Icon: MonitorIcon, title: { en: 'Media & Publishing', km: "ប្រព័ន្ធផ្សព្វផ្សាយ និងការបោះពុម្ពផ្សាយ" }, color: COLORS.green, clients: { en: '5+ clients', km: "៥+ អតិថិជន" }, desc: { en: 'Content management systems, video streaming platforms, digital publishing tools, and audience analytics for Cambodian media houses.', km: "ប្រព័ន្ធគ្រប់គ្រងមាតិកា, វេទិកាផ្សាយវីដេអូ, ឧបករណ៍បោះពុម្ពឌីជីថល និងការវិភាគទស្សនិកជនសម្រាប់ស្ថាប័នប្រព័ន្ធផ្សព្វផ្សាយកម្ពុជា។" }, solutions: [{ en: 'CMS platform', km: 'វេទិកា CMS' }, { en: 'Video streaming', km: 'ការផ្សាយវីដេអូ' }, { en: 'Audience analytics', km: 'ការវិភាគទស្សនិកជន' }, { en: 'Ad management', km: 'ការគ្រប់គ្រងការផ្សាយពាណិជ្ជកម្ម' }] },
+];
 
 export default function IndustriesPage() {
   const params = useParams();
@@ -75,11 +91,11 @@ export default function IndustriesPage() {
     <>
       <style>{pageStyles}</style>
       <PageBanner
-        badge="Industries We Serve"
-        title="Deep Expertise Across"
-        titleHighlight="Every Sector"
-        subtitle="We don't build generic software. We build domain-specific solutions informed by years of experience across Cambodia's most critical industries."
-        ctaLabel="Discuss Your Industry"
+        badge={language === 'km' ? "ឧស្សាហកម្មដែលយើងបម្រើ" : "Industries We Serve"}
+        title={language === 'km' ? "ជំនាញស៊ីជម្រៅនៅទូទាំង" : "Deep Expertise Across"}
+        titleHighlight={language === 'km' ? "គ្រប់វិស័យ" : "Every Sector"}
+        subtitle={language === 'km' ? "យើងមិនកសាងសូហ្វវែរទូទៅទេ។ យើងកសាងដំណោះស្រាយជាក់លាក់តាមវិស័យដោយផ្អែកលើបទពិសោធន៍ជាច្រើនឆ្នាំនៅទូទាំងឧស្សាហកម្មដ៏សំខាន់បំផុតរបស់កម្ពុជា។" : "We don't build generic software. We build domain-specific solutions informed by years of experience across Cambodia's most critical industries."}
+        ctaLabel={language === 'km' ? "ពិភាក្សាអំពីឧស្សាហកម្មរបស់អ្នក" : "Discuss Your Industry"}
         ctaHref={`/${language}/contact`}
         accentColor={COLORS.blue}
         accentColor2={COLORS.cyan}
@@ -89,12 +105,12 @@ export default function IndustriesPage() {
         <div className="ind-container">
           <ScrollReveal>
             <div style={{ textAlign: 'center', padding: '72px 0 48px' }}>
-              <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.blue, padding: '6px 14px', background: 'rgba(14,98,162,0.08)', border: '1px solid rgba(14,98,162,0.2)', borderRadius: 100, marginBottom: 16 }}>12 Industries</div>
+              <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.blue, padding: '6px 14px', background: 'rgba(14,98,162,0.08)', border: '1px solid rgba(14,98,162,0.2)', borderRadius: 100, marginBottom: 16 }}>{language === 'km' ? "១២ ឧស្សាហកម្ម" : "12 Industries"}</div>
               <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
-                We Know Your <span style={{ background: 'linear-gradient(135deg,#0E62A2,#0ABADF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Business Domain</span>
+                {language === 'km' ? 'យើងដឹងពី' : 'We Know Your'} <span style={{ background: 'linear-gradient(135deg,#0E62A2,#0ABADF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{language === 'km' ? 'វិស័យអាជីវកម្មរបស់អ្នក' : 'Business Domain'}</span>
               </h2>
               <p style={{ color: 'rgba(26,26,46,0.55)', fontSize: 16, maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
-                Click any industry to explore the specific solutions and case studies we've delivered in that sector.
+                {language === 'km' ? "ចុចលើឧស្សាហកម្មណាមួយដើម្បីស្វែងយល់ពីដំណោះស្រាយជាក់លាក់ និងករណីសិក្សាដែលយើងបានប្រគល់នៅក្នុងវិស័យនោះ។" : "Click any industry to explore the specific solutions and case studies we've delivered in that sector."}
               </p>
             </div>
           </ScrollReveal>
@@ -112,18 +128,18 @@ export default function IndustriesPage() {
                       <ind.Icon />
                     </div>
                     <div style={{ flex: 1 }}>
-                      <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#0d0d2b', marginBottom: 2 }}>{ind.title}</h3>
-                      <span style={{ fontSize: 11, color: ind.color, fontWeight: 600, background: `${ind.color}10`, padding: '2px 8px', borderRadius: 100 }}>{ind.clients}</span>
+                      <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, color: '#0d0d2b', marginBottom: 2 }}>{getText(ind.title, language)}</h3>
+                      <span style={{ fontSize: 11, color: ind.color, fontWeight: 600, background: `${ind.color}10`, padding: '2px 8px', borderRadius: 100 }}>{getText(ind.clients, language)}</span>
                     </div>
                     <div style={{ color: ind.color, fontSize: 18, transition: 'transform 0.3s', transform: active === i ? 'rotate(180deg)' : 'none' }}>▾</div>
                   </div>
-                  <p style={{ fontSize: 13, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: active === i ? 16 : 0 }}>{ind.desc}</p>
+                  <p style={{ fontSize: 13, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: active === i ? 16 : 0 }}>{getText(ind.desc, language)}</p>
 
                   {/* Expanded solutions */}
                   <div style={{ overflow: 'hidden', maxHeight: active === i ? 120 : 0, transition: 'max-height 0.4s cubic-bezier(0.16,1,0.3,1)' }}>
                     <div style={{ paddingTop: 8 }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.1em', color: 'rgba(26,26,46,0.4)', marginBottom: 8 }}>Key Solutions</div>
-                      <div>{ind.solutions.map((s, si) => <span key={si} className="solution-tag" style={{ background: `${ind.color}10`, color: ind.color }}>✓ {s}</span>)}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase' as const, letterSpacing: '0.1em', color: 'rgba(26,26,46,0.4)', marginBottom: 8 }}>{language === 'km' ? "ដំណោះស្រាយសំខាន់ៗ" : "Key Solutions"}</div>
+                      <div>{ind.solutions.map((s, si) => <span key={si} className="solution-tag" style={{ background: `${ind.color}10`, color: ind.color }}>✓ {getText(s, language)}</span>)}</div>
                     </div>
                   </div>
                 </div>
@@ -136,10 +152,10 @@ export default function IndustriesPage() {
             <div style={{ marginTop: 80, padding: 'clamp(40px,6vw,64px)', borderRadius: 24, background: 'linear-gradient(135deg,#050545,#0E62A2)', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', width: 400, height: 400, borderRadius: '50%', background: COLORS.cyan, filter: 'blur(120px)', opacity: 0.1, top: '-100px', right: '-50px', pointerEvents: 'none' }} />
               <div style={{ position: 'relative', zIndex: 1 }}>
-                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>Don't see your industry?</h2>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28, lineHeight: 1.6 }}>We've worked across many more sectors. Tell us about your business and we'll tailor a solution for you.</p>
+                <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', color: '#fff', marginBottom: 12 }}>{language === 'km' ? "មិនឃើញឧស្សាហកម្មរបស់អ្នក?" : "Don't see your industry?"}</h2>
+                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 16, marginBottom: 28, lineHeight: 1.6 }}>{language === 'km' ? "យើងបានធ្វើការនៅទូទាំងវិស័យជាច្រើនទៀត។ ប្រាប់យើងអំពីអាជីវកម្មរបស់អ្នក ហើយយើងនឹងរៀបចំដំណោះស្រាយសម្រាប់អ្នក។" : "We've worked across many more sectors. Tell us about your business and we'll tailor a solution for you."}</p>
                 <a href={`/${language}/contact`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 32px', borderRadius: 100, fontWeight: 600, fontSize: 14, background: 'linear-gradient(135deg,#0ABADF,#0E62A2)', color: '#fff', textDecoration: 'none', boxShadow: '0 4px 20px rgba(10,186,223,0.4)' }}>
-                  Talk to Our Team →
+                  {language === 'km' ? "និយាយជាមួយក្រុមរបស់យើង →" : "Talk to Our Team →"}
                 </a>
               </div>
             </div>

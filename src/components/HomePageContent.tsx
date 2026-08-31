@@ -688,13 +688,6 @@ export default function HomePageContent() {
     },
   ];
 
-  const testimonials = [
-    { text: t('home.testimonials.testimonial1.text'), name: t('home.testimonials.testimonial1.name'), role: t('home.testimonials.testimonial1.role'), photo: t('home.testimonials.testimonial1.photo'), color: COLORS.cyan },
-    { text: t('home.testimonials.testimonial2.text'), name: t('home.testimonials.testimonial2.name'), role: t('home.testimonials.testimonial2.role'), photo: t('home.testimonials.testimonial2.photo'), color: COLORS.green },
-    { text: t('home.testimonials.testimonial3.text'), name: t('home.testimonials.testimonial3.name'), role: t('home.testimonials.testimonial3.role'), photo: t('home.testimonials.testimonial3.photo'), color: COLORS.yellow },
-    { text: t('home.testimonials.testimonial4.text'), name: t('home.testimonials.testimonial4.name'), role: t('home.testimonials.testimonial4.role'), photo: t('home.testimonials.testimonial4.photo'), color: COLORS.blue },
-  ];
-
   return (
     <>
       <style>{techStyles}</style>
@@ -1256,45 +1249,6 @@ export default function HomePageContent() {
               ))}
             </div>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ── TESTIMONIALS ────────────────────── */}
-      <section className="section" style={{ padding: "100px clamp(16px, 4vw, 40px)", background: "linear-gradient(180deg, #f0f6ff 0%, #f8f9fc 100%)" }}>
-        <div className="container">
-          <ScrollReveal>
-            <div style={{ textAlign: "center", marginBottom: 60 }}>
-              <div className="section-label">{t('home.testimonials.sectionLabel')}</div>
-              <h2 className="section-title">{t('home.testimonials.title')} <span className="grad-green">{t('home.testimonials.titleHighlight')}</span></h2>
-              <div className="h-line" style={{ margin: "16px auto 0", background: `linear-gradient(90deg, ${COLORS.green}, ${COLORS.cyan})` }} />
-            </div>
-          </ScrollReveal>
-
-          <style>{`
-            .expert-scroll-container::-webkit-scrollbar { display: none; }
-          `}</style>
-          <div className="expert-scroll-container" style={{ display: "flex", gap: 24, overflowX: "auto", paddingBottom: 32, scrollSnapType: "x mandatory", msOverflowStyle: 'none', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
-            {testimonials.map((testimonial, i) => (
-              <div key={i} style={{ width: 'min(360px, 85vw)', flexShrink: 0, scrollSnapAlign: "start", display: "flex", flexDirection: "column" }}>
-                <ScrollReveal delay={i * 100} direction="up" style={{ height: '100%' }}>
-                  <TiltCard className="glass-card testimonial-card" style={{ padding: "0", height: "100%", overflow: "hidden" }}>
-                    <div className="glow-top" style={{ background: `linear-gradient(90deg, transparent, ${testimonial.color}50, transparent)` }} />
-                    <div style={{ position: "relative", width: "100%", height: "240px" }}>
-                      <img src={testimonial.photo} alt={testimonial.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
-                      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(5,5,69,0.95) 0%, rgba(5,5,69,0.7) 50%, transparent 100%)", padding: "20px", display: "flex", flexDirection: "column", gap: 4 }}>
-                        <div style={{ fontWeight: 700, fontSize: 17, color: "#fff" }}>{testimonial.name}</div>
-                        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)" }}>{testimonial.role}</div>
-                      </div>
-                    </div>
-                    <div style={{ padding: "20px" }}>
-                      <div className="stars" style={{ marginBottom: 12 }}>★★★★★</div>
-                      <p className="quote" style={{ fontSize: 14, lineHeight: 1.6, margin: 0 }}>"{testimonial.text}"</p>
-                    </div>
-                  </TiltCard>
-                </ScrollReveal>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

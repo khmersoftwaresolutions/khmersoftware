@@ -34,14 +34,14 @@ const MapIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24
 const PenToolIcon = () => <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="1.5" fill="currentColor" stroke="none"/></svg>;
 
 const SERVICES = [
-  { id: 'custom', title: 'Custom Software', Icon: LayersIcon, color: COLORS.cyan, desc: 'Bespoke enterprise systems, internal tools, and complex platforms tailored exactly to your business processes.' },
-  { id: 'mobile', title: 'Mobile Apps', Icon: SmartphoneIcon, color: COLORS.green, desc: 'Native-quality cross-platform mobile apps for iOS and Android with offline-first architecture.' },
-  { id: 'web', title: 'Web Applications', Icon: GlobeIcon, color: COLORS.blue, desc: 'High-performance, scalable web applications optimized for speed, SEO, and user experience.' },
-  { id: 'cloud', title: 'Cloud Migration', Icon: CloudIcon, color: COLORS.navy, desc: 'Move to AWS or Google Cloud with zero downtime. Cost optimization and highly available infrastructure.' },
-  { id: 'devops', title: 'DevOps Services', Icon: GitBranchIcon, color: COLORS.yellow, desc: 'CI/CD pipelines, containerization, and infrastructure as code to help your team ship faster.' },
-  { id: 'security', title: 'Cybersecurity', Icon: ShieldIcon, color: COLORS.blue, desc: 'Penetration testing, vulnerability assessments, and compliance implementation (PCI-DSS, SOC2).' },
-  { id: 'strategy', title: 'IT Strategy', Icon: MapIcon, color: COLORS.cyan, desc: 'Technology roadmaps, architecture reviews, and digital transformation consulting for leadership teams.' },
-  { id: 'design', title: 'UI/UX Design', Icon: PenToolIcon, color: COLORS.green, desc: 'Research-backed user interfaces, interactive prototyping, and design system creation.' },
+  { id: 'custom', title: { en: 'Custom Software', km: '[KM] Custom Software' }, Icon: LayersIcon, color: COLORS.cyan, desc: { en: 'Bespoke enterprise systems, internal tools, and complex platforms tailored exactly to your business processes.', km: '[KM] Bespoke enterprise systems, internal tools, and complex platforms tailored exactly to your business processes.' } },
+  { id: 'mobile', title: { en: 'Mobile Apps', km: '[KM] Mobile Apps' }, Icon: SmartphoneIcon, color: COLORS.green, desc: { en: 'Native-quality cross-platform mobile apps for iOS and Android with offline-first architecture.', km: '[KM] Native-quality cross-platform mobile apps for iOS and Android with offline-first architecture.' } },
+  { id: 'web', title: { en: 'Web Applications', km: '[KM] Web Applications' }, Icon: GlobeIcon, color: COLORS.blue, desc: { en: 'High-performance, scalable web applications optimized for speed, SEO, and user experience.', km: '[KM] High-performance, scalable web applications optimized for speed, SEO, and user experience.' } },
+  { id: 'cloud', title: { en: 'Cloud Migration', km: '[KM] Cloud Migration' }, Icon: CloudIcon, color: COLORS.navy, desc: { en: 'Move to AWS or Google Cloud with zero downtime. Cost optimization and highly available infrastructure.', km: '[KM] Move to AWS or Google Cloud with zero downtime. Cost optimization and highly available infrastructure.' } },
+  { id: 'devops', title: { en: 'DevOps Services', km: '[KM] DevOps Services' }, Icon: GitBranchIcon, color: COLORS.yellow, desc: { en: 'CI/CD pipelines, containerization, and infrastructure as code to help your team ship faster.', km: '[KM] CI/CD pipelines, containerization, and infrastructure as code to help your team ship faster.' } },
+  { id: 'security', title: { en: 'Cybersecurity', km: '[KM] Cybersecurity' }, Icon: ShieldIcon, color: COLORS.blue, desc: { en: 'Penetration testing, vulnerability assessments, and compliance implementation (PCI-DSS, SOC2).', km: '[KM] Penetration testing, vulnerability assessments, and compliance implementation (PCI-DSS, SOC2).' } },
+  { id: 'strategy', title: { en: 'IT Strategy', km: '[KM] IT Strategy' }, Icon: MapIcon, color: COLORS.cyan, desc: { en: 'Technology roadmaps, architecture reviews, and digital transformation consulting for leadership teams.', km: '[KM] Technology roadmaps, architecture reviews, and digital transformation consulting for leadership teams.' } },
+  { id: 'design', title: { en: 'UI/UX Design', km: '[KM] UI/UX Design' }, Icon: PenToolIcon, color: COLORS.green, desc: { en: 'Research-backed user interfaces, interactive prototyping, and design system creation.', km: '[KM] Research-backed user interfaces, interactive prototyping, and design system creation.' } },
 ];
 
 export default function ServicesPage() {
@@ -69,10 +69,10 @@ export default function ServicesPage() {
     <>
       <style>{pageStyles}</style>
       <PageBanner
-        badge="Our Services"
-        title="End-to-End"
-        titleHighlight="Technology Solutions"
-        subtitle="From strategic consulting and UX design to custom development and cloud infrastructure. We provide everything you need to build, launch, and scale digital products."
+        badge={language === 'km' ? '[KM] Our Services' : 'Our Services'}
+        title={language === 'km' ? '[KM] End-to-End' : 'End-to-End'}
+        titleHighlight={language === 'km' ? '[KM] Technology Solutions' : 'Technology Solutions'}
+        subtitle={language === 'km' ? '[KM] From strategic consulting and UX design to custom development and cloud infrastructure. We provide everything you need to build, launch, and scale digital products.' : 'From strategic consulting and UX design to custom development and cloud infrastructure. We provide everything you need to build, launch, and scale digital products.'}
         accentColor={COLORS.blue}
         accentColor2={COLORS.cyan}
       />
@@ -83,12 +83,12 @@ export default function ServicesPage() {
           {/* Custom Solutions Grid */}
           <ScrollReveal>
             <div style={{ textAlign: 'center', padding: '72px 0 40px' }}>
-              <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.blue, padding: '6px 14px', background: 'rgba(14,98,162,0.08)', border: '1px solid rgba(14,98,162,0.2)', borderRadius: 100, marginBottom: 16 }}>Custom Engineering</div>
+              <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.blue, padding: '6px 14px', background: 'rgba(14,98,162,0.08)', border: '1px solid rgba(14,98,162,0.2)', borderRadius: 100, marginBottom: 16 }}>{language === 'km' ? '[KM] Custom Engineering' : 'Custom Engineering'}</div>
               <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(26px,4vw,40px)', color: '#0d0d2b', marginBottom: 16 }}>
-                Engineering <span style={{ background: 'linear-gradient(135deg,#0E62A2,#0ABADF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Excellence</span>
+                {language === 'km' ? '[KM] Engineering' : 'Engineering'} <span style={{ background: 'linear-gradient(135deg,#0E62A2,#0ABADF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{language === 'km' ? '[KM] Excellence' : 'Excellence'}</span>
               </h2>
               <p style={{ color: 'rgba(26,26,46,0.55)', fontSize: 16, maxWidth: 640, margin: '0 auto', lineHeight: 1.7 }}>
-                We assemble cross-functional teams of engineers, designers, and product managers to tackle your most complex technical challenges. Select a service to learn more.
+                {language === 'km' ? '[KM] We assemble cross-functional teams of engineers, designers, and product managers to tackle your most complex technical challenges. Select a service to learn more.' : 'We assemble cross-functional teams of engineers, designers, and product managers to tackle your most complex technical challenges. Select a service to learn more.'}
               </p>
             </div>
           </ScrollReveal>
@@ -100,10 +100,10 @@ export default function ServicesPage() {
                   <div style={{ width: 56, height: 56, borderRadius: 16, background: `${svc.color}15`, border: `1px solid ${svc.color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: svc.color, marginBottom: 20 }}>
                     <svc.Icon />
                   </div>
-                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 12 }}>{svc.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 24, flex: 1 }}>{svc.desc}</p>
+                  <h3 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, color: '#0d0d2b', marginBottom: 12 }}>{svc.title[language as keyof typeof svc.title] || svc.title.en}</h3>
+                  <p style={{ fontSize: 14, color: 'rgba(26,26,46,0.6)', lineHeight: 1.6, marginBottom: 24, flex: 1 }}>{svc.desc[language as keyof typeof svc.desc] || svc.desc.en}</p>
                   <div style={{ fontSize: 13, fontWeight: 700, color: svc.color, display: 'flex', alignItems: 'center', gap: 6 }}>
-                    Explore Service <span>→</span>
+                    {language === 'km' ? '[KM] Explore Service' : 'Explore Service'} <span>→</span>
                   </div>
                 </a>
               </ScrollReveal>
@@ -117,19 +117,19 @@ export default function ServicesPage() {
                 
                 {/* Left side content */}
                 <div style={{ padding: 'clamp(32px,5vw,56px)' }}>
-                  <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.green, padding: '6px 14px', background: 'rgba(81,180,28,0.1)', borderRadius: 100, marginBottom: 16 }}>Ready-to-use Products</div>
+                  <div style={{ display: 'inline-block', fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: COLORS.green, padding: '6px 14px', background: 'rgba(81,180,28,0.1)', borderRadius: 100, marginBottom: 16 }}>{language === 'km' ? '[KM] Ready-to-use Products' : 'Ready-to-use Products'}</div>
                   <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(24px,4vw,34px)', color: '#0d0d2b', marginBottom: 16 }}>
-                    Software <span style={{ color: COLORS.green }}>Sales & Rental</span>
+                    {language === 'km' ? '[KM] Software' : 'Software'} <span style={{ color: COLORS.green }}>{language === 'km' ? '[KM] Sales & Rental' : 'Sales & Rental'}</span>
                   </h2>
                   <p style={{ fontSize: 15, color: 'rgba(26,26,46,0.6)', lineHeight: 1.7, marginBottom: 32 }}>
-                    Don't need a custom build? We offer enterprise-grade, pre-built software solutions that are fully localized for Cambodia (Khmer language, local tax compliance, multi-currency).
+                    {language === 'km' ? '[KM] Don\'t need a custom build? We offer enterprise-grade, pre-built software solutions that are fully localized for Cambodia (Khmer language, local tax compliance, multi-currency).' : 'Don\'t need a custom build? We offer enterprise-grade, pre-built software solutions that are fully localized for Cambodia (Khmer language, local tax compliance, multi-currency).'}
                   </p>
                   
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 40 }}>
-                    <div className="feature-tag">✓ Point of Sale (POS) Systems</div>
-                    <div className="feature-tag">✓ ERP & Inventory Management</div>
-                    <div className="feature-tag">✓ HR & Payroll Software</div>
-                    <div className="feature-tag">✓ Accounting (GDT Compliant)</div>
+                    <div className="feature-tag">✓ {language === 'km' ? '[KM] Point of Sale (POS) Systems' : 'Point of Sale (POS) Systems'}</div>
+                    <div className="feature-tag">✓ {language === 'km' ? '[KM] ERP & Inventory Management' : 'ERP & Inventory Management'}</div>
+                    <div className="feature-tag">✓ {language === 'km' ? '[KM] HR & Payroll Software' : 'HR & Payroll Software'}</div>
+                    <div className="feature-tag">✓ {language === 'km' ? '[KM] Accounting (GDT Compliant)' : 'Accounting (GDT Compliant)'}</div>
                   </div>
 
                   <a 
@@ -138,7 +138,7 @@ export default function ServicesPage() {
                     rel="noopener noreferrer"
                     style={{ display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 32px', borderRadius: 100, fontWeight: 600, fontSize: 14, background: 'linear-gradient(135deg,#51B41C,#0ABADF)', color: 'white', textDecoration: 'none', boxShadow: '0 4px 20px rgba(81,180,28,0.3)' }}
                   >
-                    Visit Software Shop
+                    {language === 'km' ? '[KM] Visit Software Shop' : 'Visit Software Shop'}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                       <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
