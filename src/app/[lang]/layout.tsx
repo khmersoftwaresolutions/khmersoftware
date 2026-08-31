@@ -67,7 +67,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: `${baseUrl}/og-image.png`,
+          url: `${baseUrl}/ogimg.jpeg`,
           width: 1200,
           height: 630,
           alt: 'KhmerSoftware - Leading Software Solutions in Cambodia',
@@ -78,7 +78,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: [`${baseUrl}/og-image.png`],
+      images: [`${baseUrl}/ogimg.jpeg`],
     },
     robots: {
       index: true,
@@ -113,7 +113,7 @@ export default async function LangLayout({
     alternateName: 'ខ្មែរសូហ្វវែរ',
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
-    image: `${baseUrl}/og-image.png`,
+    image: `${baseUrl}/ogimg.jpeg`,
     description: isKm
       ? 'ក្រុមហ៊ុនអភិវឌ្ឍន៍សូហ្វវែរឈានមុខគេនៅកម្ពុជា ផ្តល់ជូនដំណោះស្រាយសូហ្វវែរសហគ្រាស កម្មវិធីទូរស័ព្ទ ប្រព័ន្ធក្លោដ និងសន្តិសុខព័ត៌មានវិទ្យា។'
       : "Cambodia's leading software development and enterprise IT solutions company.",

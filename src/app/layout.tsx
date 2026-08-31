@@ -60,12 +60,21 @@ export const metadata: Metadata = {
     siteName: "KhmerSoftware",
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "https://www.khmersoftware.com/ogimg.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "KhmerSoftware - Professional Software Solutions in Cambodia",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "KhmerSoftware - Professional Software Solutions in Cambodia",
     description:
       "Leading software development company in Cambodia offering custom enterprise software, mobile apps, and cloud solutions.",
+    images: ["https://www.khmersoftware.com/ogimg.jpeg"],
   },
   robots: {
     index: true,
