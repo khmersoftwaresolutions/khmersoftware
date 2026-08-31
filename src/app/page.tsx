@@ -24,6 +24,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://www.khmersoftware.com/ogimg.jpeg',
+        secureUrl: 'https://www.khmersoftware.com/ogimg.jpeg',
+        type: 'image/jpeg',
         width: 1200,
         height: 630,
         alt: 'KhmerSoftware - Custom Software & Enterprise Solutions in Cambodia',
